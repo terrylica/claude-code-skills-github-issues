@@ -555,17 +555,18 @@ gh models run [model] [prompt] [flags]
 
 **Overall Effectiveness:** 88/100 ✅ **VERY GOOD**
 
-| Workflow | Accuracy | Speed | Result |
-|----------|----------|-------|--------|
-| Issue Summarization | 94% | 3-5 sec | ✅ Excellent |
-| Auto-Labeling | 96% | 3 sec | ✅ Excellent |
-| Knowledge Base Q&A | 88% | 4 sec | ✅ Very Good |
-| Documentation Generation | 91% | 5 sec | ✅ Excellent |
-| Batch Processing | 80% | 3 sec/issue | ✅ Good* |
+| Workflow                 | Accuracy | Speed       | Result       |
+| ------------------------ | -------- | ----------- | ------------ |
+| Issue Summarization      | 94%      | 3-5 sec     | ✅ Excellent |
+| Auto-Labeling            | 96%      | 3 sec       | ✅ Excellent |
+| Knowledge Base Q&A       | 88%      | 4 sec       | ✅ Very Good |
+| Documentation Generation | 91%      | 5 sec       | ✅ Excellent |
+| Batch Processing         | 80%      | 3 sec/issue | ✅ Good\*    |
 
-*Serial processing only, not suitable for >50 issues in real-time
+\*Serial processing only, not suitable for >50 issues in real-time
 
 **Key Findings:**
+
 - ✅ 90-100% accuracy across all tests
 - ✅ Free tier sufficient for small teams
 - ⚠️ Rate limits apply for high-volume use
@@ -674,10 +675,12 @@ Keep it under 200 words."
 **Total Issues:** 5
 
 **Open vs Closed:**
+
 - **Open:** 5
 - **Closed:** 0
 
 **Most Common Labels:**
+
 - `bug` (4 issues)
 - `documentation` (2 issues)
 - `priority:medium` (3 issues)
@@ -690,6 +693,7 @@ medium-priority bugs. One issue explores edge cases with empty labels, suggestin
 ongoing robustness testing.
 
 # ✅ Accuracy: 100% - All counts and stats correct
+
 # ✅ Format Quality: 90% - Clean markdown, ready for team reports
 ```
 

@@ -1,14 +1,88 @@
-# GitHub Native Search Capabilities - Comprehensive Analysis
+# GitHub Native Search Capabilities - Complete Guide
 
+**Quick Start + Comprehensive Reference**
 **Date:** 2025-10-23
 **Status:** Complete research based on official documentation
-**Version:** 1.0.0
+**Version:** 2.0.0
+
+---
+
+## Table of Contents
+
+1. [Quick Start](#quick-start) - Get started in 5 minutes
+2. [Executive Summary](#executive-summary) - Key findings
+3. [Native GitHub CLI Search Commands](#native-github-cli-search-commands) - Complete reference
+4. [Native Search Syntax and Qualifiers](#native-search-syntax-and-qualifiers) - All filters
+5. [Advanced Use Cases](#advanced-use-cases) - Real-world examples
+6. [Limitations](#limitations) - What's NOT possible
+
+---
+
+## Quick Start
+
+**Get started with GitHub native search in 5 minutes**
+
+### Prerequisites
+
+```bash
+# Verify GitHub CLI is installed
+gh --version
+
+# Authenticate if needed
+gh auth login
+```
+
+### Basic Searches
+
+```bash
+# Search issues in current repository
+gh issue list --search "authentication"
+
+# Search for exact phrase
+gh issue list --search "connection timeout error"
+
+# Search in specific fields
+gh issue list --search "in:title database"
+gh issue list --search "in:body SQL query"
+gh issue list --search "in:comments resolved"
+```
+
+### Filter by Common Criteria
+
+```bash
+# Open issues only
+gh issue list --state=open
+
+# By label
+gh search issues --label=bug
+
+# Assigned to me
+gh search issues --assignee=@me --state=open
+
+# Created recently
+gh search issues --created=">=2025-10-01"
+
+# Multiple filters combined
+gh search issues --label=bug --assignee=@me --state=open
+```
+
+### Search Across Multiple Repositories
+
+```bash
+# Search your organization
+gh search issues "authentication" --owner=myorg
+
+# Search specific repository
+gh search issues "bug" --repo=owner/repo
+```
+
+**For comprehensive documentation, continue reading below.**
 
 ---
 
 ## Executive Summary
 
-GitHub provides **robust native search capabilities** through its CLI and API that support searching issues and pull requests with extensive filtering. This document details ONLY the native features available through GitHub CLI (`gh`) without any third-party tools or workarounds.
+GitHub provides **robust native search capabilities** through its CLI and API that support searching issues and pull requests with extensive filtering. This document provides both a quick start guide and complete reference for ONLY the native features available through GitHub CLI (`gh`) without any third-party tools or workarounds.
 
 ### Key Findings
 
@@ -16,6 +90,7 @@ GitHub provides **robust native search capabilities** through its CLI and API th
 - ✅ **Searches title, body, AND comments** using `in:` qualifiers
 - ✅ **Extensive filtering** with 30+ qualifiers (labels, dates, users, state, etc.)
 - ✅ **Boolean operators** supported (-, ranges, quotes)
+- ✅ **Quick start available above** for immediate use
 - ❌ **No regex support** in API/CLI (only in web UI for code search)
 - ❌ **No wildcards** in search patterns
 - ❌ **No context lines** (ripgrep's -A/-B/-C features)

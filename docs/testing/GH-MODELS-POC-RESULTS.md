@@ -23,6 +23,7 @@ Conducted comprehensive proof-of-concept testing of `gh-models` (GitHub's offici
 ## Test Environment
 
 ### Setup
+
 ```bash
 # Extension already installed
 gh extension list | grep gh-models
@@ -34,6 +35,7 @@ gh models list
 ```
 
 ### Models Tested
+
 - **openai/gpt-4.1** - Primary model, best quality
 - **meta/llama-3.3-70b-instruct** - Alternative, fast responses
 
@@ -42,15 +44,18 @@ gh models list
 ## Test 1: Issue Summarization ✅
 
 ### Objective
+
 Summarize GitHub issues concisely for quick review.
 
 ### Test Case
+
 - **Input:** Issue #63 "Test: Final Comprehensive Issue"
   - Title: "Test: Final Comprehensive Issue"
   - Body: "This is a comprehensive test with all features."
   - Labels: bug, documentation, priority:medium
 
 ### Command
+
 ```bash
 PROMPT="Please summarize this GitHub issue in 2-3 concise sentences: [issue content]"
 gh models run "openai/gpt-4.1" "$PROMPT"
@@ -59,22 +64,25 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ### Results
 
 **OpenAI GPT-4.1 Output:**
+
 > This GitHub issue reports a comprehensive test that covers all features. It is labeled as a bug with medium priority and relates to documentation. The issue aims to ensure thorough evaluation and tracking of all functionalities.
 
 **Meta Llama 3.3 Output:**
+
 > This GitHub issue is a comprehensive test that covers all features. It has been labeled as a bug, indicating that something is not working as expected, and has a medium priority. The issue also relates to documentation, suggesting that improvements or fixes are needed in this area.
 
 ### Effectiveness Measurement
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Accuracy** | 95% | Correctly identified all labels and context |
-| **Conciseness** | 90% | Both models stayed within 2-3 sentences |
-| **Relevance** | 95% | Captured key information |
-| **Speed** | ~3-5 sec | Response time per issue |
-| **Overall** | **94%** | ✅ **Excellent** |
+| Metric          | Score    | Notes                                       |
+| --------------- | -------- | ------------------------------------------- |
+| **Accuracy**    | 95%      | Correctly identified all labels and context |
+| **Conciseness** | 90%      | Both models stayed within 2-3 sentences     |
+| **Relevance**   | 95%      | Captured key information                    |
+| **Speed**       | ~3-5 sec | Response time per issue                     |
+| **Overall**     | **94%**  | ✅ **Excellent**                            |
 
 ### Use Cases
+
 - Daily issue triage
 - Team standup reports
 - Email notifications with summaries
@@ -85,15 +93,18 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ## Test 2: Auto-Labeling Suggestions ✅
 
 ### Objective
+
 Suggest appropriate labels for issues based on content.
 
 ### Test Case
+
 - **Input:** Issue #57 "Edge Case: Empty Label Test"
   - Body: "Testing what happens with invalid operations"
   - Current Labels: (none)
 - **Available Labels:** bug, documentation, enhancement, priority:high/medium/low, test-batch, etc.
 
 ### Command
+
 ```bash
 PROMPT="Based on this GitHub issue, suggest the most appropriate labels from this list: [available labels]
 
@@ -108,25 +119,28 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ### Results
 
 **OpenAI GPT-4.1 Output:**
+
 > bug,invalid,test-batch
 
 ### Effectiveness Measurement
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Accuracy** | 100% | All 3 suggestions are appropriate |
-| **Precision** | 95% | No irrelevant suggestions |
-| **Usefulness** | 90% | Would save manual labeling time |
-| **Speed** | ~3 sec | Fast response |
-| **Overall** | **96%** | ✅ **Excellent** |
+| Metric         | Score   | Notes                             |
+| -------------- | ------- | --------------------------------- |
+| **Accuracy**   | 100%    | All 3 suggestions are appropriate |
+| **Precision**  | 95%     | No irrelevant suggestions         |
+| **Usefulness** | 90%     | Would save manual labeling time   |
+| **Speed**      | ~3 sec  | Fast response                     |
+| **Overall**    | **96%** | ✅ **Excellent**                  |
 
 ### Analysis
+
 - ✅ Correctly identified "bug" (edge case testing)
 - ✅ Correctly identified "invalid" (invalid operations)
 - ✅ Correctly identified "test-batch" (batch testing context)
 - ✅ Did NOT suggest irrelevant labels (e.g., "documentation", "frontend")
 
 ### Use Cases
+
 - Auto-labeling new issues via GitHub Actions
 - Batch re-labeling existing issues
 - Label suggestion UI in issue templates
@@ -136,12 +150,15 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ## Test 3: Knowledge Base Q&A ✅
 
 ### Objective
+
 Answer questions about knowledge base content.
 
 ### Test Case
+
 Fetch README.md content and ask specific questions.
 
 ### Command
+
 ```bash
 README_CONTENT=$(gh api repos/terrylica/knowledgebase/contents/README.md --jq '.content' | base64 -d | head -100)
 
@@ -158,6 +175,7 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 **Question 1:** "What are the three recommended GitHub CLI extensions?"
 
 **OpenAI GPT-4.1 Output:**
+
 > The three recommended GitHub CLI extensions are:
 >
 > 1. **gh-dash**: Provides an interactive terminal dashboard for managing issues and pull requests.
@@ -167,19 +185,21 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 **Question 2:** "What search capabilities does GitHub CLI native search have?"
 
 **Meta Llama 3.3 Output:**
+
 > Native GitHub CLI search capabilities include complete search syntax and filtering.
 
 ### Effectiveness Measurement
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Accuracy** | 95% | Correct facts extracted |
-| **Completeness** | 85% | Some details missing (Q2 was brief) |
-| **Relevance** | 90% | Directly answered questions |
-| **Speed** | ~4 sec | Fast responses |
-| **Overall** | **88%** | ✅ **Very Good** |
+| Metric           | Score   | Notes                               |
+| ---------------- | ------- | ----------------------------------- |
+| **Accuracy**     | 95%     | Correct facts extracted             |
+| **Completeness** | 85%     | Some details missing (Q2 was brief) |
+| **Relevance**    | 90%     | Directly answered questions         |
+| **Speed**        | ~4 sec  | Fast responses                      |
+| **Overall**      | **88%** | ✅ **Very Good**                    |
 
 ### Use Cases
+
 - Internal documentation chatbot
 - Onboarding new team members
 - Quick reference without reading full docs
@@ -190,6 +210,7 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ## Test 4: Documentation Generation ✅
 
 ### Objective
+
 Generate documentation automatically from issues and content.
 
 ### Test Case 1: Status Report
@@ -197,6 +218,7 @@ Generate documentation automatically from issues and content.
 **Input:** 5 recent issues with metadata
 
 **Command:**
+
 ```bash
 ISSUES=$(gh issue list --repo terrylica/knowledgebase --limit 5 --state all --json number,title,state,labels)
 
@@ -212,19 +234,22 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 ```
 
 **Output:**
+
 ```markdown
 # GitHub Issues Status Report
 
 **Total Issues:** 5
 
-**Open vs Closed:**  
-- **Open:** 5  
-- **Closed:** 0  
+**Open vs Closed:**
 
-**Most Common Labels:**  
-- `bug` (4 issues)  
-- `documentation` (2 issues)  
-- `priority:medium` (3 issues)  
+- **Open:** 5
+- **Closed:** 0
+
+**Most Common Labels:**
+
+- `bug` (4 issues)
+- `documentation` (2 issues)
+- `priority:medium` (3 issues)
 
 **Summary of Issue Topics:**  
 Current issues focus on bugs related to documentation updates, API enhancements, and handling special characters. Two issues involve documentation concerns, while one addresses backend API improvements. Special emphasis has been placed on medium-priority bugs. One issue explores edge cases with empty labels, suggesting ongoing robustness testing. There are no closed issues at this time.
@@ -232,15 +257,16 @@ Current issues focus on bugs related to documentation updates, API enhancements,
 
 ### Effectiveness Measurement
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Accuracy** | 100% | All counts and stats correct |
-| **Format Quality** | 90% | Clean markdown, good structure |
-| **Usefulness** | 85% | Ready for team reports |
-| **Speed** | ~5 sec | Acceptable for batch generation |
-| **Overall** | **91%** | ✅ **Excellent** |
+| Metric             | Score   | Notes                           |
+| ------------------ | ------- | ------------------------------- |
+| **Accuracy**       | 100%    | All counts and stats correct    |
+| **Format Quality** | 90%     | Clean markdown, good structure  |
+| **Usefulness**     | 85%     | Ready for team reports          |
+| **Speed**          | ~5 sec  | Acceptable for batch generation |
+| **Overall**        | **91%** | ✅ **Excellent**                |
 
 ### Use Cases
+
 - Weekly status reports
 - Sprint retrospectives
 - Stakeholder updates
@@ -251,43 +277,49 @@ Current issues focus on bugs related to documentation updates, API enhancements,
 ## Test 5: Batch Processing ✅
 
 ### Objective
+
 Process multiple issues automatically for priority suggestions.
 
 ### Test Case
+
 Analyze 5 open issues and suggest priority levels.
 
 ### Command
+
 ```bash
 gh issue list --repo terrylica/knowledgebase --state open --limit 5 --json number,title,body,labels | \
 jq -c '.[]' | while read -r issue; do
     PROMPT="Analyze this issue and suggest if it should be priority:high, priority:medium, or priority:low.
     Respond with ONLY the priority level, nothing else.
-    
+
     Title: $(echo "$issue" | jq -r '.title')
     Body: $(echo "$issue" | jq -r '.body')"
-    
+
     gh models run "openai/gpt-4.1" "$PROMPT"
 done
 ```
 
 ### Results
+
 - Issue #64: `priority:medium` ✅ (correct suggestion)
 
 ### Effectiveness Measurement
 
-| Metric | Score | Notes |
-|--------|-------|-------|
-| **Accuracy** | 100% | Correct priority assigned |
-| **Speed** | ~3 sec/issue | 15 sec for 5 issues (serial) |
-| **Scalability** | 60% | ⚠️ Slow for >50 issues |
-| **Overall** | **80%** | ✅ **Good** (with limitations) |
+| Metric          | Score        | Notes                          |
+| --------------- | ------------ | ------------------------------ |
+| **Accuracy**    | 100%         | Correct priority assigned      |
+| **Speed**       | ~3 sec/issue | 15 sec for 5 issues (serial)   |
+| **Scalability** | 60%          | ⚠️ Slow for >50 issues         |
+| **Overall**     | **80%**      | ✅ **Good** (with limitations) |
 
 ### Limitations
+
 - ⚠️ **Serial processing only** - gh-models doesn't support parallel requests
 - ⚠️ **Rate limits** - Free tier has usage quotas
 - ⚠️ **Speed** - Not suitable for 100+ issues in real-time
 
 ### Recommendations
+
 - ✅ Use for small batches (<20 issues)
 - ✅ Use for nightly cron jobs
 - ❌ Don't use for real-time large-scale automation
@@ -350,12 +382,14 @@ done
 ### Cost Analysis
 
 **Free Tier:**
+
 - ✅ Available without payment
 - ⚠️ Rate limits apply
 - ✅ Sufficient for small teams (<10 users)
 - ⚠️ May need throttling for automation
 
 **Estimated Usage:**
+
 - 100 issues/day: Likely within free tier
 - 1000 issues/day: May hit rate limits
 - Continuous automation: Need to test limits
@@ -419,22 +453,27 @@ ask_kb "How do I search issues?"
 ## Limitations and Edge Cases
 
 ### 1. Large Documents
+
 **Issue:** Can't process very large files in one call.  
 **Workaround:** Chunk content or use `head -n 100` to limit size.
 
 ### 2. Rate Limiting
+
 **Issue:** Free tier has usage quotas.  
 **Workaround:** Add delays between requests, use caching.
 
 ### 3. Accuracy for Complex Tasks
+
 **Issue:** Simple issues get 95%+ accuracy, complex ones may need review.  
 **Workaround:** Always review AI suggestions before applying.
 
 ### 4. Batch Processing Speed
+
 **Issue:** 3 sec/issue = 5 min for 100 issues.  
 **Workaround:** Run as background job, don't use for real-time.
 
 ### 5. Model Selection
+
 **Issue:** Different models have different strengths.  
 **Workaround:** Test multiple models, pick best for each use case.
 
@@ -444,35 +483,35 @@ ask_kb "How do I search issues?"
 
 ### vs. Manual Work
 
-| Task | Manual Time | gh-models Time | Savings |
-|------|-------------|----------------|---------|
-| Summarize 10 issues | 15 min | 30 sec | **97%** |
-| Label 20 issues | 10 min | 1 min | **90%** |
-| Write status report | 20 min | 10 sec | **99%** |
-| Answer 5 KB questions | 15 min | 25 sec | **97%** |
+| Task                  | Manual Time | gh-models Time | Savings |
+| --------------------- | ----------- | -------------- | ------- |
+| Summarize 10 issues   | 15 min      | 30 sec         | **97%** |
+| Label 20 issues       | 10 min      | 1 min          | **90%** |
+| Write status report   | 20 min      | 10 sec         | **99%** |
+| Answer 5 KB questions | 15 min      | 25 sec         | **97%** |
 
 **Overall:** 90-99% time savings for knowledge base tasks.
 
 ### vs. ChatGPT/Claude (Web)
 
-| Feature | gh-models | ChatGPT Web |
-|---------|-----------|-------------|
-| **CLI Integration** | ✅ Built-in | ❌ Copy-paste needed |
-| **GitHub Auth** | ✅ Automatic | ❌ Manual API key |
-| **Cost** | ✅ Free (with limits) | ⚠️ $20/month |
-| **Scriptable** | ✅ Easy | ⚠️ API calls needed |
-| **Model Quality** | ✅ GPT-4.1 available | ✅ GPT-4 |
+| Feature             | gh-models             | ChatGPT Web          |
+| ------------------- | --------------------- | -------------------- |
+| **CLI Integration** | ✅ Built-in           | ❌ Copy-paste needed |
+| **GitHub Auth**     | ✅ Automatic          | ❌ Manual API key    |
+| **Cost**            | ✅ Free (with limits) | ⚠️ $20/month         |
+| **Scriptable**      | ✅ Easy               | ⚠️ API calls needed  |
+| **Model Quality**   | ✅ GPT-4.1 available  | ✅ GPT-4             |
 
 **Verdict:** gh-models is BETTER for GitHub workflow automation.
 
 ### vs. Custom Scripts
 
-| Feature | gh-models | Custom Scripts |
-|---------|-----------|----------------|
-| **Development Time** | ✅ 0 hours | ❌ 10+ hours |
-| **Maintenance** | ✅ GitHub maintains | ❌ You maintain |
-| **Capabilities** | ✅ AI-powered | ⚠️ Limited to regex |
-| **Flexibility** | ⚠️ Prompt-based | ✅ Full control |
+| Feature              | gh-models           | Custom Scripts      |
+| -------------------- | ------------------- | ------------------- |
+| **Development Time** | ✅ 0 hours          | ❌ 10+ hours        |
+| **Maintenance**      | ✅ GitHub maintains | ❌ You maintain     |
+| **Capabilities**     | ✅ AI-powered       | ⚠️ Limited to regex |
+| **Flexibility**      | ⚠️ Prompt-based     | ✅ Full control     |
 
 **Verdict:** gh-models is BETTER for most use cases. Use custom scripts only for performance-critical tasks.
 
@@ -483,6 +522,7 @@ ask_kb "How do I search issues?"
 ### For AI Agents ✅
 
 **Use gh-models for:**
+
 - ✅ Issue summarization
 - ✅ Label suggestions
 - ✅ Documentation generation
@@ -490,6 +530,7 @@ ask_kb "How do I search issues?"
 - ✅ Status reports
 
 **Do NOT use gh-models for:**
+
 - ❌ Real-time high-volume automation (>100 requests/hour)
 - ❌ Tasks requiring 100% accuracy (use as suggestion only)
 - ❌ Very large document processing (>10KB per request)
@@ -521,6 +562,7 @@ ask_kb "How do I search issues?"
 **Overall Effectiveness:** 88/100 ✅ **VERY GOOD**
 
 **Key Findings:**
+
 - ✅ High accuracy (90-100%)
 - ✅ Good speed (3-5 sec/request)
 - ✅ Easy to use

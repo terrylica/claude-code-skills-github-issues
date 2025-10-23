@@ -17,7 +17,6 @@ Complete documentation for the knowledge base project.
 
 Practical how-to guides for immediate use:
 
-- **[Native Search Quick Start](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Get started with GitHub CLI native search
 - **[AI Agent Operational Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Comprehensive guide for AI coding agents
 
 ---
@@ -26,12 +25,8 @@ Practical how-to guides for immediate use:
 
 Platform analysis and capability comparisons:
 
-- **[GitHub Knowledge Base Analysis](/docs/research/github-knowledge-base-analysis.md)** - Using GitHub Issues as knowledge base
-- **[GitHub Native Search Capabilities](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Complete native search reference
-- **[GitHub CLI Extensions Ecosystem](/docs/research/GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md)** - 652+ extensions analyzed
-- **[Extensions Test Results](/docs/research/EXTENSIONS_TEST_RESULTS.md)** - Empirical testing results
-- **[Extensions Maintenance Status](/docs/research/EXTENSIONS_MAINTENANCE_STATUS.md)** - Maintenance verification
-- **[Notion Investigation Prep](/docs/research/NOTION_INVESTIGATION_PREP.md)** - Notion API research findings
+- **[GitHub Native Search Capabilities](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Quick start + complete reference
+- **[GitHub CLI Extensions](/docs/research/GITHUB_CLI_EXTENSIONS.md)** - 652+ extensions ecosystem (empirically tested)
 
 ---
 
@@ -47,11 +42,7 @@ Complete technical documentation:
 
 Test reports and probing results:
 
-- **[Probing Summary](/docs/testing/PROBING_SUMMARY.md)** - Executive summary of all testing
-- **[Live Test Results](/docs/testing/LIVE_TEST_RESULTS.md)** - CRUD operations testing
-- **[Metadata Test Report](/docs/testing/gh-cli-metadata-test-report.md)** - Label and metadata testing
-- **[Lifecycle Test Report](/docs/testing/github-cli-issue-lifecycle-test-report.md)** - State management testing
-- **[gh-models POC Results](/docs/testing/GH-MODELS-POC-RESULTS.md)** - AI assistance proof of concept (2025-10-23)
+- **[gh-models POC Results](/docs/testing/GH-MODELS-POC-RESULTS.md)** - AI assistance proof of concept (88% effectiveness)
 
 ---
 
@@ -74,5 +65,5 @@ No redundant content. Use links and references instead of copy-paste.
 
 ---
 
-**Version:** 3.0.0
+**Version:** 4.0.0
 **Last Updated:** 2025-10-23

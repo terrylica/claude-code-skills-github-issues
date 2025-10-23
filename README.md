@@ -9,9 +9,9 @@ Engineering knowledge base for team collaboration, documentation, and workflow a
 ## Quick Links
 
 - 📖 **[Documentation](/docs/)** - Guides, research, and references
-- 🔍 **[Search Guide](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Native GitHub CLI search
+- 🔍 **[Search Guide](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Native GitHub CLI search (quick start + complete reference)
 - 🤖 **[AI Agent Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Operational guide for AI coding agents
-- 🔌 **[Extensions](/docs/research/EXTENSIONS_TEST_RESULTS.md)** - GitHub CLI extensions tested and recommended
+- 🔌 **[Extensions](/docs/research/GITHUB_CLI_EXTENSIONS.md)** - GitHub CLI extensions tested and recommended
 
 ---
 
@@ -98,23 +98,15 @@ gh models run "openai/gpt-4.1" "Summarize this: $(gh issue view 123 --json body 
 
 ```
 docs/
-├── guides/           Quick-start and how-to guides
-│   ├── NATIVE_SEARCH_QUICK_START.md
-│   └── AI_AGENT_OPERATIONAL_GUIDE.md
-├── research/         Platform analysis and comparisons
-│   ├── github-knowledge-base-analysis.md
-│   ├── GITHUB_NATIVE_SEARCH_CAPABILITIES.md
-│   ├── GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md
-│   ├── EXTENSIONS_TEST_RESULTS.md
-│   ├── EXTENSIONS_MAINTENANCE_STATUS.md
-│   └── NOTION_INVESTIGATION_PREP.md
+├── guides/           Operational guides for AI agents and humans
+│   └── AI_AGENT_OPERATIONAL_GUIDE.md       # Complete operational guide
+├── research/         Platform analysis and capabilities
+│   ├── GITHUB_CLI_EXTENSIONS.md            # Extension ecosystem (consolidated)
+│   └── GITHUB_NATIVE_SEARCH_CAPABILITIES.md # Search guide (quick start + reference)
 ├── references/       Complete technical references
-│   └── github-cli-issues-comprehensive-guide.md
-└── testing/          Test reports and probing results
-    ├── PROBING_SUMMARY.md
-    ├── LIVE_TEST_RESULTS.md
-    ├── gh-cli-metadata-test-report.md
-    └── github-cli-issue-lifecycle-test-report.md
+│   └── github-cli-issues-comprehensive-guide.md  # 200+ test cases
+└── testing/          Test reports and POC results
+    └── GH-MODELS-POC-RESULTS.md            # AI assistance POC (88% effectiveness)
 ```
 
 ---
@@ -277,6 +269,6 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 
 ---
 
-**Version:** 3.0.0
+**Version:** 4.0.0
 **Last Updated:** 2025-10-23
 **Maintainer:** Terry Li (@terrylica)
