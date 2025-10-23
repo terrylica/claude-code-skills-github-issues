@@ -17,8 +17,7 @@ Complete documentation for the knowledge base project.
 
 Practical how-to guides for immediate use:
 
-- **[Quick Start: Search](/docs/guides/QUICK_START_SEARCH.md)** - Get started with exhaustive search
-- **[Hybrid Search Solution](/docs/guides/HYBRID_SEARCH_SOLUTION.md)** - Complete guide to ripgrep + GitHub
+- **[Native Search Quick Start](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Get started with GitHub CLI native search
 
 ---
 
@@ -27,7 +26,8 @@ Practical how-to guides for immediate use:
 Platform analysis and capability comparisons:
 
 - **[GitHub Knowledge Base Analysis](/docs/research/github-knowledge-base-analysis.md)** - Using GitHub Issues as knowledge base
-- **[Search Power Comparison](/docs/research/SEARCH_POWER_COMPARISON.md)** - GitHub vs ripgrep detailed comparison
+- **[GitHub Native Search Capabilities](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Complete native search reference
+- **[Notion Investigation Prep](/docs/research/NOTION_INVESTIGATION_PREP.md)** - Notion API research findings
 
 ---
 
@@ -53,12 +53,15 @@ Test reports and probing results:
 ## Documentation Principles
 
 ### Single Source of Truth
+
 Each topic has one authoritative document. Other documents link to it rather than duplicating content.
 
 ### DRY (Don't Repeat Yourself)
+
 No redundant content. Use links and references instead of copy-paste.
 
 ### Clear Organization
+
 - **Guides** - Task-oriented, practical
 - **Research** - Analysis and comparison
 - **References** - Complete technical specs
@@ -66,5 +69,5 @@ No redundant content. Use links and references instead of copy-paste.
 
 ---
 
-**Version:** 1.0.0
+**Version:** 2.0.0
 **Last Updated:** 2025-10-23

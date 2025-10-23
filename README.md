@@ -10,26 +10,24 @@ Engineering knowledge base for team collaboration, documentation, and workflow a
 
 - 📖 **[Documentation](/docs/)** - Guides, research, and references
 - 🛠️ **[Tools](/tools/)** - Automation scripts and utilities
-- 🔍 **[Quick Start: Search](/docs/guides/QUICK_START_SEARCH.md)** - How to search with full power
+- 🔍 **[Quick Start: Search](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Native GitHub CLI search guide
 
 ---
 
 ## What This Repository Contains
 
 ### 1. Knowledge Base Platform Research
+
 Comprehensive analysis of using GitHub Issues as a knowledge base:
-- Search capabilities (GitHub vs ripgrep)
-- Hybrid search solution (100% ripgrep power)
+
+- Native GitHub CLI search capabilities
+- Complete search syntax and filtering
 - Complete GitHub CLI probing and testing
 
-### 2. Powerful Search Tool
-**[gh-rg](/tools/search/)** - Search GitHub issues with full ripgrep power:
-```bash
-gh-rg --repo terrylica/knowledgebase "pattern"
-```
+### 2. Automation Scripts
 
-### 3. Automation Scripts
 Production-ready automation for GitHub issue management:
+
 - Batch operations (labels, state, assignments)
 - Advanced workflows (triage, planning, reports)
 - JQ integration examples
@@ -40,17 +38,23 @@ Production-ready automation for GitHub issue management:
 ## Getting Started
 
 ### Search Your Knowledge Base
-```bash
-# Install is already done: ~/.local/bin/gh-rg
 
-# Search with full regex power
-gh-rg --repo terrylica/knowledgebase "authentication"
+```bash
+# Search with native GitHub CLI
+gh search issues "authentication" --repo=terrylica/knowledgebase
+
+# Search current repository
+gh issue list --search "authentication"
+
+# Filter by metadata
+gh search issues --label=bug --state=open --assignee=@me
 
 # See guide
-cat docs/guides/QUICK_START_SEARCH.md
+cat docs/guides/NATIVE_SEARCH_QUICK_START.md
 ```
 
 ### Use Automation Scripts
+
 ```bash
 # Weekly report
 ./tools/automation/real-world-workflows.sh weekly report.md
@@ -69,11 +73,11 @@ ls tools/automation/
 ```
 docs/
 ├── guides/           Quick-start and how-to guides
-│   ├── QUICK_START_SEARCH.md
-│   └── HYBRID_SEARCH_SOLUTION.md
+│   └── NATIVE_SEARCH_QUICK_START.md
 ├── research/         Platform analysis and comparisons
 │   ├── github-knowledge-base-analysis.md
-│   └── SEARCH_POWER_COMPARISON.md
+│   ├── GITHUB_NATIVE_SEARCH_CAPABILITIES.md
+│   └── NOTION_INVESTIGATION_PREP.md
 ├── references/       Complete technical references
 │   └── github-cli-issues-comprehensive-guide.md
 └── testing/          Test reports and probing results
@@ -89,31 +93,34 @@ docs/
 
 ```
 tools/
-├── automation/       Batch operations and workflows
-│   ├── batch-label-operations.sh
-│   ├── batch-state-operations.sh
-│   ├── batch-assignment-operations.sh
-│   ├── advanced-workflows.sh
-│   ├── jq-integration-examples.sh
-│   ├── api-integration-examples.sh
-│   ├── real-world-workflows.sh
-│   └── README.md
-└── search/          Search utilities
-    └── gh-rg        (→ ~/.local/bin/gh-rg)
+└── automation/       Batch operations and workflows
+    ├── batch-label-operations.sh
+    ├── batch-state-operations.sh
+    ├── batch-assignment-operations.sh
+    ├── advanced-workflows.sh
+    ├── jq-integration-examples.sh
+    ├── api-integration-examples.sh
+    ├── real-world-workflows.sh
+    └── README.md
 ```
 
 ---
 
 ## Key Features
 
-### ✅ Hybrid Search Solution
-Combine GitHub's structure with ripgrep's power:
-- **Publish:** GitHub Issues (collaboration, metadata)
-- **Search:** ripgrep (regex, context, 20x faster)
-- **Best of both worlds!**
+### ✅ Native GitHub CLI Search
+
+Powerful native search capabilities:
+
+- **Search:** Title, body, and comments
+- **Filter:** 30+ qualifiers (labels, dates, users, state, milestones)
+- **Sort:** Comments, reactions, dates
+- **Output:** JSON for scripting and automation
 
 ### ✅ Comprehensive Testing
+
 200+ test cases covering:
+
 - CRUD operations (create, read, update, delete)
 - Search and filtering (60+ queries)
 - Metadata and labels (40+ tests)
@@ -121,7 +128,9 @@ Combine GitHub's structure with ripgrep's power:
 - Comments and interactions (40+ tests)
 
 ### ✅ Production-Ready Automation
+
 59 reusable functions across 7 scripts:
+
 - Batch operations
 - Workflow automation
 - Data analysis and reporting
@@ -130,14 +139,17 @@ Combine GitHub's structure with ripgrep's power:
 
 ## Research Findings
 
-### GitHub Issues Search Power
-- **Basic search:** ~17% of ripgrep's capabilities
-- **With metadata:** Excellent for structured queries
-- **Hybrid approach:** 100% ripgrep power locally
+### GitHub Native Search Capabilities
 
-See: [SEARCH_POWER_COMPARISON.md](/docs/research/SEARCH_POWER_COMPARISON.md)
+- **Content search:** Title, body, and comments with `in:` qualifiers
+- **Metadata filtering:** 30+ qualifiers for labels, dates, users, state
+- **Structured queries:** Excellent for team collaboration and knowledge base
+- **Limitations:** No regex, no wildcards, no context lines
+
+See: [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)
 
 ### GitHub CLI Capabilities
+
 - **Complete coverage:** All 17 `gh issue` commands tested
 - **JSON output:** 21 fields available
 - **Automation:** Full API access via CLI
@@ -149,21 +161,26 @@ See: [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issu
 ## Quick Reference
 
 ### Search Examples
+
 ```bash
 # Basic search
-gh-rg "authentication"
+gh search issues "authentication"
 
-# Regex patterns
-gh-rg "Bug.*auth.*failure"
+# Search in specific field
+gh search issues "database" --match=title
 
-# Context lines
-gh-rg -A 3 -B 1 "SQL injection"
+# Filter by metadata
+gh search issues --label=bug --state=open --assignee=@me
 
-# Complex patterns
-gh-rg "priority:(high|critical)"
+# Date range
+gh search issues --created="2025-01-01..2025-01-31"
+
+# Sort by engagement
+gh search issues --sort=comments --order=desc
 ```
 
 ### Automation Examples
+
 ```bash
 # Add label to multiple issues
 ./tools/automation/batch-label-operations.sh add "reviewed" "bug"
@@ -182,6 +199,7 @@ gh-rg "priority:(high|critical)"
 This repository serves as a knowledge base and toolkit for team collaboration.
 
 **Structure principles:**
+
 - DRY (Don't Repeat Yourself)
 - Single source of truth
 - Clear organization
@@ -193,10 +211,10 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 
 - **Repository:** https://github.com/terrylica/knowledgebase
 - **GitHub CLI:** https://cli.github.com/
-- **ripgrep:** https://github.com/BurntSushi/ripgrep
+- **GitHub Search Syntax:** https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests
 
 ---
 
-**Version:** 1.0.0
+**Version:** 2.0.0
 **Last Updated:** 2025-10-23
 **Maintainer:** Terry Li (@terrylica)
