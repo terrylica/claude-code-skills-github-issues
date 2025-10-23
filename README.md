@@ -9,8 +9,9 @@ Engineering knowledge base for team collaboration, documentation, and workflow a
 ## Quick Links
 
 - 📖 **[Documentation](/docs/)** - Guides, research, and references
-- 🛠️ **[Tools](/tools/)** - Automation scripts and utilities
-- 🔍 **[Quick Start: Search](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Native GitHub CLI search guide
+- 🔍 **[Search Guide](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Native GitHub CLI search
+- 🤖 **[AI Agent Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Operational guide for AI coding agents
+- 🔌 **[Extensions](/docs/research/EXTENSIONS_TEST_RESULTS.md)** - GitHub CLI extensions tested and recommended
 
 ---
 
@@ -21,26 +22,44 @@ Engineering knowledge base for team collaboration, documentation, and workflow a
 Comprehensive analysis of using GitHub Issues as a knowledge base:
 
 - Native GitHub CLI search capabilities
+- GitHub CLI extensions ecosystem
 - Complete search syntax and filtering
-- Complete GitHub CLI probing and testing
+- Comprehensive testing (200+ test cases)
 
-### 2. Automation Scripts
+### 2. GitHub CLI Extensions
 
-Production-ready automation for GitHub issue management:
+Tested and recommended extensions for issue management:
 
-- Batch operations (labels, state, assignments)
-- Advanced workflows (triage, planning, reports)
-- JQ integration examples
-- API integration patterns
+- **gh-dash** - Interactive TUI dashboard (9k stars, actively maintained)
+- **gh-grep** - File search with regex support (211 stars, actively maintained)
+- **gh-models** - AI-powered assistance (official GitHub extension)
+
+### 3. Operational Guides
+
+Documentation for both humans and AI agents:
+
+- Native GitHub CLI commands
+- Extension usage patterns
+- Common workflows
+- Best practices and error handling
 
 ---
 
 ## Getting Started
 
+### Install GitHub CLI Extensions
+
+```bash
+# Install recommended extensions
+gh extension install dlvhdr/gh-dash     # Interactive dashboard
+gh extension install k1LoW/gh-grep      # File search with regex
+gh extension install github/gh-models   # AI assistance
+```
+
 ### Search Your Knowledge Base
 
 ```bash
-# Search with native GitHub CLI
+# Search issues with native GitHub CLI
 gh search issues "authentication" --repo=terrylica/knowledgebase
 
 # Search current repository
@@ -49,21 +68,28 @@ gh issue list --search "authentication"
 # Filter by metadata
 gh search issues --label=bug --state=open --assignee=@me
 
-# See guide
-cat docs/guides/NATIVE_SEARCH_QUICK_START.md
+# Search files with regex (gh-grep extension)
+gh grep "Bug.*critical" --owner terrylica --repo knowledgebase
 ```
 
-### Use Automation Scripts
+### Use Interactive Dashboard
 
 ```bash
-# Weekly report
-./tools/automation/real-world-workflows.sh weekly report.md
+# Launch gh-dash for interactive issue management
+gh dash
 
-# Bug triage
-./tools/automation/real-world-workflows.sh bug-triage
+# Configure your dashboard
+vi ~/.config/gh-dash/config.yml
+```
 
-# See all tools
-ls tools/automation/
+### AI-Powered Workflows
+
+```bash
+# List available AI models
+gh models list
+
+# Get AI assistance
+gh models run "openai/gpt-4.1" "Summarize this: $(gh issue view 123 --json body --jq .body)"
 ```
 
 ---
@@ -73,10 +99,14 @@ ls tools/automation/
 ```
 docs/
 ├── guides/           Quick-start and how-to guides
-│   └── NATIVE_SEARCH_QUICK_START.md
+│   ├── NATIVE_SEARCH_QUICK_START.md
+│   └── AI_AGENT_OPERATIONAL_GUIDE.md
 ├── research/         Platform analysis and comparisons
 │   ├── github-knowledge-base-analysis.md
 │   ├── GITHUB_NATIVE_SEARCH_CAPABILITIES.md
+│   ├── GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md
+│   ├── EXTENSIONS_TEST_RESULTS.md
+│   ├── EXTENSIONS_MAINTENANCE_STATUS.md
 │   └── NOTION_INVESTIGATION_PREP.md
 ├── references/       Complete technical references
 │   └── github-cli-issues-comprehensive-guide.md
@@ -89,33 +119,25 @@ docs/
 
 ---
 
-## Tools Structure
-
-```
-tools/
-└── automation/       Batch operations and workflows
-    ├── batch-label-operations.sh
-    ├── batch-state-operations.sh
-    ├── batch-assignment-operations.sh
-    ├── advanced-workflows.sh
-    ├── jq-integration-examples.sh
-    ├── api-integration-examples.sh
-    ├── real-world-workflows.sh
-    └── README.md
-```
-
----
-
 ## Key Features
 
-### ✅ Native GitHub CLI Search
+### ✅ Native GitHub CLI Capabilities
 
-Powerful native search capabilities:
+Powerful built-in features:
 
 - **Search:** Title, body, and comments
 - **Filter:** 30+ qualifiers (labels, dates, users, state, milestones)
 - **Sort:** Comments, reactions, dates
 - **Output:** JSON for scripting and automation
+- **Labels:** Full label management (create, edit, delete, clone)
+
+### ✅ Community Extensions
+
+Actively maintained extensions (tested 2025-10-23):
+
+- **gh-dash:** Interactive dashboard (updated yesterday, 9k stars)
+- **gh-grep:** File search with regex (updated yesterday, 211 stars)
+- **gh-models:** Official AI assistance (updated 9 days ago)
 
 ### ✅ Comprehensive Testing
 
@@ -126,14 +148,17 @@ Powerful native search capabilities:
 - Metadata and labels (40+ tests)
 - State and lifecycle (30+ tests)
 - Comments and interactions (40+ tests)
+- Extension functionality verification
 
-### ✅ Production-Ready Automation
+### ✅ AI Agent Operational Guide
 
-59 reusable functions across 7 scripts:
+Complete guide for AI coding agents:
 
-- Batch operations
-- Workflow automation
-- Data analysis and reporting
+- Tool selection decision trees
+- Empirical testing results
+- Common workflows and patterns
+- Error handling and best practices
+- Limitations and constraints
 
 ---
 
@@ -148,11 +173,21 @@ Powerful native search capabilities:
 
 See: [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)
 
+### GitHub CLI Extensions Ecosystem
+
+- **652+ extensions available** (as of 2025-10-23)
+- **Top extensions tested and verified** for maintenance status
+- **Outdated extensions identified** (gh-label: 2022, gh-milestone: 2023)
+- **Recommended alternatives** to custom scripts
+
+See: [GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md](/docs/research/GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md)
+
 ### GitHub CLI Capabilities
 
 - **Complete coverage:** All 17 `gh issue` commands tested
 - **JSON output:** 21 fields available
 - **Automation:** Full API access via CLI
+- **Native label commands:** No extension needed
 
 See: [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md)
 
@@ -177,20 +212,41 @@ gh search issues --created="2025-01-01..2025-01-31"
 
 # Sort by engagement
 gh search issues --sort=comments --order=desc
+
+# Search files with regex (gh-grep)
+gh grep "Bug.*critical" --owner myorg --repo myrepo
 ```
 
-### Automation Examples
+### Extension Examples
 
 ```bash
-# Add label to multiple issues
-./tools/automation/batch-label-operations.sh add "reviewed" "bug"
+# Interactive dashboard
+gh dash
 
-# Generate weekly report
-./tools/automation/real-world-workflows.sh weekly /tmp/report.md
+# File search with regex
+gh grep "authentication" --owner myorg --repo myrepo --line-number
 
-# Health check
-./tools/automation/advanced-workflows.sh health
+# AI assistance
+gh models run "openai/gpt-4.1" "Summarize this issue: $ISSUE_BODY"
+
+# Label management (native)
+gh label list
+gh label create "priority:high" --color "ff0000"
 ```
+
+---
+
+## For AI Agents
+
+**Comprehensive operational guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
+
+Quick tool selection:
+- Search issues → `gh search issues`
+- Search files (with regex) → `gh grep`
+- Interactive management → `gh dash` (not for automation!)
+- AI assistance → `gh models`
+- Label operations → `gh label` (native)
+- Milestone operations → `gh api repos/.../milestones`
 
 ---
 
@@ -204,6 +260,7 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 - Single source of truth
 - Clear organization
 - Comprehensive documentation
+- Use community-maintained extensions over custom code
 
 ---
 
@@ -212,9 +269,12 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 - **Repository:** https://github.com/terrylica/knowledgebase
 - **GitHub CLI:** https://cli.github.com/
 - **GitHub Search Syntax:** https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests
+- **gh-dash:** https://github.com/dlvhdr/gh-dash
+- **gh-grep:** https://github.com/k1LoW/gh-grep
+- **gh-models:** https://github.com/github/gh-models
 
 ---
 
-**Version:** 2.0.0
+**Version:** 3.0.0
 **Last Updated:** 2025-10-23
 **Maintainer:** Terry Li (@terrylica)

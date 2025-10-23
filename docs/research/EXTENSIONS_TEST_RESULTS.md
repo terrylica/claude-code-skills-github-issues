@@ -11,15 +11,18 @@
 **Tested 5 extensions (3 actively maintained, 2 outdated):**
 
 ### ✅ RECOMMENDED (Actively Maintained):
+
 1. **gh-dash** - TUI dashboard (9k stars, updated yesterday)
 2. **gh-grep** - Repository file search (211 stars, updated yesterday)
 3. **gh-models** - AI models (154 stars, official, updated 9 days ago)
 
 ### ❌ REJECTED (Outdated):
+
 4. **gh-label** - Last update 2022 (3 years ago) - USE NATIVE `gh label` INSTEAD
 5. **gh-milestone** - Last update 2023 (2 years ago) - USE `gh api` INSTEAD
 
 ### 🎯 VERDICT:
+
 **User's concerns were 100% CORRECT!** gh-label and gh-milestone are dead projects.
 **Use native gh commands and the 3 actively maintained extensions instead.**
 
@@ -31,6 +34,7 @@
 
 **Repository:** https://github.com/dlvhdr/gh-dash
 **Maintenance Status:**
+
 - Last Push: 2025-10-22 (YESTERDAY!)
 - Latest Release: v4.18.0
 - Stars: 9,000
@@ -38,17 +42,20 @@
 - Status: ✅ ACTIVELY MAINTAINED
 
 **Installation:**
+
 ```bash
 gh extension install dlvhdr/gh-dash
 ```
 
 **Test Results:**
+
 - ✅ Successfully installed
 - ✅ Help command works
 - ✅ Configuration file format validated
 - ⚠️ Cannot test TUI interactively (requires TTY) but verified working
 
 **What it does:**
+
 - Rich terminal UI dashboard for GitHub
 - Displays PRs and issues with customizable filters
 - Keyboard-driven navigation (press ? for help)
@@ -57,6 +64,7 @@ gh extension install dlvhdr/gh-dash
 - Configurable via YAML (`~/.config/gh-dash/config.yml`)
 
 **Configuration Example:**
+
 ```yaml
 issues:
   sections:
@@ -70,6 +78,7 @@ issues:
 ```
 
 **Use Cases for Knowledge Base:**
+
 - Daily dashboard of open issues
 - Filter by labels (bug, documentation, question)
 - Quick triage and assignment
@@ -77,6 +86,7 @@ issues:
 - Track priority issues
 
 **Verdict:** ✅ **HIGHLY RECOMMENDED**
+
 - Replaces: ALL custom batch operation scripts
 - Better than: Web UI for power users
 - Actively maintained with large community
@@ -87,17 +97,20 @@ issues:
 
 **Repository:** https://github.com/k1LoW/gh-grep
 **Maintenance Status:**
+
 - Last Push: 2025-10-22 (YESTERDAY!)
 - Latest Release: v1.2.5
 - Stars: 211
 - Status: ✅ ACTIVELY MAINTAINED (Dependabot keeps it updated)
 
 **Installation:**
+
 ```bash
 gh extension install k1LoW/gh-grep
 ```
 
 **Test Results:**
+
 ```bash
 # Test 1: Search for "authentication" in files
 $ gh grep "authentication" --owner terrylica --repo knowledgebase --line-number
@@ -114,12 +127,14 @@ terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 **✅ All tests PASSED!**
 
 **What it does:**
+
 - Searches FILES in repositories using GitHub API
 - SUPPORTS REGEX patterns! (unlike native gh search)
 - Can search across multiple repos
 - Searches actual file content (code, docs, configs)
 
 **Features:**
+
 - `-n, --line-number` - Show line numbers
 - `-i, --ignore-case` - Case insensitive
 - `-c, --count` - Show match counts
@@ -130,10 +145,12 @@ terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 - Supports regex patterns in search
 
 **Important Distinction:**
+
 - `gh search issues` - Searches GitHub ISSUES/PRs (title, body, comments)
 - `gh grep` - Searches FILES in repository (code, docs, configs)
 
 **Use Cases for Knowledge Base:**
+
 - Search documentation files for technical terms
 - Find code examples in README files
 - Locate configuration references
@@ -141,6 +158,7 @@ terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 - USE REGEX for complex patterns (which native gh can't do!)
 
 **Example:**
+
 ```bash
 # Find all mentions of "gh-dash" in documentation
 gh grep "gh-dash" --owner terrylica --repo knowledgebase --name-only
@@ -153,6 +171,7 @@ gh grep "API" --owner myorg --repo docs --include "*.md"
 ```
 
 **Verdict:** ✅ **RECOMMENDED FOR FILE SEARCHES**
+
 - Complements native `gh search issues`
 - Adds REGEX capability missing from native gh
 - Useful for documentation/code searches
@@ -164,17 +183,20 @@ gh grep "API" --owner myorg --repo docs --include "*.md"
 
 **Repository:** https://github.com/github/gh-models
 **Maintenance Status:**
+
 - Last Push: 2025-10-14 (9 days ago)
 - Latest Release: v0.0.25
 - Stars: 154
 - Status: ✅ OFFICIAL GITHUB EXTENSION
 
 **Installation:**
+
 ```bash
 gh extension install github/gh-models
 ```
 
 **Test Results:**
+
 ```bash
 # Test 1: List available models
 $ gh models list
@@ -195,12 +217,14 @@ $ gh models run "openai/gpt-4.1" "What is GitHub CLI?"
 **✅ All tests PASSED!**
 
 **What it does:**
+
 - Run AI model inference from CLI
 - Test prompt templates
 - Generate evaluations
 - Access multiple AI models (OpenAI, Meta, Microsoft, Mistral, etc.)
 
 **Features:**
+
 - `gh models list` - List available models
 - `gh models run MODEL "PROMPT"` - Run inference
 - `gh models view MODEL` - View model details
@@ -208,11 +232,13 @@ $ gh models run "openai/gpt-4.1" "What is GitHub CLI?"
 - `gh models generate` - Generate tests
 
 **Free Tier:**
+
 - ✅ FREE within rate limits
 - ⚠️ Not for production/sensitive data
 - ℹ️ Azure hosted, AI-powered
 
 **Use Cases for Knowledge Base:**
+
 - AI-assisted issue triage (categorize issues)
 - Generate issue summaries
 - Extract key points from discussions
@@ -221,6 +247,7 @@ $ gh models run "openai/gpt-4.1" "What is GitHub CLI?"
 - Answer questions about codebase
 
 **Example Workflows:**
+
 ```bash
 # Summarize an issue
 ISSUE_BODY=$(gh issue view 123 --json body --jq .body)
@@ -235,12 +262,14 @@ gh models run "openai/gpt-4.1" "Write documentation for this script: $CODE"
 ```
 
 **Limitations:**
+
 - ⚠️ Rate limited (free tier)
 - ⚠️ Not for production use
 - ⚠️ Not for sensitive data
 - ℹ️ Requires internet connection
 
 **Verdict:** ✅ **RECOMMENDED FOR AI-ASSISTED WORKFLOWS**
+
 - Official GitHub extension (safe, supported)
 - Free within rate limits
 - Useful for automation and assistance
@@ -252,6 +281,7 @@ gh models run "openai/gpt-4.1" "Write documentation for this script: $CODE"
 
 **Repository:** https://github.com/heaths/gh-label
 **Maintenance Status:**
+
 - Last Push: 2022-01-20 (3 YEARS AGO!)
 - Stars: 62
 - Status: ❌ DEAD PROJECT (not archived but unmaintained)
@@ -266,6 +296,7 @@ gh models run "openai/gpt-4.1" "Write documentation for this script: $CODE"
 
 **Repository:** https://github.com/valeriobelli/gh-milestone
 **Maintenance Status:**
+
 - Last Push: 2023-12-18 (2 YEARS AGO!)
 - Stars: 66
 - Status: ❌ DEAD PROJECT (not archived but unmaintained)
@@ -300,6 +331,7 @@ gh label clone source-repo/name
 ```
 
 **Test Result:**
+
 ```bash
 $ gh label list --repo terrylica/knowledgebase --limit 10
 bug                Something isn't working          #d73a4a
@@ -377,18 +409,18 @@ From `/Users/terryli/eon/knowledgebase/tools/automation/`:
 
 ### What Extensions Do:
 
-| Feature | Custom Scripts | gh-dash | gh-grep | gh-models | Native gh |
-|---------|---------------|---------|---------|-----------|-----------|
-| **View issues** | `gh issue list` piped to jq | ✅ TUI dashboard | ❌ | ❌ | ✅ |
-| **Filter issues** | jq filtering | ✅ Interactive filters | ❌ | ❌ | ✅ |
-| **Batch labels** | Loops + xargs | ✅ TUI actions | ❌ | ❌ | ✅ `gh label` |
-| **Batch close** | Loops + xargs | ✅ TUI actions | ❌ | ❌ | ✅ Loop |
-| **Batch assign** | Loops + xargs | ✅ TUI actions | ❌ | ❌ | ✅ Loop |
-| **Search files** | ❌ | ❌ | ✅ WITH REGEX! | ❌ | ❌ |
-| **AI assistance** | ❌ | ❌ | ❌ | ✅ Multiple models | ❌ |
-| **Milestones** | `gh api` | ❌ | ❌ | ❌ | ✅ `gh api` |
-| **Reports** | jq + formatting | ✅ Visual dashboard | ❌ | ✅ AI summaries | ✅ `gh --json` |
-| **Maintenance** | You maintain | Community (69 people) | Author + Dependabot | GitHub official | GitHub official |
+| Feature           | Custom Scripts              | gh-dash                | gh-grep             | gh-models          | Native gh       |
+| ----------------- | --------------------------- | ---------------------- | ------------------- | ------------------ | --------------- |
+| **View issues**   | `gh issue list` piped to jq | ✅ TUI dashboard       | ❌                  | ❌                 | ✅              |
+| **Filter issues** | jq filtering                | ✅ Interactive filters | ❌                  | ❌                 | ✅              |
+| **Batch labels**  | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ `gh label`   |
+| **Batch close**   | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ Loop         |
+| **Batch assign**  | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ Loop         |
+| **Search files**  | ❌                          | ❌                     | ✅ WITH REGEX!      | ❌                 | ❌              |
+| **AI assistance** | ❌                          | ❌                     | ❌                  | ✅ Multiple models | ❌              |
+| **Milestones**    | `gh api`                    | ❌                     | ❌                  | ❌                 | ✅ `gh api`     |
+| **Reports**       | jq + formatting             | ✅ Visual dashboard    | ❌                  | ✅ AI summaries    | ✅ `gh --json`  |
+| **Maintenance**   | You maintain                | Community (69 people)  | Author + Dependabot | GitHub official    | GitHub official |
 
 ---
 
@@ -435,12 +467,14 @@ gh api repos/owner/repo/milestones
 **Recommendation:** Delete `/Users/terryli/eon/knowledgebase/tools/automation/`
 
 **Why:**
+
 1. gh-dash provides better UI for daily operations
 2. Native gh commands cover basic needs
 3. Maintaining 2,138 lines of custom code is not worth it
 4. Extensions are community-maintained and updated
 
 **Keep only IF:**
+
 - You have very specific custom workflow logic
 - The workflow cannot be done with gh-dash + native gh
 - You have time to maintain 2,138 lines of bash
@@ -524,16 +558,19 @@ gh label clone my-org/template-repo
 ## Final Verdict
 
 ### What to Install:
+
 1. ✅ **gh-dash** (9k stars, updated yesterday) - ESSENTIAL
 2. ✅ **gh-grep** (211 stars, updated yesterday) - USEFUL for file searches
 3. ✅ **gh-models** (official, updated 9 days ago) - OPTIONAL but powerful
 
 ### What to Remove:
+
 1. ❌ `/Users/terryli/eon/knowledgebase/tools/automation/` directory
    - 7 scripts, 2,138 lines, 59 functions
    - Replaced by gh-dash + native gh commands
 
 ### What to Use:
+
 - **Daily operations:** `gh dash`
 - **Issue search:** `gh search issues` (native)
 - **File search with regex:** `gh grep`
@@ -542,6 +579,7 @@ gh label clone my-org/template-repo
 - **AI assistance:** `gh models run`
 
 ### Maintenance Status Verification:
+
 - ✅ All recommended extensions updated in past month
 - ✅ gh-dash: 9k stars, 69 contributors, last commit yesterday
 - ✅ gh-grep: Active Dependabot, last commit yesterday
@@ -556,6 +594,7 @@ gh label clone my-org/template-repo
 ## Next Steps
 
 1. Install recommended extensions:
+
    ```bash
    gh extension install dlvhdr/gh-dash
    gh extension install k1LoW/gh-grep
@@ -563,6 +602,7 @@ gh label clone my-org/template-repo
    ```
 
 2. Configure gh-dash:
+
    ```bash
    # Create config
    mkdir -p ~/.config/gh-dash
@@ -571,6 +611,7 @@ gh label clone my-org/template-repo
    ```
 
 3. Remove custom scripts:
+
    ```bash
    rm -rf /Users/terryli/eon/knowledgebase/tools/automation/
    ```

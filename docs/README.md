@@ -18,6 +18,7 @@ Complete documentation for the knowledge base project.
 Practical how-to guides for immediate use:
 
 - **[Native Search Quick Start](/docs/guides/NATIVE_SEARCH_QUICK_START.md)** - Get started with GitHub CLI native search
+- **[AI Agent Operational Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Comprehensive guide for AI coding agents
 
 ---
 
@@ -27,6 +28,9 @@ Platform analysis and capability comparisons:
 
 - **[GitHub Knowledge Base Analysis](/docs/research/github-knowledge-base-analysis.md)** - Using GitHub Issues as knowledge base
 - **[GitHub Native Search Capabilities](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Complete native search reference
+- **[GitHub CLI Extensions Ecosystem](/docs/research/GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md)** - 652+ extensions analyzed
+- **[Extensions Test Results](/docs/research/EXTENSIONS_TEST_RESULTS.md)** - Empirical testing results
+- **[Extensions Maintenance Status](/docs/research/EXTENSIONS_MAINTENANCE_STATUS.md)** - Maintenance verification
 - **[Notion Investigation Prep](/docs/research/NOTION_INVESTIGATION_PREP.md)** - Notion API research findings
 
 ---
@@ -69,5 +73,5 @@ No redundant content. Use links and references instead of copy-paste.
 
 ---
 
-**Version:** 2.0.0
+**Version:** 3.0.0
 **Last Updated:** 2025-10-23
