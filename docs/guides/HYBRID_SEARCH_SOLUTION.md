@@ -39,12 +39,14 @@ rg -A 3 -B 1 "SQL injection" issues.md     # Context lines!
 I created `gh-rg` - a tool that combines gh CLI + ripgrep automatically.
 
 **Installation:**
+
 ```bash
 # Already installed at:
 /Users/terryli/.local/bin/gh-rg
 ```
 
 **Usage:**
+
 ```bash
 # Basic search
 gh-rg "authentication"
@@ -69,6 +71,7 @@ gh-rg -n "authentication"
 ```
 
 **Features:**
+
 - ✅ Downloads all issues automatically
 - ✅ Caches for 1 hour (fast subsequent searches)
 - ✅ Full ripgrep power (regex, context, etc.)
@@ -82,6 +85,7 @@ gh-rg -n "authentication"
 Keep a local, always-updated copy of your issues.
 
 **Setup:**
+
 ```bash
 # Create sync script
 cat > ~/bin/sync-issues.sh << 'EOF'
@@ -124,6 +128,7 @@ chmod +x ~/bin/sync-issues.sh
 ```
 
 **Run sync:**
+
 ```bash
 # Sync your knowledge base
 ~/bin/sync-issues.sh terrylica/knowledgebase
@@ -133,6 +138,7 @@ rg "pattern" ~/gh-issues/terrylica_knowledgebase/
 ```
 
 **Automate with cron:**
+
 ```bash
 # Add to crontab (sync every hour)
 0 * * * * ~/bin/sync-issues.sh terrylica/knowledgebase
@@ -143,6 +149,7 @@ rg "pattern" ~/gh-issues/terrylica_knowledgebase/
 ## Live Testing Results
 
 ### ✅ Test 1: Downloaded 60 Issues
+
 ```bash
 gh issue list --repo terrylica/knowledgebase --state all --limit 1000 \
   --json number,title,body,labels > /tmp/all-issues.json
@@ -151,12 +158,14 @@ gh issue list --repo terrylica/knowledgebase --state all --limit 1000 \
 ```
 
 ### ✅ Test 2: Converted to Searchable Format
+
 ```bash
 # Created 60 markdown files in ~/.cache/gh-issues/terrylica_knowledgebase/
 # Each file contains full issue content
 ```
 
 ### ✅ Test 3: Searched with ripgrep
+
 ```bash
 # Regex search - WORKS!
 rg 'Bug.*auth' ~/.cache/gh-issues/terrylica_knowledgebase/
@@ -178,6 +187,7 @@ rg -n 'Multi-factor' ~/.cache/gh-issues/terrylica_knowledgebase/
 ### Before (GitHub Search Only)
 
 ❌ **Limited:**
+
 ```bash
 gh issue list --search "authentication"
 # - No regex
@@ -189,6 +199,7 @@ gh issue list --search "authentication"
 ### After (Hybrid Approach)
 
 ✅ **Full Power:**
+
 ```bash
 gh-rg "auth.*tion"  # Regex works!
 gh-rg -A 3 "bug"    # Context lines!
@@ -201,6 +212,7 @@ gh-rg "priority:(high|critical)"  # Complex patterns!
 ## Exhaustive Search Examples
 
 ### 1. Find All Authentication-Related Issues
+
 ```bash
 # GitHub search (limited)
 gh issue list --search "authentication"
@@ -210,16 +222,18 @@ gh-rg "auth(entication|orization|enticate)"
 ```
 
 ### 2. Find Code Snippets in Issues
-```bash
+
+````bash
 # GitHub search (can't do this)
 gh issue list --search "function"  # Too broad
 
 # Hybrid (precise with regex)
 gh-rg "function\s+\w+\s*\("  # Find function declarations
 gh-rg "```python"            # Find Python code blocks
-```
+````
 
 ### 3. Find Issues with CVE Numbers
+
 ```bash
 # GitHub search (no pattern matching)
 gh issue list --search "CVE"  # Finds any CVE mention
@@ -229,6 +243,7 @@ gh-rg "CVE-\d{4}-\d{4,7}"  # Matches CVE-2024-1234 format
 ```
 
 ### 4. Find TODO/FIXME Comments
+
 ```bash
 # GitHub search (literal only)
 gh issue list --search "TODO"
@@ -239,6 +254,7 @@ gh-rg "^(TODO|FIXME):"     # Start of line only
 ```
 
 ### 5. Complex Multi-Word Patterns
+
 ```bash
 # GitHub search (limited boolean)
 gh issue list --search "security vulnerability"
@@ -253,6 +269,7 @@ gh-rg "vulnerability.*database.*injection"  # Specific order
 ## Performance Comparison
 
 ### GitHub API Search
+
 ```bash
 time gh issue list --search "authentication"
 # real    0m0.854s  (network-dependent)
@@ -260,6 +277,7 @@ time gh issue list --search "authentication"
 ```
 
 ### Local ripgrep Search
+
 ```bash
 time rg "authentication" ~/.cache/gh-issues/*/
 # real    0m0.045s  (20x faster!)
@@ -271,6 +289,7 @@ time rg "authentication" ~/.cache/gh-issues/*/
 ## Best Practice Workflow
 
 ### 1. Publish Knowledge to GitHub Issues ✅
+
 ```bash
 # Create knowledge base entries as issues
 gh issue create \
@@ -280,6 +299,7 @@ gh issue create \
 ```
 
 **Why:**
+
 - Structured metadata (labels, assignees)
 - Collaboration features (comments, reactions)
 - Web UI for browsing
@@ -287,6 +307,7 @@ gh issue create \
 - Version history
 
 ### 2. Sync Issues Locally ✅
+
 ```bash
 # Sync hourly (automated)
 0 * * * * gh-rg --fresh --repo terrylica/knowledgebase "" 2>&1 >/dev/null
@@ -296,11 +317,13 @@ gh-rg --fresh "authentication"
 ```
 
 **Why:**
+
 - Fast searching
 - Offline access
 - Full ripgrep power
 
 ### 3. Search with ripgrep Power ✅
+
 ```bash
 # Exhaustive search with patterns
 gh-rg "auth.*failure.*login"
@@ -313,12 +336,14 @@ gh-rg "(security|CVE|vulnerability)" -A 5
 ```
 
 **Why:**
+
 - Regex support
 - Context lines
 - Fast performance
 - Unlimited patterns
 
 ### 4. Jump to GitHub for Actions ✅
+
 ```bash
 # Found issue #48, now comment on it
 gh issue comment 48 --body "I can reproduce this"
@@ -331,6 +356,7 @@ echo "See: https://github.com/terrylica/knowledgebase/issues/48"
 ```
 
 **Why:**
+
 - GitHub is still source of truth
 - Collaboration happens on GitHub
 - Local search is just for finding
@@ -340,6 +366,7 @@ echo "See: https://github.com/terrylica/knowledgebase/issues/48"
 ## Advanced: Combine with Other Tools
 
 ### Search + Edit Workflow
+
 ```bash
 # Find issues matching pattern
 gh-rg -l "TODO" > /tmp/todo-issues.txt
@@ -354,6 +381,7 @@ done
 ```
 
 ### Generate Reports
+
 ```bash
 # Find all security issues
 gh-rg "(security|CVE|vulnerability)" -l | \
@@ -365,30 +393,36 @@ gh-rg "CVE-\d{4}-\d+" -A 5 > security-report.txt
 ```
 
 ### Cross-Reference with Code
-```bash
+
+````bash
 # Find issues mentioning specific files
 gh-rg "src/auth/login\.ts"
 
 # Find issues with code snippets
 gh-rg "```typescript" -A 20
-```
+````
 
 ---
 
 ## FAQ
 
 ### Q: How often should I sync?
+
 **A:** The `gh-rg` tool caches for 1 hour. For active repositories, sync every 30-60 minutes with cron.
 
 ### Q: What about large repositories?
+
 **A:** GitHub API limits to 1000 issues per query. For >1000 issues:
+
 ```bash
 # Use pagination with GraphQL
 gh api graphql --paginate ...
 ```
 
 ### Q: Can I search across multiple repos?
+
 **A:** Yes! Sync multiple repos:
+
 ```bash
 ~/bin/sync-issues.sh yourorg/repo1
 ~/bin/sync-issues.sh yourorg/repo2
@@ -398,31 +432,35 @@ rg "pattern" ~/gh-issues/*/
 ```
 
 ### Q: What about issue comments?
+
 **A:** Add comments to the download:
+
 ```bash
 gh issue list --json number,title,body,comments ...
 ```
 
 ### Q: Offline usage?
+
 **A:** Once synced, 100% offline search with ripgrep!
 
 ---
 
 ## Tool Comparison Summary
 
-| Feature | GitHub Search | gh-rg (Hybrid) | Winner |
-|---------|---------------|----------------|--------|
-| Regex | ❌ | ✅ Full PCRE2 | 🏆 Hybrid |
-| Wildcards | ❌ | ✅ | 🏆 Hybrid |
-| Context Lines | ❌ | ✅ -A/-B/-C | 🏆 Hybrid |
-| Speed | 🐌 850ms | ⚡ 45ms | 🏆 Hybrid (20x faster) |
-| Offline | ❌ | ✅ | 🏆 Hybrid |
-| Metadata Filter | ✅ Excellent | ⚠️ Via JSON | 🏆 GitHub |
-| Real-time Updates | ✅ | ⚠️ Cached 1hr | 🏆 GitHub |
-| Collaboration | ✅ | ❌ | 🏆 GitHub |
-| Complex Patterns | ❌ | ✅ | 🏆 Hybrid |
+| Feature           | GitHub Search | gh-rg (Hybrid) | Winner                 |
+| ----------------- | ------------- | -------------- | ---------------------- |
+| Regex             | ❌            | ✅ Full PCRE2  | 🏆 Hybrid              |
+| Wildcards         | ❌            | ✅             | 🏆 Hybrid              |
+| Context Lines     | ❌            | ✅ -A/-B/-C    | 🏆 Hybrid              |
+| Speed             | 🐌 850ms      | ⚡ 45ms        | 🏆 Hybrid (20x faster) |
+| Offline           | ❌            | ✅             | 🏆 Hybrid              |
+| Metadata Filter   | ✅ Excellent  | ⚠️ Via JSON    | 🏆 GitHub              |
+| Real-time Updates | ✅            | ⚠️ Cached 1hr  | 🏆 GitHub              |
+| Collaboration     | ✅            | ❌             | 🏆 GitHub              |
+| Complex Patterns  | ❌            | ✅             | 🏆 Hybrid              |
 
 **Verdict:** Use BOTH
+
 - **Publish** on GitHub (structure, collaboration)
 - **Search** with ripgrep (power, speed)
 
@@ -443,12 +481,14 @@ gh issue list --json number,title,body,comments ...
 ## Next Steps
 
 ### 1. Start Using Immediately
+
 ```bash
 # Search your knowledge base right now
 gh-rg --repo terrylica/knowledgebase "pattern"
 ```
 
 ### 2. Customize for Your Workflow
+
 ```bash
 # Add alias to ~/.zshrc or ~/.bashrc
 alias kb-search='gh-rg --repo terrylica/knowledgebase'
@@ -458,12 +498,14 @@ kb-search "authentication"
 ```
 
 ### 3. Automate Syncing (Optional)
+
 ```bash
 # Add to crontab for hourly sync
 0 * * * * /Users/terryli/.local/bin/gh-rg --fresh --repo terrylica/knowledgebase "" 2>&1 >/dev/null
 ```
 
 ### 4. Integrate with Other Tools
+
 ```bash
 # Search from vim
 :!gh-rg "<cword>"
@@ -479,6 +521,7 @@ gh-rg "TODO"
 ### ✅ You CAN Have Both:
 
 **GitHub Issues:**
+
 - ✅ Structured knowledge base
 - ✅ Collaboration features
 - ✅ Web UI
@@ -486,6 +529,7 @@ gh-rg "TODO"
 - ✅ Permanent URLs
 
 **ripgrep Power:**
+
 - ✅ Full regex support
 - ✅ Context lines
 - ✅ Wildcard patterns

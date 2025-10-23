@@ -28,6 +28,7 @@ gh issue create --repo terrylica/knowledgebase \
 **Result**: Creates issue in `OPEN` state with empty `stateReason` field.
 
 **JSON Output**:
+
 ```json
 {
   "number": 1,
@@ -45,9 +46,9 @@ gh issue create --repo terrylica/knowledgebase \
 
 GitHub supports two explicit close reasons:
 
-| Reason | Flag Syntax | State Reason |
-|--------|-------------|--------------|
-| Completed | `--reason "completed"` | `COMPLETED` |
+| Reason      | Flag Syntax              | State Reason  |
+| ----------- | ------------------------ | ------------- |
+| Completed   | `--reason "completed"`   | `COMPLETED`   |
 | Not Planned | `--reason "not planned"` | `NOT_PLANNED` |
 
 ### 2.2 Close as Completed
@@ -57,11 +58,13 @@ gh issue close 1 --repo terrylica/knowledgebase --reason "completed"
 ```
 
 **Output**:
+
 ```
 ✓ Closed issue terrylica/knowledgebase#1 (Test Issue 1: State Management)
 ```
 
 **Result State**:
+
 ```json
 {
   "number": 1,
@@ -78,11 +81,13 @@ gh issue close 2 --repo terrylica/knowledgebase --reason "not planned"
 ```
 
 **Output**:
+
 ```
 ✓ Closed issue terrylica/knowledgebase#2 (Test Issue 2: State Management)
 ```
 
 **Result State**:
+
 ```json
 {
   "number": 2,
@@ -100,6 +105,7 @@ gh issue close 4 --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```
 ✓ Closed issue terrylica/knowledgebase#4 (Test Issue 3: State Management)
 ```
@@ -107,6 +113,7 @@ gh issue close 4 --repo terrylica/knowledgebase \
 **Behavior**: When no `--reason` is specified, defaults to `COMPLETED`.
 
 **Result State**:
+
 ```json
 {
   "number": 4,
@@ -125,6 +132,7 @@ gh issue close 5 --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```
 ✓ Closed issue terrylica/knowledgebase#5 (Test Issue 4: State Management)
 ```
@@ -142,11 +150,13 @@ gh issue reopen 1 --repo terrylica/knowledgebase
 ```
 
 **Output**:
+
 ```
 ✓ Reopened issue terrylica/knowledgebase#1 (Test Issue 1: State Management)
 ```
 
 **Result State**:
+
 ```json
 {
   "number": 1,
@@ -165,6 +175,7 @@ gh issue reopen 2 --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```
 ✓ Reopened issue terrylica/knowledgebase#2 (Test Issue 2: State Management)
 ```
@@ -176,6 +187,7 @@ gh issue reopen 2 --repo terrylica/knowledgebase \
 **Important Discovery**: Once an issue is reopened, the `stateReason` remains `REOPENED` even after subsequent closes. The close reason takes precedence when the issue is closed again.
 
 **Example Sequence**:
+
 1. Issue created: `state=OPEN`, `stateReason=""`
 2. Issue closed as completed: `state=CLOSED`, `stateReason="COMPLETED"`
 3. Issue reopened: `state=OPEN`, `stateReason="REOPENED"`
@@ -200,6 +212,7 @@ gh issue pin 10 --repo terrylica/knowledgebase
 ```
 
 **Error Output**:
+
 ```
 GraphQL: Maximum 3 pinned issues per repository (pinIssue)
 ```
@@ -211,16 +224,19 @@ gh issue pin 1 --repo terrylica/knowledgebase
 ```
 
 **Output**:
+
 ```
 ✓ Pinned issue terrylica/knowledgebase#1 (Test Issue 1: State Management)
 ```
 
 **Verification**:
+
 ```bash
 gh issue view 1 --repo terrylica/knowledgebase --json isPinned
 ```
 
 **Result**:
+
 ```json
 {
   "isPinned": true
@@ -234,6 +250,7 @@ gh issue unpin 1 --repo terrylica/knowledgebase
 ```
 
 **Output**:
+
 ```
 ✓ Unpinned issue terrylica/knowledgebase#1 (Test Issue 1: State Management)
 ```
@@ -243,6 +260,7 @@ gh issue unpin 1 --repo terrylica/knowledgebase
 ### 4.4 Pin Management Strategy
 
 To pin a new issue when at limit:
+
 1. Unpin an existing issue first
 2. Then pin the new issue
 
@@ -259,12 +277,12 @@ gh issue pin 10 --repo terrylica/knowledgebase
 
 GitHub supports four lock reasons with **underscore** syntax:
 
-| Reason | Flag Syntax | Description |
-|--------|-------------|-------------|
-| Off Topic | `--reason "off_topic"` | Discussion is off-topic |
+| Reason     | Flag Syntax             | Description              |
+| ---------- | ----------------------- | ------------------------ |
+| Off Topic  | `--reason "off_topic"`  | Discussion is off-topic  |
 | Too Heated | `--reason "too_heated"` | Discussion is too heated |
-| Resolved | `--reason "resolved"` | Issue is resolved |
-| Spam | `--reason "spam"` | Issue contains spam |
+| Resolved   | `--reason "resolved"`   | Issue is resolved        |
+| Spam       | `--reason "spam"`       | Issue contains spam      |
 
 **Important**: Use underscores (`off_topic`, `too_heated`), NOT hyphens (`off-topic`, `too-heated`).
 
@@ -338,6 +356,7 @@ gh issue view 12 --repo terrylica/knowledgebase --json locked,activeLockReason
 ```
 
 **Available JSON Fields**:
+
 - assignees
 - author
 - body
@@ -369,6 +388,7 @@ gh issue status --repo terrylica/knowledgebase
 ```
 
 **Output**:
+
 ```
 Relevant issues in terrylica/knowledgebase
 
@@ -396,6 +416,7 @@ gh issue list --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```json
 [
   {
@@ -450,24 +471,25 @@ gh issue list --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```json
 [
   {
     "reason": "COMPLETED",
     "count": 4,
     "issues": [
-      {"number": 52, "title": "Bug: Fix typo in error message"},
-      {"number": 41, "title": "Bug: Authentication failure in login module"},
-      {"number": 5, "title": "Test Issue 4: State Management"},
-      {"number": 4, "title": "Test Issue 3: State Management"}
+      { "number": 52, "title": "Bug: Fix typo in error message" },
+      { "number": 41, "title": "Bug: Authentication failure in login module" },
+      { "number": 5, "title": "Test Issue 4: State Management" },
+      { "number": 4, "title": "Test Issue 3: State Management" }
     ]
   },
   {
     "reason": "NOT_PLANNED",
     "count": 2,
     "issues": [
-      {"number": 56, "title": "Lifecycle Example: Add user profile page"},
-      {"number": 46, "title": "Bug: Minor UI glitch in sidebar"}
+      { "number": 56, "title": "Lifecycle Example: Add user profile page" },
+      { "number": 46, "title": "Bug: Minor UI glitch in sidebar" }
     ]
   }
 ]
@@ -556,6 +578,7 @@ gh issue view 56 --repo terrylica/knowledgebase \
 ```
 
 **Output**:
+
 ```json
 {
   "body": "Complete lifecycle demonstration issue",
@@ -582,13 +605,13 @@ gh issue view 56 --repo terrylica/knowledgebase \
 
 ### 8.1 State Transitions
 
-| Operation | Command | State Change | State Reason |
-|-----------|---------|--------------|--------------|
-| Create | `gh issue create` | → OPEN | "" (empty) |
-| Close (completed) | `gh issue close --reason "completed"` | OPEN → CLOSED | → COMPLETED |
+| Operation           | Command                                 | State Change  | State Reason  |
+| ------------------- | --------------------------------------- | ------------- | ------------- |
+| Create              | `gh issue create`                       | → OPEN        | "" (empty)    |
+| Close (completed)   | `gh issue close --reason "completed"`   | OPEN → CLOSED | → COMPLETED   |
 | Close (not planned) | `gh issue close --reason "not planned"` | OPEN → CLOSED | → NOT_PLANNED |
-| Close (default) | `gh issue close` | OPEN → CLOSED | → COMPLETED |
-| Reopen | `gh issue reopen` | CLOSED → OPEN | → REOPENED |
+| Close (default)     | `gh issue close`                        | OPEN → CLOSED | → COMPLETED   |
+| Reopen              | `gh issue reopen`                       | CLOSED → OPEN | → REOPENED    |
 
 ### 8.2 Pin/Unpin
 
@@ -673,6 +696,7 @@ gh issue list --state open --json number,title,stateReason | \
 **Limitation**: Lock status and lock reason not available in JSON output.
 
 **Workaround**: Use web view for lock verification:
+
 ```bash
 gh issue view <number> --web
 ```
@@ -682,6 +706,7 @@ gh issue view <number> --web
 **Limitation**: Maximum 3 pinned issues per repository.
 
 **Workaround**: Implement pin rotation strategy:
+
 ```bash
 # Unpin old issue before pinning new one
 gh issue unpin <old-number>
@@ -693,6 +718,7 @@ gh issue pin <new-number>
 **Limitation**: No built-in command to view state reason history.
 
 **Workaround**: Use GitHub Events API via GraphQL:
+
 ```bash
 gh api graphql -f query='
   query($owner: String!, $repo: String!, $number: Int!) {
@@ -721,19 +747,20 @@ gh api graphql -f query='
 
 ### 11.1 Test Coverage
 
-| Feature | Test Cases | Status |
-|---------|-----------|--------|
-| Issue Creation | 8 test issues | ✓ Passed |
-| Close Operations | 4 variations (completed, not planned, with comment, both) | ✓ Passed |
-| Reopen Operations | 2 variations (basic, with comment) | ✓ Passed |
-| Pin/Unpin | 4 pins (limit discovery), 2 unpins | ✓ Passed |
-| Lock/Unlock | 5 lock operations (4 reasons + no reason), 2 unlocks | ✓ Passed |
-| Status Commands | 3 variations (basic, JSON, filtered) | ✓ Passed |
-| Complete Lifecycle | 1 full lifecycle demonstration | ✓ Passed |
+| Feature            | Test Cases                                                | Status   |
+| ------------------ | --------------------------------------------------------- | -------- |
+| Issue Creation     | 8 test issues                                             | ✓ Passed |
+| Close Operations   | 4 variations (completed, not planned, with comment, both) | ✓ Passed |
+| Reopen Operations  | 2 variations (basic, with comment)                        | ✓ Passed |
+| Pin/Unpin          | 4 pins (limit discovery), 2 unpins                        | ✓ Passed |
+| Lock/Unlock        | 5 lock operations (4 reasons + no reason), 2 unlocks      | ✓ Passed |
+| Status Commands    | 3 variations (basic, JSON, filtered)                      | ✓ Passed |
+| Complete Lifecycle | 1 full lifecycle demonstration                            | ✓ Passed |
 
 ### 11.2 Issues Created
 
 Test issues created and used:
+
 - Issues #1, #2, #4, #5, #7, #10, #12, #14 (state management tests)
 - Issue #56 (complete lifecycle example)
 

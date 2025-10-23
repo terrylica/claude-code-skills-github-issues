@@ -31,6 +31,7 @@ This document provides complete documentation of GitHub CLI (`gh`) issue manipul
 ### Key Findings
 
 **✅ Comprehensive Coverage:**
+
 - All 17 `gh issue` subcommands tested and documented
 - 21 JSON output fields validated
 - 200+ test cases with 100% success rate
@@ -38,6 +39,7 @@ This document provides complete documentation of GitHub CLI (`gh`) issue manipul
 - Complete API integration patterns
 
 **✅ Production Ready:**
+
 - All operations verified on real repository
 - Error handling patterns documented
 - Performance metrics measured
@@ -46,14 +48,14 @@ This document provides complete documentation of GitHub CLI (`gh`) issue manipul
 
 ### Quick Stats
 
-| Category | Coverage | Test Cases | Status |
-|----------|----------|------------|--------|
-| CRUD Operations | 100% | 60+ | ✅ Pass |
-| Metadata & Labels | 100% | 40+ | ✅ Pass |
-| State & Lifecycle | 100% | 30+ | ✅ Pass |
-| Search & Filtering | 100% | 60+ | ✅ Pass |
-| Comments | 100% | 40+ | ✅ Pass |
-| Advanced Features | 100% | 20+ | ✅ Pass |
+| Category           | Coverage | Test Cases | Status  |
+| ------------------ | -------- | ---------- | ------- |
+| CRUD Operations    | 100%     | 60+        | ✅ Pass |
+| Metadata & Labels  | 100%     | 40+        | ✅ Pass |
+| State & Lifecycle  | 100%     | 30+        | ✅ Pass |
+| Search & Filtering | 100%     | 60+        | ✅ Pass |
+| Comments           | 100%     | 40+        | ✅ Pass |
+| Advanced Features  | 100%     | 20+        | ✅ Pass |
 
 ---
 
@@ -174,6 +176,7 @@ gh issue create --template bug-report.yml
 ```
 
 **Test Results:**
+
 - ✅ Title: Max length tested (200+ characters)
 - ✅ Body: Files, stdin, inline all work
 - ✅ Labels: Multiple labels supported
@@ -260,6 +263,7 @@ gh issue list --state all --json state | jq '
 ```
 
 **Test Results:**
+
 - ✅ List filters: All flags work correctly
 - ✅ Search syntax: Full GitHub search syntax supported
 - ✅ JSON fields: All 21 fields tested and verified
@@ -341,6 +345,7 @@ done
 ```
 
 **Test Results:**
+
 - ✅ Title/body: Both inline and file-based
 - ✅ Labels: Add, remove, replace all work
 - ✅ Assignees: @me and usernames supported
@@ -375,6 +380,7 @@ gh issue list --label "spam" --json number --jq '.[].number' \
 ```
 
 **Test Results:**
+
 - ✅ Single delete: Works with --yes flag
 - ❌ Batch delete: Not supported natively (use loop)
 - ✅ Verification: Deleted issues return 404
@@ -456,16 +462,18 @@ gh issue list --state all --json labels | jq '
 ```
 
 **Output:**
+
 ```json
 [
-  {"label": "enhancement", "count": 22},
-  {"label": "bug", "count": 21},
-  {"label": "documentation", "count": 9},
-  {"label": "backend", "count": 7}
+  { "label": "enhancement", "count": 22 },
+  { "label": "bug", "count": 21 },
+  { "label": "documentation", "count": 9 },
+  { "label": "backend", "count": 7 }
 ]
 ```
 
 **Test Results:**
+
 - ✅ Both comma and multiple-flag syntax work
 - ✅ Namespace labels (priority:high) supported
 - ✅ Labels must exist before use
@@ -517,13 +525,13 @@ gh issue list --state open --json assignees | jq '
 ```
 
 **Output:**
+
 ```json
-[
-  {"user": "terrylica", "count": 9}
-]
+[{ "user": "terrylica", "count": 9 }]
 ```
 
 **Test Results:**
+
 - ✅ @me works everywhere
 - ✅ Username assignment works
 - ✅ Multiple assignees require API
@@ -558,6 +566,7 @@ gh issue edit 19 --remove-milestone
 ```
 
 **Test Results:**
+
 - ✅ Milestone creation via API works
 - ✅ Assignment and removal work
 - ✅ Filtering by milestone works
@@ -586,10 +595,12 @@ gh issue close 26 \
 ```
 
 **State Reasons:**
+
 - `completed` - Work was done (default)
 - `not planned` - Won't be worked on
 
 **stateReason Field:**
+
 - Open issue: `""`
 - Closed (completed): `"COMPLETED"`
 - Closed (not planned): `"NOT_PLANNED"`
@@ -606,6 +617,7 @@ gh issue reopen 26 --comment "Reopening due to regression"
 ```
 
 **Test Results:**
+
 - ✅ Both close reasons tested
 - ✅ Comments work with state changes
 - ✅ stateReason field updated correctly
@@ -628,6 +640,7 @@ gh issue pin https://github.com/OWNER/REPO/issues/19
 **Pin Limit:** Maximum 3 pinned issues per repository
 
 **Error when limit exceeded:**
+
 ```
 GraphQL: Maximum 3 pinned issues per repository (pinIssue)
 ```
@@ -640,6 +653,7 @@ gh issue unpin 19
 ```
 
 **Test Results:**
+
 - ✅ Pin works up to limit of 3
 - ✅ Unpin works correctly
 - ✅ isPinned field reflects status
@@ -663,6 +677,7 @@ gh issue lock 19
 ```
 
 **Lock Reasons (use underscores):**
+
 - `off_topic` - Discussion is off-topic
 - `too_heated` - Discussion is too heated
 - `resolved` - Issue is resolved
@@ -677,6 +692,7 @@ gh issue unlock 19
 ```
 
 **Test Results:**
+
 - ✅ All 4 lock reasons tested
 - ✅ Lock without reason works
 - ✅ Unlock works correctly
@@ -790,6 +806,7 @@ gh issue list --limit 100
 ```
 
 **Test Results:**
+
 - ✅ All filters work independently
 - ✅ Filters can be combined
 - ✅ Multiple labels use AND logic
@@ -887,31 +904,32 @@ gh issue list --search "is:open sort:comments-desc"
 
 #### Complete Search Syntax Reference
 
-| Qualifier | Example | Description |
-|-----------|---------|-------------|
-| `in:title` | `bug in:title` | Search in title |
-| `in:body` | `error in:body` | Search in body |
-| `in:title,body` | `API in:title,body` | Search both |
-| `is:open` | `is:open` | Open issues |
-| `is:closed` | `is:closed` | Closed issues |
-| `label:NAME` | `label:bug` | Has label |
-| `no:label` | `no:label` | No labels |
-| `assignee:USER` | `assignee:alice` | Assigned to user |
-| `assignee:@me` | `assignee:@me` | Assigned to you |
-| `no:assignee` | `no:assignee` | Unassigned |
-| `author:USER` | `author:bob` | Created by user |
-| `created:DATE` | `created:2025-10-23` | Created on date |
-| `created:>=DATE` | `created:>=2025-10-01` | Created after |
-| `created:<DATE` | `created:<2025-11-01` | Created before |
-| `updated:DATE` | `updated:2025-10-23` | Updated on date |
-| `updated:>=DATE` | `updated:>=2025-10-20` | Updated after |
-| `closed:DATE` | `closed:2025-10-23` | Closed on date |
-| `milestone:NAME` | `milestone:v1.0` | In milestone |
-| `sort:created-asc` | `is:open sort:created-asc` | Sort by created ascending |
-| `sort:updated-desc` | `is:open sort:updated-desc` | Sort by updated descending |
-| `sort:comments-desc` | `is:open sort:comments-desc` | Sort by comment count |
+| Qualifier            | Example                      | Description                |
+| -------------------- | ---------------------------- | -------------------------- |
+| `in:title`           | `bug in:title`               | Search in title            |
+| `in:body`            | `error in:body`              | Search in body             |
+| `in:title,body`      | `API in:title,body`          | Search both                |
+| `is:open`            | `is:open`                    | Open issues                |
+| `is:closed`          | `is:closed`                  | Closed issues              |
+| `label:NAME`         | `label:bug`                  | Has label                  |
+| `no:label`           | `no:label`                   | No labels                  |
+| `assignee:USER`      | `assignee:alice`             | Assigned to user           |
+| `assignee:@me`       | `assignee:@me`               | Assigned to you            |
+| `no:assignee`        | `no:assignee`                | Unassigned                 |
+| `author:USER`        | `author:bob`                 | Created by user            |
+| `created:DATE`       | `created:2025-10-23`         | Created on date            |
+| `created:>=DATE`     | `created:>=2025-10-01`       | Created after              |
+| `created:<DATE`      | `created:<2025-11-01`        | Created before             |
+| `updated:DATE`       | `updated:2025-10-23`         | Updated on date            |
+| `updated:>=DATE`     | `updated:>=2025-10-20`       | Updated after              |
+| `closed:DATE`        | `closed:2025-10-23`          | Closed on date             |
+| `milestone:NAME`     | `milestone:v1.0`             | In milestone               |
+| `sort:created-asc`   | `is:open sort:created-asc`   | Sort by created ascending  |
+| `sort:updated-desc`  | `is:open sort:updated-desc`  | Sort by updated descending |
+| `sort:comments-desc` | `is:open sort:comments-desc` | Sort by comment count      |
 
 **Test Results:**
+
 - ✅ All search qualifiers tested
 - ✅ Complex queries work
 - ✅ Date filtering accurate
@@ -1046,6 +1064,7 @@ gh issue list --json labels | jq '
 ```
 
 **30+ JQ Query Examples Tested:**
+
 - ✅ Data extraction (7 patterns)
 - ✅ Filtering (8 patterns)
 - ✅ Statistics (6 patterns)
@@ -1072,6 +1091,7 @@ echo "Comment content" | gh issue comment 19 --body-file -
 ```
 
 **Result:** Comment added successfully
+
 - Example: https://github.com/terrylica/knowledgebase/issues/3#issuecomment-3438446780
 
 ### Comment Management - 100% Coverage
@@ -1083,6 +1103,7 @@ gh issue comment 19 --edit-last --body "Updated content"
 ```
 
 **Behavior:**
+
 - Edits most recent comment by current user
 - Comment shows `edited: true` in metadata
 - `updated_at` timestamp reflects edit
@@ -1094,6 +1115,7 @@ gh issue comment 19 --delete-last --yes
 ```
 
 **Behavior:**
+
 - Deletes most recent comment by current user
 - Requires `--yes` flag for non-interactive use
 - Comment completely removed
@@ -1105,6 +1127,7 @@ gh issue comment 19 --edit-last --create-if-none --body "New or updated"
 ```
 
 **Behavior:**
+
 - If no comments exist: creates new comment
 - If comments exist: edits last comment
 - Idempotent - safe for repeated execution
@@ -1123,6 +1146,7 @@ gh api repos/OWNER/REPO/issues/comments/COMMENT_ID
 ```
 
 **Test Results:**
+
 - ✅ All creation methods work
 - ✅ Edit/delete work correctly
 - ✅ Create-if-none is idempotent
@@ -1137,24 +1161,32 @@ gh api repos/OWNER/REPO/issues/comments/COMMENT_ID
 All GitHub Flavored Markdown features tested:
 
 **Text Formatting:**
+
 ```markdown
 **Bold text**
-*Italic text*
+_Italic text_
 ~~Strikethrough~~
 `inline code`
 ```
 
 **Headers:**
+
 ```markdown
 # H1
+
 ## H2
+
 ### H3
+
 #### H4
+
 ##### H5
+
 ###### H6
 ```
 
 **Lists:**
+
 ```markdown
 - Unordered item
 - Another item
@@ -1167,6 +1199,7 @@ All GitHub Flavored Markdown features tested:
 ```
 
 **Code Blocks:**
+
 ````markdown
 ```python
 def hello():
@@ -1179,13 +1212,15 @@ gh issue list --label "bug"
 ````
 
 **Tables:**
+
 ```markdown
 | Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
+| -------- | -------- | -------- |
 | Value 1  | Value 2  | Value 3  |
 ```
 
 **Blockquotes:**
+
 ```markdown
 > This is a blockquote
 >
@@ -1193,6 +1228,7 @@ gh issue list --label "bug"
 ```
 
 **Links:**
+
 ```markdown
 [Link text](https://example.com)
 https://auto-link.com
@@ -1200,6 +1236,7 @@ https://auto-link.com
 ```
 
 **Task Lists:**
+
 ```markdown
 - [x] Completed task
 - [ ] Pending task
@@ -1208,6 +1245,7 @@ https://auto-link.com
 ```
 
 **GitHub Alerts:**
+
 ```markdown
 > **Note**
 > Important information
@@ -1220,6 +1258,7 @@ https://auto-link.com
 ```
 
 **HTML Elements:**
+
 ```markdown
 <kbd>Ctrl</kbd> + <kbd>C</kbd>
 H<sub>2</sub>O
@@ -1232,6 +1271,7 @@ Hidden content here
 ```
 
 **Diff Syntax:**
+
 ```diff
 - old line
 + new line
@@ -1239,6 +1279,7 @@ Hidden content here
 ```
 
 **Emojis:**
+
 ```markdown
 :rocket: :sparkles: :tada:
 🚀 ✨ 🎉
@@ -1247,6 +1288,7 @@ Hidden content here
 **Example Comment:** https://github.com/terrylica/knowledgebase/issues/6#issuecomment-3438450628
 
 **Test Results:**
+
 - ✅ All text formatting works
 - ✅ All header levels render
 - ✅ Nested lists up to 6 levels
@@ -1272,6 +1314,7 @@ See also terrylica/knowledgebase#13
 ```
 
 **Behavior:**
+
 - Creates clickable links
 - Updates "linked issues" section
 - Closing keywords (Fixes, Closes) create relationships
@@ -1285,6 +1328,7 @@ cc @alice @bob
 ```
 
 **Behavior:**
+
 - Creates clickable user links
 - Sends notification to mentioned users
 - Works in issue body and comments
@@ -1297,12 +1341,14 @@ Fixed in abc123
 ```
 
 **Behavior:**
+
 - Links to commit
 - Hover shows commit preview
 
 **Example:** https://github.com/terrylica/knowledgebase/issues/9#issuecomment-3438451204
 
 **Test Results:**
+
 - ✅ Issue references create links
 - ✅ User mentions send notifications
 - ✅ Commit references link correctly
@@ -1316,16 +1362,16 @@ Fixed in abc123
 
 8 reaction types supported:
 
-| Reaction | Code | Emoji |
-|----------|------|-------|
-| Thumbs up | `+1` | 👍 |
-| Thumbs down | `-1` | 👎 |
-| Laugh | `laugh` | 😄 |
-| Confused | `confused` | 😕 |
-| Heart | `heart` | ❤️ |
-| Hooray | `hooray` | 🎉 |
-| Rocket | `rocket` | 🚀 |
-| Eyes | `eyes` | 👀 |
+| Reaction    | Code       | Emoji |
+| ----------- | ---------- | ----- |
+| Thumbs up   | `+1`       | 👍    |
+| Thumbs down | `-1`       | 👎    |
+| Laugh       | `laugh`    | 😄    |
+| Confused    | `confused` | 😕    |
+| Heart       | `heart`    | ❤️    |
+| Hooray      | `hooray`   | 🎉    |
+| Rocket      | `rocket`   | 🚀    |
+| Eyes        | `eyes`     | 👀    |
 
 #### Add Reactions
 
@@ -1355,6 +1401,7 @@ gh api repos/OWNER/REPO/issues/19/reactions | jq '
 ```
 
 **Test Results:**
+
 - ✅ All 8 reaction types tested
 - ✅ Adding reactions works
 - ✅ Grouping/counting works
@@ -1388,6 +1435,7 @@ gh issue develop 25 --checkout
 ```
 
 **Behavior:**
+
 - Creates branch
 - Automatically checks out
 - Links to issue
@@ -1407,11 +1455,13 @@ gh issue develop --list 28
 ```
 
 **Output:**
+
 ```
 28-test-issue-10-feature-development    https://github.com/...
 ```
 
 **Test Results:**
+
 - ✅ Basic branch creation: 5 branches created
 - ✅ Custom names: Verified
 - ✅ Checkout flag: Tested
@@ -1514,6 +1564,7 @@ current_min=$(gh issue list --state open --json assignees | jq '
 ```
 
 **10+ Batch Patterns Tested:**
+
 - ✅ Multi-label operations
 - ✅ State changes
 - ✅ Assignment distribution
@@ -1529,6 +1580,7 @@ current_min=$(gh issue list --state open --json assignees | jq '
 All scripts available at `/tmp/gh-automation-scripts/`
 
 #### 1. Batch Label Operations
+
 **File:** `batch-label-operations.sh` (121 lines, 5 functions)
 
 ```bash
@@ -1546,6 +1598,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 2. Batch State Operations
+
 **File:** `batch-state-operations.sh` (158 lines, 5 functions)
 
 ```bash
@@ -1560,6 +1613,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 3. Batch Assignment Operations
+
 **File:** `batch-assignment-operations.sh` (199 lines, 6 functions)
 
 ```bash
@@ -1574,6 +1628,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 4. Advanced Workflows
+
 **File:** `advanced-workflows.sh` (300 lines, 8 functions)
 
 ```bash
@@ -1591,6 +1646,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 5. JQ Integration Examples
+
 **File:** `jq-integration-examples.sh` (422 lines, 12 functions)
 
 ```bash
@@ -1608,6 +1664,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 6. API Integration
+
 **File:** `api-integration-examples.sh` (437 lines, 15 functions)
 
 ```bash
@@ -1625,6 +1682,7 @@ All scripts available at `/tmp/gh-automation-scripts/`
 ```
 
 #### 7. Real-World Workflows
+
 **File:** `real-world-workflows.sh` (501 lines, 8 functions)
 
 ```bash
@@ -1984,36 +2042,43 @@ gh issue view
 ### Quick Reference Card
 
 **Create:**
+
 ```bash
 gh issue create --title "Title" --body "Body" --label "bug" --assignee @me
 ```
 
 **List:**
+
 ```bash
 gh issue list --state open --label "bug" --assignee @me --limit 50
 ```
 
 **View:**
+
 ```bash
 gh issue view 19 --json number,title,labels,state
 ```
 
 **Edit:**
+
 ```bash
 gh issue edit 19 --title "New Title" --add-label "reviewed"
 ```
 
 **Close:**
+
 ```bash
 gh issue close 19 --reason "completed" --comment "Fixed"
 ```
 
 **Search:**
+
 ```bash
 gh issue list --search "is:open label:bug no:assignee created:>=2025-10-01"
 ```
 
 **Comment:**
+
 ```bash
 gh issue comment 19 --body "Comment text"
 ```
@@ -2029,6 +2094,7 @@ This comprehensive guide documents the complete GitHub CLI issue manipulation ca
 **Test Repository:** https://github.com/terrylica/knowledgebase
 
 **For Questions or Issues:**
+
 - Review individual test reports in appendix
 - Check automation scripts in `/tmp/gh-automation-scripts/`
 - Refer to GitHub CLI manual: https://cli.github.com/manual

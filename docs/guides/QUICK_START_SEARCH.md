@@ -30,6 +30,7 @@ gh issue create \
 ```
 
 **Benefits:**
+
 - Web UI for browsing
 - Collaboration (comments, reactions)
 - Metadata (labels, assignees)
@@ -55,6 +56,7 @@ gh-rg -s "TODO"
 ```
 
 **Benefits:**
+
 - Full regex support
 - Context lines
 - Faster (20x)
@@ -79,12 +81,14 @@ gh-rg -s "TODO"
 ### Example 1: Find Authentication Issues
 
 **GitHub search (limited):**
+
 ```bash
 gh issue list --search "authentication"
 # No regex, no context, slow
 ```
 
 **gh-rg (exhaustive):**
+
 ```bash
 gh-rg "auth.*fail" -A 5
 # Finds: "authentication failure", "auth failed", etc.
@@ -94,12 +98,14 @@ gh-rg "auth.*fail" -A 5
 ### Example 2: Find Security Vulnerabilities
 
 **GitHub search:**
+
 ```bash
 gh issue list --search "security"
 # Too broad
 ```
 
 **gh-rg:**
+
 ```bash
 gh-rg "CVE-\d{4}-\d+" -n
 # Finds exact CVE numbers with line numbers
@@ -109,16 +115,18 @@ gh-rg "CVE-\d{4}-\d+" -n
 ### Example 3: Find Code Snippets
 
 **GitHub search:**
+
 ```bash
 gh issue list --search "function"
 # Can't search code patterns
 ```
 
 **gh-rg:**
-```bash
+
+````bash
 gh-rg "```python" -A 20
 # Shows all Python code blocks with 20 lines of code
-```
+````
 
 ---
 
@@ -143,6 +151,7 @@ kb "auth.*fail" -A 3
 ## Common Use Cases
 
 ### 1. Daily Knowledge Search
+
 ```bash
 kb "how to deploy"
 kb "troubleshoot.*error" -A 5
@@ -150,24 +159,28 @@ kb "configuration.*database"
 ```
 
 ### 2. Find Related Issues
+
 ```bash
 kb "authentication.*bug"
 kb "performance.*slow.*query"
 ```
 
 ### 3. Code Reference
-```bash
+
+````bash
 kb "```typescript" -A 20
 kb "function.*handle"
-```
+````
 
 ### 4. Find TODO Items
+
 ```bash
 kb "TODO:|FIXME:" -n
 kb "\\[ \\]" -c  # Count unchecked tasks
 ```
 
 ### 5. Security Audit
+
 ```bash
 kb "password|secret|key" -i
 kb "CVE-\d{4}"
@@ -178,30 +191,35 @@ kb "CVE-\d{4}"
 ## Advanced Features
 
 ### Multi-Pattern Search
+
 ```bash
 kb "auth(entication|orization|enticate)"
 kb "(bug|error|fail).*critical"
 ```
 
 ### Distance Constraints
+
 ```bash
 kb "security.{0,50}vulnerability"  # Within 50 chars
 kb "user.*password.*hash"          # In order
 ```
 
 ### Negative Patterns
+
 ```bash
 kb "bug" | grep -v "fixed"
 kb "TODO" | rg -v "DONE"
 ```
 
 ### Extract Issue Numbers
+
 ```bash
 kb "authentication" -l | grep -o 'issue-[0-9]*' | sed 's/issue-//'
 # Output: List of issue numbers
 ```
 
 ### Generate Reports
+
 ```bash
 kb "security" > security-audit.txt
 kb "TODO" -c > todo-count.txt
@@ -212,12 +230,14 @@ kb "TODO" -c > todo-count.txt
 ## Performance
 
 **Local search (gh-rg):**
+
 - Speed: ~45ms
 - Offline: Yes
 - Regex: Full PCRE2
 - Context: Yes (-A, -B, -C)
 
 **GitHub API search:**
+
 - Speed: ~850ms
 - Offline: No
 - Regex: None
@@ -237,6 +257,7 @@ A: Cached for 1 hour. Use `--fresh` to force update.
 
 **Q: Can I search across multiple repos?**
 A: Yes! Sync multiple repos and search all:
+
 ```bash
 rg "pattern" ~/.cache/gh-issues/*/
 ```

@@ -7,24 +7,24 @@
 
 ## TL;DR - Power Level Comparison
 
-| Feature | ripgrep (rg) | GitHub Issue Search | Winner |
-|---------|--------------|---------------------|--------|
-| **Regex Support** | ✅ Full PCRE2 regex | ❌ No regex | 🏆 rg |
-| **Wildcard Patterns** | ✅ `*`, `?`, `[...]` | ❌ No wildcards | 🏆 rg |
-| **Case Sensitivity** | ✅ Configurable | ✅ Case-insensitive | 🤝 Tie |
-| **Context Lines** | ✅ `-A`, `-B`, `-C` | ❌ No context | 🏆 rg |
-| **Line Numbers** | ✅ `-n` flag | ❌ Not applicable | 🏆 rg |
-| **File Type Filtering** | ✅ `--type` | ❌ Searches issues only | 🏆 rg |
-| **Boolean AND** | ✅ Via regex | ✅ Space-separated | 🤝 Tie |
-| **Boolean OR** | ✅ Via regex `\|` | ⚠️ Limited | 🏆 rg |
-| **Boolean NOT** | ✅ Via regex | ⚠️ `-word` sometimes | 🏆 rg |
-| **Multiline Matching** | ✅ `-U` flag | ❌ No multiline | 🏆 rg |
-| **Replace/Edit** | ✅ With sed/xargs | ⚠️ Via `gh issue edit` | 🏆 rg |
-| **Speed** | ✅ Extremely fast | ⚠️ API-limited | 🏆 rg |
-| **Offline Search** | ✅ Works offline | ❌ Requires internet | 🏆 rg |
-| **Search Scope** | ✅ Any text file | ⚠️ Issues only | 🏆 rg |
-| **Structured Filtering** | ❌ Text only | ✅ Labels, state, dates | 🏆 GitHub |
-| **Metadata Search** | ❌ N/A | ✅ Author, assignee, etc. | 🏆 GitHub |
+| Feature                  | ripgrep (rg)         | GitHub Issue Search       | Winner    |
+| ------------------------ | -------------------- | ------------------------- | --------- |
+| **Regex Support**        | ✅ Full PCRE2 regex  | ❌ No regex               | 🏆 rg     |
+| **Wildcard Patterns**    | ✅ `*`, `?`, `[...]` | ❌ No wildcards           | 🏆 rg     |
+| **Case Sensitivity**     | ✅ Configurable      | ✅ Case-insensitive       | 🤝 Tie    |
+| **Context Lines**        | ✅ `-A`, `-B`, `-C`  | ❌ No context             | 🏆 rg     |
+| **Line Numbers**         | ✅ `-n` flag         | ❌ Not applicable         | 🏆 rg     |
+| **File Type Filtering**  | ✅ `--type`          | ❌ Searches issues only   | 🏆 rg     |
+| **Boolean AND**          | ✅ Via regex         | ✅ Space-separated        | 🤝 Tie    |
+| **Boolean OR**           | ✅ Via regex `\|`    | ⚠️ Limited                | 🏆 rg     |
+| **Boolean NOT**          | ✅ Via regex         | ⚠️ `-word` sometimes      | 🏆 rg     |
+| **Multiline Matching**   | ✅ `-U` flag         | ❌ No multiline           | 🏆 rg     |
+| **Replace/Edit**         | ✅ With sed/xargs    | ⚠️ Via `gh issue edit`    | 🏆 rg     |
+| **Speed**                | ✅ Extremely fast    | ⚠️ API-limited            | 🏆 rg     |
+| **Offline Search**       | ✅ Works offline     | ❌ Requires internet      | 🏆 rg     |
+| **Search Scope**         | ✅ Any text file     | ⚠️ Issues only            | 🏆 rg     |
+| **Structured Filtering** | ❌ Text only         | ✅ Labels, state, dates   | 🏆 GitHub |
+| **Metadata Search**      | ❌ N/A               | ✅ Author, assignee, etc. | 🏆 GitHub |
 
 ---
 
@@ -35,6 +35,7 @@
 **Power Level: ~20% of ripgrep's capabilities**
 
 GitHub's issue search is fundamentally different:
+
 - **ripgrep:** General-purpose text search tool with full regex
 - **GitHub:** Structured data search with qualifiers
 
@@ -45,38 +46,48 @@ GitHub's issue search is fundamentally different:
 ### ✅ Strengths (Better than ripgrep for these)
 
 #### 1. Structured Metadata Filtering
+
 ```bash
 # Search by state, labels, assignee, dates
 gh issue list --search "is:open label:bug assignee:@me created:>=2025-10-01"
 ```
+
 **ripgrep cannot do this** - rg doesn't understand issue metadata.
 
 #### 2. Cross-Repository Search
+
 ```bash
 # Search across all repos in an org
 gh search issues "authentication" --owner yourorg
 ```
+
 **ripgrep cannot do this** - rg only searches local files.
 
 #### 3. Date/Time Filtering
+
 ```bash
 gh issue list --search "created:2025-10-23"
 gh issue list --search "updated:>=2025-10-20"
 ```
+
 **ripgrep cannot do this** - rg doesn't understand timestamps.
 
 #### 4. Author/Assignee Filtering
+
 ```bash
 gh issue list --search "author:alice assignee:bob"
 ```
+
 **ripgrep cannot do this** - rg doesn't understand users.
 
 #### 5. Case-Insensitive by Default
+
 ```bash
 # Both find same results
 gh issue list --search "AUTHENTICATION"
 gh issue list --search "authentication"
 ```
+
 **Result:** ✅ Always case-insensitive
 
 ---
@@ -88,6 +99,7 @@ gh issue list --search "authentication"
 #### 1. NO Regex Support
 
 **ripgrep:**
+
 ```bash
 # Find "auth" followed by anything ending in "tion"
 rg 'auth.*tion'  # Matches: authentication, authorization, etc.
@@ -98,6 +110,7 @@ rg '^(TODO|FIXME):'           # Find code comments
 ```
 
 **GitHub:**
+
 ```bash
 # No regex - only literal text search
 gh issue list --search 'auth.*tion'  # ❌ Searches for literal "auth.*tion"
@@ -111,6 +124,7 @@ gh issue list --search '/regex/'     # ❌ No regex syntax
 #### 2. NO Context Lines
 
 **ripgrep:**
+
 ```bash
 # Show 2 lines before and 3 lines after match
 rg -B 2 -A 3 'error'
@@ -120,6 +134,7 @@ rg -C 5 'error'
 ```
 
 **Output:**
+
 ```
 45-  function processData() {
 46-    const result = fetchData();
@@ -129,6 +144,7 @@ rg -C 5 'error'
 ```
 
 **GitHub:**
+
 ```bash
 # ❌ No way to see context around matches
 gh issue list --search 'error'  # Only shows issue title
@@ -142,6 +158,7 @@ gh issue view 123               # Shows entire issue body, not just context
 #### 3. NO Wildcard Patterns
 
 **ripgrep:**
+
 ```bash
 # Wildcards work
 rg 'auth*'      # Shell expands or rg handles
@@ -150,6 +167,7 @@ rg 'auth\w+'    # Regex: auth followed by word characters
 ```
 
 **GitHub:**
+
 ```bash
 # Wildcards treated as literal characters
 gh issue list --search 'auth*'  # Searches for literal "auth*"
@@ -163,6 +181,7 @@ gh issue list --search 'bug?'   # Searches for literal "bug?"
 #### 4. NO Multiline Matching
 
 **ripgrep:**
+
 ```bash
 # Search across line boundaries
 rg -U 'function.*\{.*return' code.js
@@ -172,6 +191,7 @@ rg -U 'class.*\n.*extends'
 ```
 
 **GitHub:**
+
 ```bash
 # ❌ Each search term is single-line only
 gh issue list --search 'some text'  # Cannot match across lines
@@ -184,6 +204,7 @@ gh issue list --search 'some text'  # Cannot match across lines
 #### 5. NO Boolean OR (Limited Support)
 
 **ripgrep:**
+
 ```bash
 # OR with regex
 rg 'authentication|security|login'  # Matches any of these
@@ -193,6 +214,7 @@ rg '(bug|error|fail).*critical'
 ```
 
 **GitHub:**
+
 ```bash
 # OR is poorly supported
 gh issue list --search 'authentication OR security'
@@ -210,6 +232,7 @@ gh issue list --search 'security'
 #### 6. NO Replace/Refactor
 
 **ripgrep:**
+
 ```bash
 # Find and replace pattern
 rg -l 'oldFunction' | xargs sed -i 's/oldFunction/newFunction/g'
@@ -219,6 +242,7 @@ rg -l 'function (\w+)\(' | xargs sed -E 's/function (\w+)\(/const \1 = (/g'
 ```
 
 **GitHub:**
+
 ```bash
 # ❌ No in-place editing of issue content during search
 # Must edit each issue separately
@@ -232,6 +256,7 @@ gh issue edit 123 --body "updated content"
 #### 7. NO File Type Filtering
 
 **ripgrep:**
+
 ```bash
 # Search only JavaScript files
 rg 'import' --type js
@@ -244,6 +269,7 @@ rg 'bug' -g '!*.test.js'
 ```
 
 **GitHub:**
+
 ```bash
 # ❌ Always searches issue content, not files
 # No concept of file types
@@ -256,6 +282,7 @@ rg 'bug' -g '!*.test.js'
 #### 8. Limited Search Syntax
 
 **ripgrep has:**
+
 - PCRE2 regex
 - Look-ahead/look-behind
 - Backreferences
@@ -264,6 +291,7 @@ rg 'bug' -g '!*.test.js'
 - Anchors (^, $)
 
 **GitHub has:**
+
 - Keyword search
 - Qualifiers (`is:`, `label:`, etc.)
 - Quote for phrases
@@ -274,6 +302,7 @@ rg 'bug' -g '!*.test.js'
 ## Speed Comparison
 
 ### ripgrep
+
 ```bash
 # Search 10,000 files in < 1 second
 time rg 'authentication' /path/to/large/repo
@@ -284,6 +313,7 @@ real    0m0.143s
 **Speed:** ⚡ Extremely fast (written in Rust, parallel search)
 
 ### GitHub Issue Search
+
 ```bash
 # API call with network latency
 time gh issue list --search 'authentication'
@@ -300,17 +330,21 @@ real    0m0.854s  # Plus rate limiting potential
 ## Offline Capability
 
 ### ripgrep
+
 ```bash
 # Works 100% offline
 rg 'search term' /local/files
 ```
+
 ✅ No internet required
 
 ### GitHub Issue Search
+
 ```bash
 # Requires internet connection
 gh issue list --search 'search term'
 ```
+
 ❌ Must be online to use
 
 ---
@@ -320,6 +354,7 @@ gh issue list --search 'search term'
 ### When to Use ripgrep 🏆
 
 1. **Code Search**
+
    ```bash
    rg 'function handleError' src/
    rg 'TODO|FIXME' --type js
@@ -327,18 +362,21 @@ gh issue list --search 'search term'
    ```
 
 2. **Log Analysis**
+
    ```bash
    rg 'ERROR' /var/log/ -A 5
    rg 'status: (4|5)\d{2}' access.log
    ```
 
 3. **Configuration Files**
+
    ```bash
    rg 'database.*password' config/
    rg '^port\s*=\s*\d+' .env
    ```
 
 4. **Find and Replace**
+
    ```bash
    rg -l 'oldAPI' | xargs sed -i 's/oldAPI/newAPI/g'
    ```
@@ -352,24 +390,28 @@ gh issue list --search 'search term'
 ### When to Use GitHub Issue Search 🏆
 
 1. **Issue Triage**
+
    ```bash
    gh issue list --search "is:open label:bug no:assignee"
    gh issue list --search "is:open label:priority:high"
    ```
 
 2. **Team Management**
+
    ```bash
    gh issue list --search "assignee:alice is:open"
    gh issue list --search "author:bob created:>=2025-10-01"
    ```
 
 3. **Sprint Planning**
+
    ```bash
    gh issue list --search "milestone:v1.0 is:open"
    gh issue list --search "label:feature is:open"
    ```
 
 4. **Historical Analysis**
+
    ```bash
    gh issue list --search "closed:>=2025-10-01 label:bug"
    gh issue list --search "created:2025-10 is:closed"
@@ -385,6 +427,7 @@ gh issue list --search 'search term'
 ## Power Level Rating
 
 ### ripgrep: 10/10 🏆
+
 - **Text Search:** ★★★★★★★★★★
 - **Pattern Matching:** ★★★★★★★★★★ (Full regex)
 - **Performance:** ★★★★★★★★★★ (Blazing fast)
@@ -395,6 +438,7 @@ gh issue list --search 'search term'
 **Total:** 60/60 - Elite tier search tool
 
 ### GitHub Issue Search: 2/10
+
 - **Text Search:** ★★☆☆☆☆☆☆☆☆ (Basic keyword only)
 - **Pattern Matching:** ☆☆☆☆☆☆☆☆☆☆ (No regex, no wildcards)
 - **Performance:** ★★★☆☆☆☆☆☆☆ (API-limited)
@@ -414,6 +458,7 @@ gh issue list --search 'search term'
 **GitHub's issue search is approximately 17% as powerful as ripgrep** for general text searching.
 
 **Why so low?**
+
 1. ❌ No regex (ripgrep's core strength)
 2. ❌ No wildcards
 3. ❌ No context lines
@@ -423,6 +468,7 @@ gh issue list --search 'search term'
 7. ❌ Slower (API-dependent)
 
 **What saves it from 0%:**
+
 - ✅ Excellent metadata filtering (labels, dates, users)
 - ✅ Cross-repository search
 - ✅ Structured data queries
@@ -436,6 +482,7 @@ gh issue list --search 'search term'
 ### Use BOTH Tools - They Solve Different Problems
 
 **ripgrep:** Searching **file content**
+
 ```bash
 # Search your codebase
 rg 'function handleAuth' src/
@@ -444,6 +491,7 @@ rg 'Bug.*CVE-\d+' logs/
 ```
 
 **GitHub:** Searching **issue metadata**
+
 ```bash
 # Search issue tracking
 gh issue list --search "is:open label:bug assignee:@me"
@@ -475,6 +523,7 @@ With metadata:     ████████████                    40%
 **BUT:** GitHub excels at structured metadata queries that ripgrep cannot do.
 
 **Best Practice:**
+
 - Use **ripgrep** for code/file content search
 - Use **GitHub** for issue management and metadata filtering
 - Combine both for comprehensive workflows
