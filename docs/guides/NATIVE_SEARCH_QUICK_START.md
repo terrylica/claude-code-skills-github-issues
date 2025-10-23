@@ -10,12 +10,14 @@
 ## Prerequisites
 
 Install GitHub CLI:
+
 ```bash
 # Already installed if you can run:
 gh --version
 ```
 
 Authenticate:
+
 ```bash
 gh auth login
 ```
@@ -363,6 +365,7 @@ gh search issues --involves=@me
 ### 4. Save Common Queries as Aliases
 
 Add to `~/.bashrc` or `~/.zshrc`:
+
 ```bash
 alias gh-my-issues='gh search issues --assignee=@me --state=open'
 alias gh-my-bugs='gh search issues --assignee=@me --label=bug --state=open'
@@ -427,10 +430,12 @@ man gh-issue-list
 ```
 
 **Online documentation:**
+
 - GitHub CLI: https://cli.github.com/manual/gh_search_issues
 - Search syntax: https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests
 
 **Complete reference:**
+
 - [GitHub Native Search Capabilities](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)
 
 ---

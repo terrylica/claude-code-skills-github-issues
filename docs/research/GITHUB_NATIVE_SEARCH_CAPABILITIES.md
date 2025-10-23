@@ -29,16 +29,19 @@ GitHub provides **robust native search capabilities** through its CLI and API th
 **Purpose:** Search issues across multiple repositories, organizations, or all of GitHub
 
 **Basic Syntax:**
+
 ```bash
 gh search issues [<query>] [flags]
 ```
 
 **When to use:**
+
 - Searching across multiple repositories
 - Organization-wide searches
 - Global GitHub searches with specific filters
 
 **Examples:**
+
 ```bash
 # Search for "authentication" in title, body, or comments
 gh search issues authentication
@@ -61,16 +64,19 @@ gh search issues security --include-prs
 **Purpose:** Search issues within a specific repository
 
 **Basic Syntax:**
+
 ```bash
 gh issue list --search "<query>" [flags]
 ```
 
 **When to use:**
+
 - Working within a single repository
 - Repository-scoped searches
 - Quick local issue queries
 
 **Examples:**
+
 ```bash
 # Search in current repository
 gh issue list --search "database error"
@@ -90,14 +96,15 @@ All qualifiers below are **natively supported** by GitHub CLI and API.
 
 ### Content Search Qualifiers
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `in:title` | Search issue titles only | `in:title database` |
-| `in:body` | Search issue body only | `in:body "SQL query"` |
-| `in:comments` | Search issue comments only | `in:comments resolved` |
-| `in:title,body` | Search multiple fields | `in:title,body authentication` |
+| Qualifier       | Description                | Example                        |
+| --------------- | -------------------------- | ------------------------------ |
+| `in:title`      | Search issue titles only   | `in:title database`            |
+| `in:body`       | Search issue body only     | `in:body "SQL query"`          |
+| `in:comments`   | Search issue comments only | `in:comments resolved`         |
+| `in:title,body` | Search multiple fields     | `in:title,body authentication` |
 
 **Examples:**
+
 ```bash
 # Search only in titles
 gh search issues "authentication failure" --match=title
@@ -111,17 +118,18 @@ gh search issues "in:title bug in:body database"
 
 ### State and Type Filters
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `state:open` | Open issues only | `state:open` |
-| `state:closed` | Closed issues only | `state:closed` |
-| `is:open` | Alternative syntax | `is:open` |
-| `is:closed` | Alternative syntax | `is:closed` |
-| `is:merged` | Merged PRs (with --include-prs) | `is:merged` |
-| `type:issue` | Issues only | `type:issue` |
-| `type:pr` | Pull requests only | `type:pr` |
+| Qualifier      | Description                     | Example        |
+| -------------- | ------------------------------- | -------------- |
+| `state:open`   | Open issues only                | `state:open`   |
+| `state:closed` | Closed issues only              | `state:closed` |
+| `is:open`      | Alternative syntax              | `is:open`      |
+| `is:closed`    | Alternative syntax              | `is:closed`    |
+| `is:merged`    | Merged PRs (with --include-prs) | `is:merged`    |
+| `type:issue`   | Issues only                     | `type:issue`   |
+| `type:pr`      | Pull requests only              | `type:pr`      |
 
 **Examples:**
+
 ```bash
 # Open issues only
 gh search issues bug --state=open
@@ -135,16 +143,17 @@ gh search issues security --include-prs
 
 ### User-Related Qualifiers
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `author:USERNAME` | Created by user | `author:octocat` |
-| `assignee:USERNAME` | Assigned to user | `assignee:@me` |
-| `mentions:USERNAME` | Mentions user | `mentions:octocat` |
-| `commenter:USERNAME` | User commented | `commenter:alice` |
-| `involves:USERNAME` | User involved (any role) | `involves:@me` |
-| `team-mentions:TEAM` | Team mentioned | `team-mentions:security` |
+| Qualifier            | Description              | Example                  |
+| -------------------- | ------------------------ | ------------------------ |
+| `author:USERNAME`    | Created by user          | `author:octocat`         |
+| `assignee:USERNAME`  | Assigned to user         | `assignee:@me`           |
+| `mentions:USERNAME`  | Mentions user            | `mentions:octocat`       |
+| `commenter:USERNAME` | User commented           | `commenter:alice`        |
+| `involves:USERNAME`  | User involved (any role) | `involves:@me`           |
+| `team-mentions:TEAM` | Team mentioned           | `team-mentions:security` |
 
 **Examples:**
+
 ```bash
 # Issues assigned to me
 gh search issues --assignee=@me --state=open
@@ -161,14 +170,15 @@ gh search issues "bug" --author=john
 
 ### Repository Scope Qualifiers
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `repo:OWNER/REPO` | Specific repository | `repo:cli/cli` |
-| `user:USERNAME` | User's repositories | `user:octocat` |
-| `org:ORGNAME` | Organization repositories | `org:github` |
-| `owner:NAME` | Repository owner | `owner:github` |
+| Qualifier         | Description               | Example        |
+| ----------------- | ------------------------- | -------------- |
+| `repo:OWNER/REPO` | Specific repository       | `repo:cli/cli` |
+| `user:USERNAME`   | User's repositories       | `user:octocat` |
+| `org:ORGNAME`     | Organization repositories | `org:github`   |
+| `owner:NAME`      | Repository owner          | `owner:github` |
 
 **Examples:**
+
 ```bash
 # Search in specific repo
 gh search issues "memory leak" --repo=myorg/myapp
@@ -182,16 +192,17 @@ gh search issues bug --repo=org/repo1 --repo=org/repo2
 
 ### Labels and Metadata
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `label:LABEL` | Has specific label | `label:bug` |
-| `no:label` | Has no labels | `no:label` |
-| `milestone:TITLE` | In milestone | `milestone:"v2.0"` |
-| `no:milestone` | Has no milestone | `no:milestone` |
-| `project:NUMBER` | In project board | `project:5` |
-| `no:project` | Not in project | `no:project` |
+| Qualifier         | Description        | Example            |
+| ----------------- | ------------------ | ------------------ |
+| `label:LABEL`     | Has specific label | `label:bug`        |
+| `no:label`        | Has no labels      | `no:label`         |
+| `milestone:TITLE` | In milestone       | `milestone:"v2.0"` |
+| `no:milestone`    | Has no milestone   | `no:milestone`     |
+| `project:NUMBER`  | In project board   | `project:5`        |
+| `no:project`      | Not in project     | `no:project`       |
 
 **Examples:**
+
 ```bash
 # Issues with "bug" label
 gh search issues --label=bug
@@ -211,19 +222,21 @@ gh search issues -- -label:wontfix
 
 ### Date and Time Qualifiers
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
+| Qualifier      | Description                  | Example               |
+| -------------- | ---------------------------- | --------------------- |
 | `created:DATE` | Created on/after/before date | `created:>2025-01-01` |
 | `updated:DATE` | Updated on/after/before date | `updated:<2025-01-01` |
-| `closed:DATE` | Closed on/after/before date | `closed:2025-01-15` |
-| `merged:DATE` | Merged on/after/before date | `merged:>=2025-01-01` |
+| `closed:DATE`  | Closed on/after/before date  | `closed:2025-01-15`   |
+| `merged:DATE`  | Merged on/after/before date  | `merged:>=2025-01-01` |
 
 **Date Formats:**
+
 - Absolute: `YYYY-MM-DD`
 - Relative: `created:>2025-01-01`
 - Ranges: `created:2025-01-01..2025-01-31`
 
 **Examples:**
+
 ```bash
 # Issues created this year
 gh search issues --created=">=2025-01-01"
@@ -237,15 +250,16 @@ gh search issues --closed="2025-01-01..2025-01-31"
 
 ### Quantitative Filters
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `comments:N` | Number of comments | `comments:>10` |
-| `reactions:N` | Number of reactions | `reactions:>=5` |
+| Qualifier        | Description          | Example            |
+| ---------------- | -------------------- | ------------------ |
+| `comments:N`     | Number of comments   | `comments:>10`     |
+| `reactions:N`    | Number of reactions  | `reactions:>=5`    |
 | `interactions:N` | Comments + reactions | `interactions:>50` |
 
 **Operators:** `>`, `>=`, `<`, `<=`, `N..M` (ranges)
 
 **Examples:**
+
 ```bash
 # Issues with many comments
 gh search issues --comments=">100"
@@ -259,15 +273,16 @@ gh search issues --interactions=">50"
 
 ### Repository Characteristics
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `language:LANG` | Repository language | `language:python` |
-| `archived:BOOL` | Archived status | `archived:false` |
-| `is:public` | Public repositories | `is:public` |
-| `is:private` | Private repositories | `is:private` |
-| `visibility:TYPE` | Visibility type | `visibility:public` |
+| Qualifier         | Description          | Example             |
+| ----------------- | -------------------- | ------------------- |
+| `language:LANG`   | Repository language  | `language:python`   |
+| `archived:BOOL`   | Archived status      | `archived:false`    |
+| `is:public`       | Public repositories  | `is:public`         |
+| `is:private`      | Private repositories | `is:private`        |
+| `visibility:TYPE` | Visibility type      | `visibility:public` |
 
 **Examples:**
+
 ```bash
 # Issues in Python repos
 gh search issues --language=python
@@ -281,17 +296,18 @@ gh search issues --visibility=public
 
 ### Review Status (Pull Requests)
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `review:none` | No reviews | `review:none` |
-| `review:required` | Review required | `review:required` |
-| `review:approved` | Approved | `review:approved` |
-| `review:changes_requested` | Changes requested | `review:changes_requested` |
-| `reviewed-by:USER` | Reviewed by user | `reviewed-by:alice` |
-| `review-requested:USER` | Review requested from | `review-requested:@me` |
-| `draft:BOOL` | Draft status | `draft:false` |
+| Qualifier                  | Description           | Example                    |
+| -------------------------- | --------------------- | -------------------------- |
+| `review:none`              | No reviews            | `review:none`              |
+| `review:required`          | Review required       | `review:required`          |
+| `review:approved`          | Approved              | `review:approved`          |
+| `review:changes_requested` | Changes requested     | `review:changes_requested` |
+| `reviewed-by:USER`         | Reviewed by user      | `reviewed-by:alice`        |
+| `review-requested:USER`    | Review requested from | `review-requested:@me`     |
+| `draft:BOOL`               | Draft status          | `draft:false`              |
 
 **Examples:**
+
 ```bash
 # PRs awaiting my review
 gh search issues --include-prs --review-requested=@me --state=open
@@ -305,12 +321,12 @@ gh search issues --include-prs draft:false
 
 ### Additional Filters
 
-| Qualifier | Description | Example |
-|-----------|-------------|---------|
-| `app:APP` | Created by GitHub App | `app:dependabot` |
-| `is:locked` | Locked conversations | `is:locked` |
-| `linked:pr` | Issues linked to PRs | `linked:pr` |
-| `linked:issue` | PRs linked to issues | `linked:issue` |
+| Qualifier      | Description           | Example          |
+| -------------- | --------------------- | ---------------- |
+| `app:APP`      | Created by GitHub App | `app:dependabot` |
+| `is:locked`    | Locked conversations  | `is:locked`      |
+| `linked:pr`    | Issues linked to PRs  | `linked:pr`      |
+| `linked:issue` | PRs linked to issues  | `linked:issue`   |
 
 ---
 
@@ -321,6 +337,7 @@ gh search issues --include-prs draft:false
 **Syntax:** Use `-` prefix or `--` flag separator
 
 **Examples:**
+
 ```bash
 # Exclude label "wontfix"
 gh search issues -- -label:wontfix
@@ -337,6 +354,7 @@ gh search issues -- -state:closed
 **Default behavior:** Multiple qualifiers use AND logic
 
 **Examples:**
+
 ```bash
 # Multiple conditions (AND)
 gh search issues bug --label=urgent --state=open --assignee=@me
@@ -350,6 +368,7 @@ gh search issues "bug label:urgent state:open assignee:@me"
 **Syntax:** Use quotes for exact multi-word matches
 
 **Examples:**
+
 ```bash
 # Exact phrase match
 gh search issues "connection timeout error"
@@ -365,6 +384,7 @@ gh search issues "database migration" --label=bug
 **Syntax:** `qualifier:MIN..MAX`
 
 **Examples:**
+
 ```bash
 # Date range
 gh search issues created:2025-01-01..2025-01-31
@@ -383,6 +403,7 @@ gh search issues reactions:5..20
 ### JSON Output
 
 **Available fields:**
+
 - `assignees`
 - `author`
 - `authorAssociation`
@@ -402,6 +423,7 @@ gh search issues reactions:5..20
 - `url`
 
 **Examples:**
+
 ```bash
 # Output as JSON
 gh search issues bug --json number,title,state,url
@@ -416,6 +438,7 @@ gh search issues bug --json title,url --jq '.[] | select(.title | contains("crit
 ### Sorting and Ordering
 
 **Sort options:**
+
 - `comments` - By number of comments
 - `created` - By creation date
 - `interactions` - By total interactions
@@ -424,10 +447,12 @@ gh search issues bug --json title,url --jq '.[] | select(.title | contains("crit
 - Reaction types: `+1`, `-1`, `smile`, `tada`, `heart`
 
 **Order:**
+
 - `asc` - Ascending
 - `desc` - Descending (default)
 
 **Examples:**
+
 ```bash
 # Most commented
 gh search issues bug --sort=comments --order=desc
@@ -445,6 +470,7 @@ gh search issues --sort=reactions --order=desc --limit=10
 **Maximum:** Up to 1000 results (API limit)
 
 **Examples:**
+
 ```bash
 # Limit to 10 results
 gh search issues bug --limit=10
@@ -456,6 +482,7 @@ gh search issues --state=open --limit=100
 ### Web Browser Integration
 
 **Open search in browser:**
+
 ```bash
 gh search issues bug --web
 gh issue list --web
@@ -578,25 +605,26 @@ gh search issues is:locked
 
 ## Comparison: GitHub Native Search vs ripgrep
 
-| Feature | GitHub Native Search | ripgrep |
-|---------|---------------------|---------|
-| **Search title** | ✅ `in:title` | ✅ (if title in text) |
-| **Search body** | ✅ `in:body` | ✅ |
-| **Search comments** | ✅ `in:comments` | ✅ (if downloaded) |
-| **Regex support** | ❌ (API/CLI), ✅ (Web UI code search only) | ✅ Full PCRE2 |
-| **Wildcards** | ❌ | ✅ `*`, `?` |
-| **Context lines** | ❌ | ✅ `-A`, `-B`, `-C` |
-| **Boolean AND/OR** | ✅ (AND only via multiple flags) | ✅ Via regex |
-| **Date filters** | ✅ Extensive | ❌ (unless in text) |
-| **Label filters** | ✅ Native | ❌ |
-| **User filters** | ✅ Native | ❌ |
-| **State filters** | ✅ Native | ❌ |
-| **Speed** | ~850ms (API) | ~45ms (local) |
-| **Offline** | ❌ | ✅ |
-| **Multi-word phrases** | ✅ Quoted | ✅ |
-| **Case sensitivity** | ❌ (case-insensitive) | ✅ Configurable |
+| Feature                | GitHub Native Search                       | ripgrep               |
+| ---------------------- | ------------------------------------------ | --------------------- |
+| **Search title**       | ✅ `in:title`                              | ✅ (if title in text) |
+| **Search body**        | ✅ `in:body`                               | ✅                    |
+| **Search comments**    | ✅ `in:comments`                           | ✅ (if downloaded)    |
+| **Regex support**      | ❌ (API/CLI), ✅ (Web UI code search only) | ✅ Full PCRE2         |
+| **Wildcards**          | ❌                                         | ✅ `*`, `?`           |
+| **Context lines**      | ❌                                         | ✅ `-A`, `-B`, `-C`   |
+| **Boolean AND/OR**     | ✅ (AND only via multiple flags)           | ✅ Via regex          |
+| **Date filters**       | ✅ Extensive                               | ❌ (unless in text)   |
+| **Label filters**      | ✅ Native                                  | ❌                    |
+| **User filters**       | ✅ Native                                  | ❌                    |
+| **State filters**      | ✅ Native                                  | ❌                    |
+| **Speed**              | ~850ms (API)                               | ~45ms (local)         |
+| **Offline**            | ❌                                         | ✅                    |
+| **Multi-word phrases** | ✅ Quoted                                  | ✅                    |
+| **Case sensitivity**   | ❌ (case-insensitive)                      | ✅ Configurable       |
 
 **Power Rating:**
+
 - GitHub native search: **8/10** for structured metadata queries
 - GitHub native search: **3/10** for pattern matching (no regex in CLI)
 - ripgrep: **10/10** for pattern matching
@@ -739,12 +767,14 @@ alias gh-team-bugs='gh search issues --owner=myorg --label=bug --state=open'
 **For your knowledge base on GitHub Issues, native GitHub search is SUFFICIENT if:**
 
 ✅ You primarily search by:
+
 - Keywords and exact phrases
 - Labels and metadata
 - Issue state and dates
 - User activity
 
 ✅ You can work within these constraints:
+
 - No regex patterns needed
 - No complex wildcard searches
 - Online-only access acceptable
