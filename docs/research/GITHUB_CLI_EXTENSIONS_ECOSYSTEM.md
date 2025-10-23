@@ -61,6 +61,7 @@ gh extension list
 **Status:** ✅ Actively maintained
 
 **What it does:**
+
 - Rich TUI (Terminal UI) dashboard for GitHub
 - Displays PRs and issues with customizable filters
 - Keyboard navigation (no mouse needed)
@@ -70,6 +71,7 @@ gh extension list
 - Full markdown rendering for issue bodies
 
 **Why it's better than custom scripts:**
+
 - Professional UI with filtering, sorting, browsing
 - Actively maintained with 74 releases
 - Handles complexity (notifications, reviews, multi-repo)
@@ -77,6 +79,7 @@ gh extension list
 - Built on established libraries (bubbletea, lipgloss, glamour)
 
 **Installation:**
+
 ```bash
 gh extension install dlvhdr/gh-dash
 
@@ -88,18 +91,19 @@ gh dash
 Creates `~/.config/gh-dash/config.yml` for customization
 
 **Example config:**
+
 ```yaml
 prSections:
-- title: My Pull Requests
-  filters: is:open author:@me
-- title: Needs My Review
-  filters: is:open review-requested:@me
+  - title: My Pull Requests
+    filters: is:open author:@me
+  - title: Needs My Review
+    filters: is:open review-requested:@me
 
 issuesSections:
-- title: My Issues
-  filters: is:open assignee:@me
-- title: Needs Triage
-  filters: is:open label:bug no:assignee
+  - title: My Issues
+    filters: is:open assignee:@me
+  - title: Needs Triage
+    filters: is:open label:bug no:assignee
 ```
 
 ---
@@ -112,6 +116,7 @@ issuesSections:
 **URL:** https://cli.github.com/manual/gh_project
 
 **What it does:**
+
 - Manage GitHub Projects (v2) from CLI
 - Create, copy, list, view projects
 - Manage fields (create, list, delete)
@@ -120,6 +125,7 @@ issuesSections:
 **Installation:** Already installed (native command)
 
 **Usage:**
+
 ```bash
 # Authentication required
 gh auth refresh -s project
@@ -138,6 +144,7 @@ gh project item-list NUMBER --owner @me
 ```
 
 **Limitations:**
+
 - MVP feature set (cannot set iterations, some advanced features missing)
 - Less powerful than web UI
 - Requires extra auth scope
@@ -148,11 +155,13 @@ gh project item-list NUMBER --owner @me
 **Status:** ✅ Official GitHub extension
 
 **What it does:**
+
 - AI assistance in terminal
 - Ask GitHub Copilot for help with CLI commands
 - Generate commands from natural language
 
 **Installation:**
+
 ```bash
 gh extension install github/gh-copilot
 
@@ -165,6 +174,7 @@ gh extension install github/gh-copilot
 **Status:** ✅ Official GitHub extension
 
 **What it does:**
+
 - Migrate CI/CD pipelines to GitHub Actions
 - Supports: Azure DevOps, CircleCI, GitLab, Jenkins, Travis CI
 
@@ -179,16 +189,19 @@ gh extension install github/gh-copilot
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Label management (create, list, edit, delete)
 - Clone labels between repositories
 - Export/import labels
 
 **Installation:**
+
 ```bash
 gh extension install heaths/gh-label
 ```
 
 **Usage:**
+
 ```bash
 # List labels
 gh label list
@@ -207,15 +220,18 @@ gh label clone cli/cli
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Milestone management (create, list, edit, delete, view)
 - Native GitHub CLI doesn't have milestone commands
 
 **Installation:**
+
 ```bash
 gh extension install valeriobelli/gh-milestone
 ```
 
 **Usage:**
+
 ```bash
 # List milestones
 gh milestone list
@@ -234,16 +250,19 @@ gh milestone view "v2.0"
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Create branch from issue title
 - Auto-assign issue to yourself
 - Generate commit messages from issue
 
 **Installation:**
+
 ```bash
 gh extension install chmouel/gh-workon
 ```
 
 **Usage:**
+
 ```bash
 # Create branch from issue and assign to self
 gh workon 123
@@ -262,16 +281,19 @@ gh workon 123
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Interactive fuzzy search for GitHub repositories
 - Uses fzf for filtering
 - Quick repository navigation
 
 **Installation:**
+
 ```bash
 gh extension install gennaro-tedesco/gh-s
 ```
 
 **Usage:**
+
 ```bash
 # Search and select repository interactively
 gh s
@@ -284,16 +306,19 @@ gh s
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Grep across repositories using GitHub API
 - Pattern matching in repository files
 - Supports regex
 
 **Installation:**
+
 ```bash
 gh extension install k1LoW/gh-grep
 ```
 
 **Usage:**
+
 ```bash
 # Search for pattern across repos
 gh grep "pattern" --owner myorg
@@ -310,10 +335,12 @@ gh grep "pattern" --owner myorg
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Pull, push, check status on multiple repos at once
 - Batch git operations
 
 **Installation:**
+
 ```bash
 gh extension install sarumaj/gh-gr
 ```
@@ -325,16 +352,19 @@ gh extension install sarumaj/gh-gr
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Clone all repositories in an organization
 - Filter by topic
 - Parallel cloning
 
 **Installation:**
+
 ```bash
 gh extension install matt-bartel/gh-clone-org
 ```
 
 **Usage:**
+
 ```bash
 # Clone all org repos
 gh clone-org myorg
@@ -354,11 +384,13 @@ gh clone-org myorg --topic golang
 **Status:** ✅ Actively maintained
 
 **What it does:**
+
 - Safely clean up local branches
 - Detects merged and safe-to-delete branches
 - Interactive selection
 
 **Installation:**
+
 ```bash
 gh extension install seachicken/gh-poi
 ```
@@ -370,10 +402,12 @@ gh extension install seachicken/gh-poi
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Compact fzf extension for gh
 - Quick navigation and selection
 
 **Installation:**
+
 ```bash
 gh extension install gennaro-tedesco/gh-f
 ```
@@ -385,10 +419,12 @@ gh extension install gennaro-tedesco/gh-f
 **Status:** ✅ Maintained
 
 **What it does:**
+
 - Display GitHub notifications in terminal
 - Filter and manage notifications
 
 **Installation:**
+
 ```bash
 gh extension install meiji163/gh-notify
 ```
@@ -397,15 +433,15 @@ gh extension install meiji163/gh-notify
 
 ## Comparison: Extensions vs Custom Scripts
 
-| Feature | Custom Scripts | gh-dash Extension | gh-label Extension |
-|---------|---------------|-------------------|-------------------|
-| **Maintenance** | You maintain | Community maintains | Community maintains |
-| **Updates** | Manual | `gh extension upgrade` | `gh extension upgrade` |
-| **Features** | Limited | Rich TUI, filters, actions | Full label management |
-| **Testing** | DIY | 69 contributors | Established users |
-| **Dependencies** | Bash, jq, xargs | Built-in | Built-in |
-| **UI** | Text output | Interactive TUI | CLI commands |
-| **Discoverability** | Custom | `gh extension browse` | `gh extension browse` |
+| Feature             | Custom Scripts  | gh-dash Extension          | gh-label Extension     |
+| ------------------- | --------------- | -------------------------- | ---------------------- |
+| **Maintenance**     | You maintain    | Community maintains        | Community maintains    |
+| **Updates**         | Manual          | `gh extension upgrade`     | `gh extension upgrade` |
+| **Features**        | Limited         | Rich TUI, filters, actions | Full label management  |
+| **Testing**         | DIY             | 69 contributors            | Established users      |
+| **Dependencies**    | Bash, jq, xargs | Built-in                   | Built-in               |
+| **UI**              | Text output     | Interactive TUI            | CLI commands           |
+| **Discoverability** | Custom          | `gh extension browse`      | `gh extension browse`  |
 
 ---
 
@@ -467,23 +503,25 @@ gh workon 123                                    # Create branch, assign to self
 
 ### Replace Custom Scripts with Extensions
 
-| Custom Script | Replace With | Command |
-|---------------|--------------|---------|
-| `batch-label-operations.sh` | `gh-label` + `gh-dash` | `gh extension install heaths/gh-label` |
-| `batch-state-operations.sh` | `gh-dash` TUI | `gh extension install dlvhdr/gh-dash` |
-| `batch-assignment-operations.sh` | `gh-dash` TUI | Use gh-dash interactive assignment |
-| `advanced-workflows.sh` (triage) | `gh-dash` filters | Configure sections in gh-dash |
-| `jq-integration-examples.sh` | `gh-dash` + native `gh` JSON | Use `gh --json` with jq |
-| `real-world-workflows.sh` (reports) | `gh search issues` + jq | Native gh commands |
+| Custom Script                       | Replace With                 | Command                                |
+| ----------------------------------- | ---------------------------- | -------------------------------------- |
+| `batch-label-operations.sh`         | `gh-label` + `gh-dash`       | `gh extension install heaths/gh-label` |
+| `batch-state-operations.sh`         | `gh-dash` TUI                | `gh extension install dlvhdr/gh-dash`  |
+| `batch-assignment-operations.sh`    | `gh-dash` TUI                | Use gh-dash interactive assignment     |
+| `advanced-workflows.sh` (triage)    | `gh-dash` filters            | Configure sections in gh-dash          |
+| `jq-integration-examples.sh`        | `gh-dash` + native `gh` JSON | Use `gh --json` with jq                |
+| `real-world-workflows.sh` (reports) | `gh search issues` + jq      | Native gh commands                     |
 
 ### What to Keep
 
 **Keep only if:**
+
 - Custom logic specific to your workflow
 - Not available in any extension
 - Simple one-liners
 
 **Example of what to keep:**
+
 ```bash
 # Weekly report generation (custom format)
 gh search issues --created=">=2025-10-16" --json number,title,state \
@@ -539,21 +577,25 @@ gh repo view owner/gh-extension-name
 ## Limitations of Extensions
 
 ### 1. Still Use Native GitHub API
+
 - Extensions don't bypass GitHub search limitations (no regex)
 - Still subject to rate limits
 - Same API constraints as custom scripts
 
 ### 2. Dependency Management
+
 - Extensions may have external dependencies
 - Go-based extensions are typically self-contained
 - Shell-based extensions may require tools (fzf, jq, etc.)
 
 ### 3. Trust & Security
+
 - Extensions run with your GitHub authentication
 - Review extension code before installing
 - Prefer official or well-starred extensions
 
 ### 4. Not All Features Covered
+
 - Some niche workflows may still need custom scripts
 - Extension ecosystem still growing
 
@@ -586,17 +628,20 @@ gh repo view owner/gh-extension-name
 ### What to Remove
 
 **❌ Remove these custom scripts:**
+
 - `batch-label-operations.sh` → Use `gh-label`
 - `batch-state-operations.sh` → Use `gh-dash`
 - `batch-assignment-operations.sh` → Use `gh-dash`
 - `advanced-workflows.sh` → Use `gh-dash` + `gh project`
 
 **⚠️ Consider removing:**
+
 - `jq-integration-examples.sh` → Most covered by `gh-dash` or native `gh --json`
 - `api-integration-examples.sh` → Check if features in extensions
 - `real-world-workflows.sh` → Case-by-case evaluation
 
 **✅ Keep (as examples/documentation):**
+
 - Simple jq one-liners for custom reports
 - Workflow-specific automation unique to your needs
 
@@ -654,16 +699,19 @@ git commit -m "Replace custom scripts with community extensions"
 ## Resources
 
 ### Official Documentation
+
 - GitHub CLI Extensions: https://docs.github.com/en/github-cli/github-cli/using-github-cli-extensions
 - Creating Extensions: https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions
 - gh project command: https://cli.github.com/manual/gh_project
 
 ### Discovery
+
 - Extension Topic: https://github.com/topics/gh-extension
 - Awesome List: https://github.com/kodepandai/awesome-gh-cli-extensions
 - Browse: `gh extension browse`
 
 ### Key Extensions
+
 - gh-dash: https://github.com/dlvhdr/gh-dash
 - gh-label: https://github.com/heaths/gh-label
 - gh-milestone: https://github.com/valeriobelli/gh-milestone
