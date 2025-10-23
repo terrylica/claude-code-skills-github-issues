@@ -51,6 +51,7 @@ Test reports and probing results:
 - **[Live Test Results](/docs/testing/LIVE_TEST_RESULTS.md)** - CRUD operations testing
 - **[Metadata Test Report](/docs/testing/gh-cli-metadata-test-report.md)** - Label and metadata testing
 - **[Lifecycle Test Report](/docs/testing/github-cli-issue-lifecycle-test-report.md)** - State management testing
+- **[gh-models POC Results](/docs/testing/GH-MODELS-POC-RESULTS.md)** - AI assistance proof of concept (2025-10-23)
 
 ---
 

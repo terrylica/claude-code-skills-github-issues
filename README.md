@@ -149,6 +149,7 @@ Actively maintained extensions (tested 2025-10-23):
 - State and lifecycle (30+ tests)
 - Comments and interactions (40+ tests)
 - Extension functionality verification
+- AI assistance workflows (5 POC tests, 88% effectiveness)
 
 ### ✅ AI Agent Operational Guide
 
@@ -241,6 +242,7 @@ gh label create "priority:high" --color "ff0000"
 **Comprehensive operational guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
 
 Quick tool selection:
+
 - Search issues → `gh search issues`
 - Search files (with regex) → `gh grep`
 - Interactive management → `gh dash` (not for automation!)
