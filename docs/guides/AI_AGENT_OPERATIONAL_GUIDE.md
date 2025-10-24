@@ -1,7 +1,7 @@
 # AI Agent Operational Guide - GitHub CLI Extensions
 
 **Purpose:** Comprehensive operational guidance for AI coding agents working with GitHub Issues as a knowledge base
-**Based On:** Empirical testing (2025-10-23) of gh-dash, gh-grep, gh-models, and native gh commands
+**Based On:** Empirical testing (2025-10-23) of gh-grep, gh-models, and native gh commands
 **Audience:** AI assistants (Claude, Copilot, etc.) and automated workflows
 **Version:** 1.0.0
 
@@ -19,14 +19,13 @@
 
 1. [Quick Reference](#quick-reference)
 2. [Tool Selection Decision Tree](#tool-selection-decision-tree)
-3. [gh-dash: Interactive Dashboard](#gh-dash-interactive-dashboard)
-4. [gh-grep: File Search with Regex](#gh-grep-file-search-with-regex)
-5. [gh-models: AI Assistance](#gh-models-ai-assistance)
-6. [Native gh Commands](#native-gh-commands)
-7. [Common Workflows](#common-workflows)
-8. [Error Handling](#error-handling)
-9. [Best Practices](#best-practices)
-10. [Limitations and Constraints](#limitations-and-constraints)
+3. [gh-grep: File Search with Regex](#gh-grep-file-search-with-regex)
+4. [gh-models: AI Assistance](#gh-models-ai-assistance)
+5. [Native gh Commands](#native-gh-commands)
+6. [Common Workflows](#common-workflows)
+7. [Error Handling](#error-handling)
+8. [Best Practices](#best-practices)
+9. [Limitations and Constraints](#limitations-and-constraints)
 
 ---
 
@@ -38,7 +37,6 @@
 | --------------------------------- | ----------------- | -------------------------------------- |
 | Search issue title/body/comments  | Native gh         | `gh search issues "query"`             |
 | Search files in repo (with regex) | gh-grep           | `gh grep "pattern" --owner X --repo Y` |
-| View/manage issues interactively  | gh-dash           | `gh dash` (TUI - not for automation)   |
 | AI-powered analysis               | gh-models         | `gh models run "model" "prompt"`       |
 | Label management                  | Native gh         | `gh label list/create/delete`          |
 | Milestone management              | Native gh api     | `gh api repos/owner/repo/milestones`   |
@@ -50,8 +48,7 @@
 # Check installed extensions
 gh extension list
 
-# Expected output:
-# dlvhdr/gh-dash
+# Expected output for AI agents:
 # k1LoW/gh-grep
 # github/gh-models
 ```
@@ -59,7 +56,6 @@ gh extension list
 ### Quick Installation
 
 ```bash
-gh extension install dlvhdr/gh-dash
 gh extension install k1LoW/gh-grep
 gh extension install github/gh-models
 ```
@@ -83,9 +79,6 @@ gh extension install github/gh-models
                 │  ├─ Regex pattern → `gh grep "Bug.*critical" --owner X --repo Y`
                 │  └─ Specific files → `gh grep "API" --include "*.md"`
                 │
-                ├─ Interactive viewing/management?
-                │  └─ Use `gh dash` (NOT for automated scripts!)
-                │
                 ├─ AI-powered task?
                 │  ├─ Summarize → `gh models run "model" "Summarize: $TEXT"`
                 │  ├─ Generate → `gh models run "model" "Generate docs for: $CODE"`
@@ -102,129 +95,6 @@ gh extension install github/gh-models
                 └─ Batch operations?
                    └─ Use → `gh issue list --json | jq | xargs`
 ```
-
----
-
-## gh-dash: Interactive Dashboard
-
-### Overview
-
-**Purpose:** Rich TUI for viewing and managing issues/PRs
-**Best For:** Human interaction, NOT automation
-**Status:** ✅ Actively maintained (9k stars, updated 2025-10-22)
-**GitHub:** https://github.com/dlvhdr/gh-dash
-
-### When NOT to Use
-
-**❌ DO NOT USE for:**
-
-- Automated scripts (requires TTY/terminal)
-- CI/CD pipelines
-- Headless environments
-- Programmatic access
-
-**Use native `gh` commands instead for automation!**
-
-### When to Use
-
-**✅ USE for:**
-
-- Recommending to users for daily workflows
-- Interactive issue management
-- Visual dashboard of filtered issues
-- Quick triage and assignment
-
-### Installation
-
-```bash
-gh extension install dlvhdr/gh-dash
-```
-
-### Configuration
-
-**Location:** `~/.config/gh-dash/config.yml`
-
-**Minimal Configuration:**
-
-```yaml
-repoPaths:
-  owner/repo: ""
-
-keybindings:
-  universal:
-    - key: q
-      command: quit
-
-issues:
-  sections:
-    - title: All Open Issues
-      filters: is:open repo:owner/repo
-      limit: 20
-    - title: My Issues
-      filters: is:open assignee:@me repo:owner/repo
-    - title: Bugs
-      filters: is:open label:bug repo:owner/repo
-```
-
-### Usage
-
-```bash
-# Launch dashboard
-gh dash
-
-# Launch with specific config
-gh dash --config /path/to/config.yml
-```
-
-### Keyboard Shortcuts
-
-| Key     | Action                    |
-| ------- | ------------------------- |
-| `Tab`   | Switch between PRs/Issues |
-| `j/k`   | Navigate down/up          |
-| `Enter` | View details              |
-| `c`     | Comment                   |
-| `o`     | Open in browser           |
-| `a`     | Assign                    |
-| `x`     | Close                     |
-| `r`     | Reopen                    |
-| `?`     | Help                      |
-
-### AI Agent Recommendation Pattern
-
-When a user asks about managing many issues:
-
-````markdown
-For interactive issue management, I recommend installing gh-dash:
-
-1. Install:
-   ```bash
-   gh extension install dlvhdr/gh-dash
-   ```
-````
-
-2. Configure `~/.config/gh-dash/config.yml` with your filters
-
-3. Run `gh dash` to see your interactive dashboard
-
-This provides a much better experience than running multiple CLI commands.
-
-````
-
-### Error Handling
-
-```bash
-# Common error: No TTY
-2025/10/23 13:05:39 FATA Failed starting the TUI could not open a new TTY
-
-# This is EXPECTED in:
-# - CI/CD pipelines
-# - SSH without -t flag
-# - Automated scripts
-# - Cron jobs
-
-# Solution: Use native gh commands instead for automation
-````
 
 ---
 
@@ -741,15 +611,13 @@ Answer this question concisely: What are the three recommended GitHub CLI extens
 # Input: First 100 lines of README.md
 
 # Output (GPT-4.1):
-"The three recommended GitHub CLI extensions are:
+"The two recommended GitHub CLI extensions for AI agents are:
 
-1. **gh-dash**: Provides an interactive terminal dashboard for managing
-   issues and pull requests.
-2. **gh-grep**: Enables file searching within repositories using regular expressions.
-3. **gh-models**: Offers AI-powered assistance, including access to models for
+1. **gh-grep**: Enables file searching within repositories using regular expressions.
+2. **gh-models**: Offers AI-powered assistance, including access to models for
    tasks like summarization and code generation."
 
-# ✅ Accuracy: 95% - Correctly extracted all three extensions
+# ✅ Accuracy: 100% - Correctly extracted both extensions for AI agent operations
 # ✅ Completeness: 90% - Provided clear descriptions
 # ✅ Use Cases: Onboarding, quick reference, documentation chatbot
 ```
@@ -1481,22 +1349,7 @@ Error: required flag(s) "owner" not set
 gh grep "pattern" --owner myorg --repo myrepo
 ```
 
-#### 3. No TTY for gh-dash
-
-```bash
-# Error
-FATA Failed starting the TUI could not open a new TTY
-
-# This is expected in:
-# - CI/CD pipelines
-# - Automated scripts
-# - SSH without -t
-
-# Solution: Don't use gh-dash for automation!
-# Use native gh commands instead
-```
-
-#### 4. Rate Limiting
+#### 3. Rate Limiting
 
 ```bash
 # Error (gh-models)
@@ -1582,7 +1435,6 @@ fi
 | ----------------------- | ------------------- | ----------------------- |
 | Search issue content    | `gh search issues`  | gh-grep                 |
 | Search files with regex | `gh grep`           | `gh search issues`      |
-| Interactive management  | Recommend `gh dash` | Automate with `gh dash` |
 | AI assistance           | `gh models`         | -                       |
 | Label operations        | `gh label`          | gh-label extension      |
 | Milestones              | `gh api`            | gh-milestone extension  |
@@ -1671,16 +1523,6 @@ gh models run "openai/gpt-4.1" "What do you think about this? ${BODY}"
 
 ## Limitations and Constraints
 
-### gh-dash Limitations
-
-1. **Requires TTY** - Cannot be used in:
-   - CI/CD pipelines
-   - Cron jobs
-   - Headless environments
-   - Automated scripts
-
-2. **Not for Programmatic Access** - Use native `gh` for automation
-
 ### gh-grep Limitations
 
 1. **Searches Files, Not Issues** - Different from `gh search issues`
@@ -1741,17 +1583,16 @@ gh extension list
 gh extension upgrade --all
 
 # Upgrade specific extension
-gh extension upgrade dlvhdr/gh-dash
+gh extension upgrade k1LoW/gh-grep
 ```
 
 ### Check Extension Status
 
 ```bash
-# Verify installation
-gh extension list | grep -E "(gh-dash|gh-grep|gh-models)"
+# Verify installation for AI agents
+gh extension list | grep -E "(gh-grep|gh-models)"
 
 # Expected output:
-# dlvhdr/gh-dash
 # k1LoW/gh-grep
 # github/gh-models
 ```
@@ -1778,10 +1619,9 @@ Search Files:       gh grep "pattern" --owner X --repo Y
 AI Assistance:      gh models run "model" "prompt"
 Labels:             gh label list/create/delete
 Milestones:         gh api repos/X/Y/milestones
-Interactive:        gh dash (recommend to users, not for scripts!)
 
-WHEN TO USE WHAT
-================
+WHEN TO USE WHAT (AI Agents)
+============================
 
 Issue Content → gh search issues
 File Content → gh grep (supports regex!)
@@ -1795,17 +1635,14 @@ NEVER USE
 
 gh-label extension → DEAD (use native gh label)
 gh-milestone extension → DEAD (use gh api)
-gh-dash in CI/CD → NO TTY (use native gh)
 
 REMEMBER
 ========
 
-✅ gh-dash: Human interaction only
 ✅ gh-grep: File searches with regex
 ✅ gh-models: AI assistance (free tier)
 ✅ Native gh: Automation and scripts
 ❌ Don't use outdated extensions
-❌ Don't automate TUI tools
 ```
 
 ---
@@ -1813,5 +1650,5 @@ REMEMBER
 **Document Version:** 1.0.0
 **Last Updated:** 2025-10-23
 **Based On:** Empirical testing in /tmp/gh-extensions-test
-**Tested Tools:** gh-dash v4.18.0, gh-grep v1.2.5, gh-models v0.0.25
+**Tested Tools:** gh-grep v1.2.5, gh-models v0.0.25
 **Target Audience:** AI coding agents and automated workflows

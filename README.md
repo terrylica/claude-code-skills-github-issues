@@ -3,11 +3,13 @@
 **Purpose:** Comprehensive operational guide for AI coding agents (Claude, Copilot, etc.) to manage engineering knowledge stored in GitHub Issues.
 
 **What This Repository IS:**
+
 - Complete operational guide for AI agents performing GitHub Issues operations
 - Empirically-tested workflows and decision trees (200+ test cases, 88% avg AI effectiveness)
 - Tool selection guidance (native gh CLI, extensions, AI models)
 
 **What This Repository IS NOT:**
+
 - The knowledge base itself (that's in GitHub Issues - the actual issues you create)
 - Generic GitHub CLI documentation (see official docs for that)
 
@@ -37,7 +39,7 @@
 
 ### AI Agent Operations Documented
 
-This guide documents **6 categories of operations** for AI agents managing knowledge in GitHub Issues:
+This guide documents **5 categories of operations** for AI agents managing knowledge in GitHub Issues:
 
 #### 1. AI-Powered Operations (via gh-models - 88% avg effectiveness)
 
@@ -70,17 +72,7 @@ This guide documents **6 categories of operations** for AI agents managing knowl
 - **Boolean search operators** (AND, OR, NOT)
 - **Sort by:** comments, reactions, created, updated
 
-#### 4. Interactive Management (gh-dash TUI - for humans, NOT automation)
-
-- **Terminal UI dashboard** for visual issue browsing
-- **Multi-action support** (view, comment, merge, diff, checkout, review)
-- **Multi-repository management** with customizable views
-- **YAML-based configuration** (~/.config/gh-dash/config.yml)
-- **Keyboard-driven navigation** (no mouse needed)
-- **Quick triage and assignment** workflows
-- **⚠️ Note:** Requires TTY - use native gh commands for automation
-
-#### 5. Issue Lifecycle Operations (native gh CLI)
+#### 4. Issue Lifecycle Operations (native gh CLI)
 
 - **Create issues** (with templates, labels, assignees, milestones)
 - **Read issues** (view, list, status, JSON output)
@@ -91,7 +83,7 @@ This guide documents **6 categories of operations** for AI agents managing knowl
 - **Assignment operations** (assign, unassign multiple users)
 - **Bulk operations** (via xargs/loops for batch processing)
 
-#### 6. Label & Milestone Management (native gh CLI)
+#### 5. Label & Milestone Management (native gh CLI)
 
 - **Label CRUD** (create, read, update, delete)
 - **Label cloning** across repositories
@@ -107,7 +99,6 @@ This guide documents **6 categories of operations** for AI agents managing knowl
 
 ```bash
 # Install recommended extensions
-gh extension install dlvhdr/gh-dash     # Interactive dashboard
 gh extension install k1LoW/gh-grep      # File search with regex
 gh extension install github/gh-models   # AI assistance
 ```
@@ -126,16 +117,6 @@ gh search issues --label=bug --state=open --assignee=@me
 
 # Search files with regex (gh-grep extension)
 gh grep "Bug.*critical" --owner terrylica --repo knowledgebase
-```
-
-### Use Interactive Dashboard
-
-```bash
-# Launch gh-dash for interactive issue management
-gh dash
-
-# Configure your dashboard
-vi ~/.config/gh-dash/config.yml
 ```
 
 ### AI-Powered Workflows
@@ -181,9 +162,8 @@ Powerful built-in features:
 
 ### ✅ Community Extensions
 
-Actively maintained extensions (tested 2025-10-23):
+Actively maintained extensions for AI agents (tested 2025-10-23):
 
-- **gh-dash:** Interactive dashboard (updated yesterday, 9k stars)
 - **gh-grep:** File search with regex (updated yesterday, 211 stars)
 - **gh-models:** Official AI assistance (updated 9 days ago)
 
@@ -269,9 +249,6 @@ gh grep "Bug.*critical" --owner myorg --repo myrepo
 ### Extension Examples
 
 ```bash
-# Interactive dashboard
-gh dash
-
 # File search with regex
 gh grep "authentication" --owner myorg --repo myrepo --line-number
 
@@ -293,7 +270,6 @@ Quick tool selection:
 
 - Search issues → `gh search issues`
 - Search files (with regex) → `gh grep`
-- Interactive management → `gh dash` (not for automation!)
 - AI assistance → `gh models`
 - Label operations → `gh label` (native)
 - Milestone operations → `gh api repos/.../milestones`
@@ -305,10 +281,12 @@ Quick tool selection:
 This repository **demonstrates the documented system** by storing our team's Claude Code tips and tricks as GitHub Issues.
 
 **Dual Purpose:**
+
 1. **Working example** of all documented AI agent workflows
 2. **Actual knowledge base** for our team's Claude Code expertise
 
 **Why This Approach:**
+
 - Shows real-world usage of gh-models auto-labeling
 - Demonstrates native search capabilities with actual content
 - Provides templates for knowledge base setup
@@ -316,19 +294,19 @@ This repository **demonstrates the documented system** by storing our team's Cla
 
 **Knowledge Base Labels:**
 
-| Label | Color | Description |
-|-------|-------|-------------|
-| `claude-code` | `0366d6` | Claude Code tips and tricks |
-| `github-cli` | `2ea44f` | GitHub CLI workflows |
-| `workflow` | `fbca04` | Development workflows |
-| `tips` | `c5def5` | Tips and best practices |
+| Label             | Color    | Description                 |
+| ----------------- | -------- | --------------------------- |
+| `claude-code`     | `0366d6` | Claude Code tips and tricks |
+| `github-cli`      | `2ea44f` | GitHub CLI workflows        |
+| `workflow`        | `fbca04` | Development workflows       |
+| `tips`            | `c5def5` | Tips and best practices     |
 | `troubleshooting` | `d93f0b` | Common issues and solutions |
-| `how-to` | `bfdadc` | How-to guides |
-| `reference` | `d4c5f9` | Reference documentation |
-| `example` | `c2e0c6` | Code examples |
-| `git` | `5319e7` | Git workflows |
-| `terminal` | `0e8a16` | Terminal setup and usage |
-| `mcp` | `f9d0c4` | MCP server integration |
+| `how-to`          | `bfdadc` | How-to guides               |
+| `reference`       | `d4c5f9` | Reference documentation     |
+| `example`         | `c2e0c6` | Code examples               |
+| `git`             | `5319e7` | Git workflows               |
+| `terminal`        | `0e8a16` | Terminal setup and usage    |
+| `mcp`             | `f9d0c4` | MCP server integration      |
 
 **Example Operations:**
 
@@ -367,7 +345,6 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 - **Repository:** https://github.com/terrylica/knowledgebase
 - **GitHub CLI:** https://cli.github.com/
 - **GitHub Search Syntax:** https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests
-- **gh-dash:** https://github.com/dlvhdr/gh-dash
 - **gh-grep:** https://github.com/k1LoW/gh-grep
 - **gh-models:** https://github.com/github/gh-models
 

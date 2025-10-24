@@ -6,9 +6,8 @@
 
 > **🔌 Extension Operations Guide**
 >
-> Documents 3 recommended GitHub CLI extensions for AI agent operations: gh-dash (interactive TUI),
-> gh-grep (regex file search), gh-models (AI assistance). Part of complete operational guide for
-> managing knowledge in GitHub Issues.
+> Documents 2 recommended GitHub CLI extensions for AI agent operations: gh-grep (regex file search),
+> gh-models (AI assistance). Part of complete operational guide for managing knowledge in GitHub Issues.
 >
 > **Complete Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
 
@@ -18,11 +17,10 @@
 
 **Comprehensive testing of GitHub CLI extension ecosystem (652+ extensions):**
 
-### ✅ RECOMMENDED (Tested & Verified):
+### ✅ RECOMMENDED for AI Agents (Tested & Verified):
 
-1. **gh-dash** (dlvhdr/gh-dash) - TUI dashboard (9k stars, updated 2025-10-22)
-2. **gh-grep** (k1LoW/gh-grep) - File search with regex (211 stars, updated 2025-10-22)
-3. **gh-models** (github/gh-models) - AI assistance (154 stars, official, updated 2025-10-14)
+1. **gh-grep** (k1LoW/gh-grep) - File search with regex (211 stars, updated 2025-10-22)
+2. **gh-models** (github/gh-models) - AI assistance (154 stars, official, updated 2025-10-14)
 
 ### ❌ REJECTED (Outdated - Do Not Use):
 
@@ -38,13 +36,10 @@
 ## Quick Installation
 
 ```bash
-# Essential: TUI dashboard for daily issue/PR management
-gh extension install dlvhdr/gh-dash
-
-# Useful: File search with REGEX support
+# Essential: File search with REGEX support
 gh extension install k1LoW/gh-grep
 
-# Optional: AI-powered assistance (free tier)
+# Essential: AI-powered assistance (free tier)
 gh extension install github/gh-models
 ```
 
@@ -85,83 +80,15 @@ gh extension list
 
 ---
 
-## Recommended Extensions (Empirically Tested)
+## Recommended Extensions for AI Agents (Empirically Tested)
 
-### 1. gh-dash (dlvhdr/gh-dash) ✅
-
-**Repository:** https://github.com/dlvhdr/gh-dash
-**Status:** ✅ ACTIVELY MAINTAINED
-
-**Maintenance Verification:**
-- Last Push: 2025-10-22 (YESTERDAY!)
-- Latest Release: v4.18.0
-- Stars: 9,000
-- Contributors: 69+
-- Commits: Regular updates in past week
-
-**Installation:**
-
-```bash
-gh extension install dlvhdr/gh-dash
-```
-
-**What It Does:**
-
-- Rich terminal UI dashboard for GitHub
-- Displays PRs and issues with customizable filters
-- Keyboard-driven navigation (no mouse needed)
-- Actions: view, comment, merge, diff, checkout, review
-- Multi-repository support
-- Configurable via YAML (`~/.config/gh-dash/config.yml`)
-- Full markdown rendering for issue bodies
-
-**Test Results:**
-
-- ✅ Successfully installed
-- ✅ Help command works
-- ✅ Configuration file format validated
-- ⚠️ Requires TTY (cannot run in non-interactive environments)
-
-**Configuration Example:**
-
-```yaml
-issues:
-  sections:
-    - title: All Open Issues
-      filters: is:open repo:terrylica/knowledgebase
-      limit: 20
-    - title: Bug Reports
-      filters: is:open label:bug repo:terrylica/knowledgebase
-    - title: High Priority
-      filters: is:open label:priority:high repo:terrylica/knowledgebase
-```
-
-**Use Cases:**
-
-- Daily dashboard of open issues and PRs
-- Filter by labels, assignees, milestones
-- Quick triage and assignment
-- View and comment on issues without browser
-- Track priority items across multiple repos
-
-**Why It's Better Than Custom Scripts:**
-
-- Professional UI with filtering, sorting, browsing
-- Actively maintained (74 releases, 69 contributors)
-- Handles complexity (notifications, reviews, multi-repo)
-- Configurable via YAML
-- Built on established libraries (bubbletea, lipgloss, glamour)
-
-**Verdict:** ✅ **ESSENTIAL** - Replaces ALL custom batch operation scripts
-
----
-
-### 2. gh-grep (k1LoW/gh-grep) ✅
+### 1. gh-grep (k1LoW/gh-grep) ✅
 
 **Repository:** https://github.com/k1LoW/gh-grep
 **Status:** ✅ ACTIVELY MAINTAINED
 
 **Maintenance Verification:**
+
 - Last Push: 2025-10-22 (YESTERDAY!)
 - Latest Release: v1.2.5
 - Stars: 211
@@ -182,10 +109,10 @@ gh extension install k1LoW/gh-grep
 
 **Important Distinction:**
 
-| Command             | Searches                       | Regex Support |
-| ------------------- | ------------------------------ | ------------- |
-| `gh search issues`  | Issues/PRs (title, body, comments) | ❌ No         |
-| `gh grep`           | Files (code, docs, configs)    | ✅ YES!       |
+| Command            | Searches                           | Regex Support |
+| ------------------ | ---------------------------------- | ------------- |
+| `gh search issues` | Issues/PRs (title, body, comments) | ❌ No         |
+| `gh grep`          | Files (code, docs, configs)        | ✅ YES!       |
 
 **Test Results:**
 
@@ -206,16 +133,16 @@ terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 
 **Features:**
 
-| Flag                  | Description                | Example                     |
-| --------------------- | -------------------------- | --------------------------- |
-| `-n, --line-number`   | Show line numbers          | `gh grep "pattern" -n`      |
-| `-i, --ignore-case`   | Case insensitive           | `gh grep "PATTERN" -i`      |
-| `-c, --count`         | Show match counts          | `gh grep "TODO" -c`         |
-| `--name-only`         | Show only filenames        | `gh grep "API" --name-only` |
-| `--include STRING`    | Search only matching files | `--include "*.md"`          |
-| `--exclude STRING`    | Skip matching files        | `--exclude "*.test.js"`     |
-| `--owner OWNER`       | Repository owner (REQUIRED)| `--owner myorg`             |
-| `--repo REPO`         | Repository name (can be multiple) | `--repo myrepo`     |
+| Flag                | Description                       | Example                     |
+| ------------------- | --------------------------------- | --------------------------- |
+| `-n, --line-number` | Show line numbers                 | `gh grep "pattern" -n`      |
+| `-i, --ignore-case` | Case insensitive                  | `gh grep "PATTERN" -i`      |
+| `-c, --count`       | Show match counts                 | `gh grep "TODO" -c`         |
+| `--name-only`       | Show only filenames               | `gh grep "API" --name-only` |
+| `--include STRING`  | Search only matching files        | `--include "*.md"`          |
+| `--exclude STRING`  | Skip matching files               | `--exclude "*.test.js"`     |
+| `--owner OWNER`     | Repository owner (REQUIRED)       | `--owner myorg`             |
+| `--repo REPO`       | Repository name (can be multiple) | `--repo myrepo`             |
 
 **Use Cases:**
 
@@ -228,8 +155,8 @@ terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 **Example Usage:**
 
 ```bash
-# Find all mentions of "gh-dash" in documentation
-gh grep "gh-dash" --owner terrylica --repo knowledgebase --name-only
+# Find all mentions of "gh-models" in documentation
+gh grep "gh-models" --owner terrylica --repo knowledgebase --name-only
 
 # Find error patterns with regex
 gh grep "Error:.*authentication" --owner myorg --repo myapp --line-number
@@ -245,12 +172,13 @@ gh grep "TODO" --owner myorg --repo app --count
 
 ---
 
-### 3. gh-models (github/gh-models) ✅
+### 2. gh-models (github/gh-models) ✅
 
 **Repository:** https://github.com/github/gh-models
 **Status:** ✅ OFFICIAL GITHUB EXTENSION
 
 **Maintenance Verification:**
+
 - Last Push: 2025-10-14 (9 days ago)
 - Latest Release: v0.0.25
 - Stars: 154
@@ -461,47 +389,24 @@ From `/Users/terryli/eon/knowledgebase/tools/automation/` (DELETED):
 
 ### Feature Comparison
 
-| Feature           | Custom Scripts              | gh-dash                | gh-grep             | gh-models          | Native gh       |
-| ----------------- | --------------------------- | ---------------------- | ------------------- | ------------------ | --------------- |
-| **View issues**   | `gh issue list` piped to jq | ✅ TUI dashboard       | ❌                  | ❌                 | ✅              |
-| **Filter issues** | jq filtering                | ✅ Interactive filters | ❌                  | ❌                 | ✅              |
-| **Batch labels**  | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ `gh label`   |
-| **Batch close**   | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ Loop         |
-| **Batch assign**  | Loops + xargs               | ✅ TUI actions         | ❌                  | ❌                 | ✅ Loop         |
-| **Search files**  | ❌                          | ❌                     | ✅ WITH REGEX!      | ❌                 | ❌              |
-| **AI assistance** | ❌                          | ❌                     | ❌                  | ✅ 29+ models      | ❌              |
-| **Milestones**    | `gh api`                    | ❌                     | ❌                  | ❌                 | ✅ `gh api`     |
-| **Reports**       | jq + formatting             | ✅ Visual dashboard    | ❌                  | ✅ AI summaries    | ✅ `gh --json`  |
-| **Maintenance**   | You maintain                | Community (69 people)  | Author + Dependabot | GitHub official    | GitHub official |
+| Feature           | Custom Scripts              | gh-grep             | gh-models       | Native gh       |
+| ----------------- | --------------------------- | ------------------- | --------------- | --------------- |
+| **View issues**   | `gh issue list` piped to jq | ❌                  | ❌              | ✅              |
+| **Filter issues** | jq filtering                | ❌                  | ❌              | ✅              |
+| **Batch labels**  | Loops + xargs               | ❌                  | ❌              | ✅ `gh label`   |
+| **Batch close**   | Loops + xargs               | ❌                  | ❌              | ✅ Loop         |
+| **Batch assign**  | Loops + xargs               | ❌                  | ❌              | ✅ Loop         |
+| **Search files**  | ❌                          | ✅ WITH REGEX!      | ❌              | ❌              |
+| **AI assistance** | ❌                          | ❌                  | ✅ 29+ models   | ❌              |
+| **Milestones**    | `gh api`                    | ❌                  | ❌              | ✅ `gh api`     |
+| **Reports**       | jq + formatting             | ❌                  | ✅ AI summaries | ✅ `gh --json`  |
+| **Maintenance**   | You maintain                | Author + Dependabot | GitHub official | GitHub official |
 
-**Verdict:** Extensions are superior - better UX, community-maintained, regularly updated
-
----
-
-## Usage Guide
-
-### Daily Workflow with gh-dash
-
-```bash
-# Open dashboard
-gh dash
-
-# Keyboard shortcuts:
-# - Tab: Switch between PRs/Issues
-# - j/k: Navigate up/down
-# - Enter: View details
-# - c: Comment
-# - o: Open in browser
-# - a: Assign
-# - m: Merge (PRs)
-# - x: Close
-# - r: Reopen
-# - ?: Help
-
-# Configure: ~/.config/gh-dash/config.yml
-```
+**Verdict:** Extensions add capabilities (regex search, AI) that complement native gh commands for AI agent operations
 
 ---
+
+## Usage Guide for AI Agents
 
 ### File Searches with gh-grep
 
@@ -565,7 +470,7 @@ gh label clone my-org/template-repo
 gh extension install owner/repo
 
 # Example
-gh extension install dlvhdr/gh-dash
+gh extension install k1LoW/gh-grep
 ```
 
 ### Updates
@@ -575,14 +480,14 @@ gh extension install dlvhdr/gh-dash
 gh extension upgrade --all
 
 # Update specific extension
-gh extension upgrade dlvhdr/gh-dash
+gh extension upgrade k1LoW/gh-grep
 ```
 
 ### Removal
 
 ```bash
 # Remove extension
-gh extension remove dlvhdr/gh-dash
+gh extension remove k1LoW/gh-grep
 
 # List installed
 gh extension list
@@ -605,13 +510,10 @@ gh repo view owner/gh-extension-name
 ### ✅ Install These Extensions
 
 ```bash
-# 1. TUI Dashboard (ESSENTIAL)
-gh extension install dlvhdr/gh-dash
-
-# 2. File search with regex (USEFUL)
+# 1. File search with regex (ESSENTIAL)
 gh extension install k1LoW/gh-grep
 
-# 3. AI assistance (OPTIONAL but FREE)
+# 2. AI assistance (ESSENTIAL and FREE)
 gh extension install github/gh-models
 ```
 
@@ -643,10 +545,12 @@ gh api repos/owner/repo/milestones
 **Removed:** `/Users/terryli/eon/knowledgebase/tools/automation/` (2,138 lines)
 
 **Why:**
-1. gh-dash provides better UI for daily operations
-2. Native gh commands cover basic needs
-3. Extensions are community-maintained and updated
-4. No maintenance burden
+
+1. Native gh commands cover basic needs for AI agents
+2. gh-grep adds regex capability AI agents need for file search
+3. gh-models provides AI assistance for automation
+4. Extensions are community-maintained and updated
+5. No maintenance burden
 
 ---
 
@@ -693,6 +597,7 @@ gh project item-add NUMBER --owner @me --url ISSUE_URL
 ```
 
 **Limitations:**
+
 - MVP feature set (cannot set iterations, some advanced features missing)
 - Requires extra auth scope: `gh auth refresh -s project`
 
@@ -712,6 +617,7 @@ gh project item-add NUMBER --owner @me --url ISSUE_URL
 **The GitHub CLI extension ecosystem is mature and well-maintained.**
 
 **Key Findings:**
+
 - ✅ 652+ extensions available
 - ✅ Top extensions have thousands of stars
 - ✅ Active maintenance (releases in 2025)
@@ -719,9 +625,9 @@ gh project item-add NUMBER --owner @me --url ISSUE_URL
 - ✅ Easy installation/updates
 - ✅ Superior to custom scripts
 
-**Final Recommendation:**
+**Final Recommendation for AI Agents:**
 
-Use community-maintained extensions (gh-dash, gh-grep, gh-models) + native gh commands instead of custom scripts. Focus energy on using and configuring these tools rather than maintaining custom code.
+Use community-maintained extensions (gh-grep for regex file search, gh-models for AI assistance) + native gh commands instead of custom scripts. These extensions complement native gh CLI with capabilities AI agents need for automated operations.
 
 ---
 

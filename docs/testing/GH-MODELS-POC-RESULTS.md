@@ -183,11 +183,10 @@ gh models run "openai/gpt-4.1" "$PROMPT"
 
 **OpenAI GPT-4.1 Output:**
 
-> The three recommended GitHub CLI extensions are:
+> The two recommended GitHub CLI extensions for AI agents are:
 >
-> 1. **gh-dash**: Provides an interactive terminal dashboard for managing issues and pull requests.
-> 2. **gh-grep**: Enables file searching within repositories using regular expressions.
-> 3. **gh-models**: Offers AI-powered assistance, including access to models for tasks like summarization and code generation.
+> 1. **gh-grep**: Enables file searching within repositories using regular expressions.
+> 2. **gh-models**: Offers AI-powered assistance, including access to models for tasks like summarization and code generation.
 
 **Question 2:** "What search capabilities does GitHub CLI native search have?"
 
