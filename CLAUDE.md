@@ -88,16 +88,16 @@ Each topic has **EXACTLY ONE** authoritative document. All other references link
 
 **Canonical Source Map:**
 
-| Topic                          | Canonical Location                                                                                             | What It Contains                       |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| **Operation Categories**       | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Full details of 5 operation categories |
-| **Tool Selection**             | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Decision trees, when to use what       |
-| **Extension Details**          | [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md)                                           | gh-grep & gh-models complete docs      |
-| **Installation Instructions**  | [GITHUB_CLI_EXTENSIONS.md#quick-installation](/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation)     | How to install extensions              |
-| **Search Syntax**              | [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)                   | Complete qualifier reference (30+)     |
-| **Effectiveness Metrics**      | [GH-MODELS-POC-RESULTS.md](/docs/testing/GH-MODELS-POC-RESULTS.md)                                            | Empirical test results (88% avg)       |
-| **API Reference**              | [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md)         | Complete gh CLI testing (200+ cases)   |
-| **Workflows & Best Practices** | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Common workflows, error handling       |
+| Topic                          | Canonical Location                                                                                        | What It Contains                       |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| **Operation Categories**       | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                               | Full details of 5 operation categories |
+| **Tool Selection**             | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                               | Decision trees, when to use what       |
+| **Extension Details**          | [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md)                                       | gh-grep & gh-models complete docs      |
+| **Installation Instructions**  | [GITHUB_CLI_EXTENSIONS.md#quick-installation](/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation) | How to install extensions              |
+| **Search Syntax**              | [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)               | Complete qualifier reference (30+)     |
+| **Effectiveness Metrics**      | [GH-MODELS-POC-RESULTS.md](/docs/testing/GH-MODELS-POC-RESULTS.md)                                        | Empirical test results (88% avg)       |
+| **API Reference**              | [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md)     | Complete gh CLI testing (200+ cases)   |
+| **Workflows & Best Practices** | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                               | Common workflows, error handling       |
 
 **Core Documents:**
 
