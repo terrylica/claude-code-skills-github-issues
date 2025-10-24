@@ -101,10 +101,6 @@ Complete operational guide and reference documentation available in:
 - [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md) - Extension details
 - [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md) - Complete API reference
 
-## Version
-
-**Current Version:** 4.0.0 (DRY consolidation - production ready)
-
 ## License
 
 MIT License - Copyright (c) 2025 Terry Li

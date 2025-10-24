@@ -3,7 +3,6 @@
 **Purpose:** Comprehensive operational guidance for AI coding agents working with GitHub Issues as a knowledge base
 **Based On:** Empirical testing (2025-10-23) of gh-grep, gh-models, and native gh commands
 **Audience:** AI assistants (Claude, Copilot, etc.) and automated workflows
-**Version:** 4.0.0
 
 > **🤖 Primary Reference for AI Agents**
 >
@@ -939,8 +938,7 @@ REMEMBER
 
 ---
 
-**Document Version:** 1.0.0
-**Last Updated:** 2025-10-23
+**Last Updated:** 2025-10-24
 **Based On:** Empirical testing in /tmp/gh-extensions-test
 **Tested Tools:** gh-grep v1.2.5, gh-models v0.0.25
 **Target Audience:** AI coding agents and automated workflows

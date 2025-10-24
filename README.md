@@ -1,5 +1,8 @@
 # AI Agent Operational Guide: GitHub Issues Knowledge Base
 
+![Version](https://img.shields.io/github/v/release/terrylica/claude-code-skills-github-issues)
+![Last Commit](https://img.shields.io/github/last-commit/terrylica/claude-code-skills-github-issues)
+
 **Purpose:** Comprehensive operational guide for AI coding agents (Claude, Copilot, etc.) to manage engineering knowledge stored in GitHub Issues.
 
 **What This Repository IS:**
@@ -106,6 +109,7 @@ git submodule add https://github.com/terrylica/claude-code-skills-github-issues.
 After installation, verify the plugin is working:
 
 **1. Check Plugin Status:**
+
 ```bash
 /plugin
 ```
@@ -113,6 +117,7 @@ After installation, verify the plugin is working:
 Look for `github-issues-operations` in the installed plugins list.
 
 **2. Verify Skills Loaded:**
+
 ```bash
 /help
 ```
@@ -139,6 +144,7 @@ When you run these commands in Claude Code, the relevant skill should load autom
 **4. Verify Progressive Disclosure:**
 
 Skills load only what you need:
+
 - Using `gh search issues` → Only searching-issues skill activates
 - Using `gh issue create` → Only managing-lifecycle skill activates
 - Using `gh models` → Only ai-assisted-operations skill activates
@@ -427,6 +433,5 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 
 ---
 
-**Version:** 4.0.0
-**Last Updated:** 2025-10-23
+**Last Updated:** 2025-10-24
 **Maintainer:** Terry Li (@terrylica)

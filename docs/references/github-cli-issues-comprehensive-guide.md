@@ -1,7 +1,6 @@
 # GitHub CLI Issues - Comprehensive API Probing Guide
 
-**Version:** 4.0.0
-**Last Updated:** 2025-10-23
+**Last Updated:** 2025-10-24
 **Repository:** https://github.com/terrylica/claude-code-skills-github-issues
 **Test Coverage:** 200+ test cases, 100% pass rate
 
@@ -2004,6 +2003,5 @@ This comprehensive guide documents the complete GitHub CLI issue manipulation ca
 
 ---
 
-**Document Version:** 1.0.0
-**Generated:** 2025-10-23
+**Generated:** 2025-10-24
 **Maintainer:** Terry Li (@terrylica)

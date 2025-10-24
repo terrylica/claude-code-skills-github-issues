@@ -75,5 +75,4 @@ No redundant content. Use links and references instead of copy-paste.
 
 ---
 
-**Version:** 4.0.0
-**Last Updated:** 2025-10-23
+**Last Updated:** 2025-10-24

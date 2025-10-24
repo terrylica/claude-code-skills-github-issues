@@ -25,6 +25,7 @@ Complete guide for installing, using, updating, and uninstalling the GitHub Issu
 ```
 
 This command:
+
 - Fetches the marketplace catalog from GitHub
 - Makes the plugin available for installation
 - No files are installed yet
@@ -106,6 +107,7 @@ The skills load **progressively** - only the relevant skill activates based on y
 ```
 
 Shows:
+
 - Installed plugins
 - Enabled/disabled state
 - Available marketplaces
@@ -214,16 +216,19 @@ Re-enable later:
 **Solutions:**
 
 1. Verify plugin is installed and enabled:
+
    ```bash
    /plugin
    ```
 
 2. Check GitHub CLI is working:
+
    ```bash
    gh auth status
    ```
 
 3. Reinstall the plugin:
+
    ```bash
    /plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
    /plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
@@ -238,6 +243,7 @@ Re-enable later:
 **Solutions:**
 
 1. Check GitHub repository exists and is public:
+
    ```bash
    gh repo view terrylica/claude-code-skills-github-issues
    ```
@@ -260,6 +266,7 @@ Re-enable later:
 1. Skills activate based on context - ensure you're actually working with GitHub Issues operations
 
 2. Check skill paths are correct:
+
    ```bash
    claude plugin validate /path/to/plugin
    ```
@@ -276,17 +283,20 @@ Re-enable later:
 **Solutions:**
 
 1. Completely uninstall first:
+
    ```bash
    /plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
    ```
 
 2. Clear marketplace cache by removing and re-adding:
+
    ```bash
    /plugin marketplace remove terrylica/claude-code-skills-github-issues
    /plugin marketplace add terrylica/claude-code-skills-github-issues
    ```
 
 3. Reinstall fresh:
+
    ```bash
    /plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
    ```
@@ -297,9 +307,7 @@ Re-enable later:
 
 ## Version History
 
-See [CHANGELOG.md](/CHANGELOG.md) for complete version history and update notes.
-
-**Current Version:** 4.0.0
+See [CHANGELOG.md](/CHANGELOG.md) for complete version history and [CLAUDE.md](/CLAUDE.md) for current version.
 
 ---
 
@@ -321,9 +329,7 @@ Add to your project's `.claude/settings.json`:
 
 ```json
 {
-  "extraKnownMarketplaces": [
-    "terrylica/claude-code-skills-github-issues"
-  ],
+  "extraKnownMarketplaces": ["terrylica/claude-code-skills-github-issues"],
   "enabledPlugins": [
     "github-issues-operations@terrylica/claude-code-skills-github-issues"
   ]
@@ -331,6 +337,7 @@ Add to your project's `.claude/settings.json`:
 ```
 
 This automatically:
+
 - Adds the marketplace when team members open the project
 - Installs and enables the plugin
 - Ensures consistent tooling across the team
@@ -367,5 +374,4 @@ To completely remove all traces:
 ---
 
 **Last Updated:** 2025-10-24
-**Plugin Version:** 4.0.0
 **Minimum Claude Code Version:** 2.0.13
