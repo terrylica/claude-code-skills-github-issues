@@ -1,5 +1,6 @@
 # gh-models Proof of Concept - Test Results
 
+**Version:** 4.0.0
 **Date:** 2025-10-23
 **Tested By:** AI Agent (Claude)
 **Test Directory:** `/tmp/gh-models-poc/`

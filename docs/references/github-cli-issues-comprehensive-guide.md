@@ -1,6 +1,6 @@
 # GitHub CLI Issues - Comprehensive API Probing Guide
 
-**Version:** 1.0.0
+**Version:** 4.0.0
 **Last Updated:** 2025-10-23
 **Repository:** https://github.com/terrylica/knowledgebase
 **Test Coverage:** 200+ test cases, 100% pass rate
@@ -821,123 +821,17 @@ gh issue list --limit 100
 
 ---
 
-### Advanced Search - 100% Coverage
+### Advanced Search
 
-#### Search Syntax
-
-```bash
-# General search
-gh issue list --search "keyword"
-
-# Search in title only
-gh issue list --search "bug in:title"
-
-# Search in body only
-gh issue list --search "error in:body"
-
-# Search in both
-gh issue list --search "API in:title,body"
-```
-
-#### State Qualifiers
-
-```bash
-gh issue list --search "is:open"
-gh issue list --search "is:closed"
-```
-
-#### Label Qualifiers
-
-```bash
-# Has label
-gh issue list --search "label:bug"
-
-# Multiple labels
-gh issue list --search "label:bug label:priority:high"
-
-# No labels
-gh issue list --search "no:label"
-```
-
-#### Assignee Qualifiers
-
-```bash
-# Assigned to user
-gh issue list --search "assignee:alice"
-
-# Assigned to me
-gh issue list --search "assignee:@me"
-
-# Unassigned
-gh issue list --search "no:assignee"
-```
-
-#### Date Qualifiers
-
-```bash
-# Created on specific date
-gh issue list --search "created:2025-10-23"
-
-# Created after date
-gh issue list --search "created:>=2025-10-01"
-
-# Created before date
-gh issue list --search "created:<2025-10-01"
-
-# Updated recently
-gh issue list --search "updated:>=2025-10-20"
-
-# Closed after date
-gh issue list --search "closed:>=2025-10-01"
-```
-
-#### Complex Queries
-
-```bash
-# Combine multiple criteria
-gh issue list --search "
-  is:open
-  label:bug
-  no:assignee
-  created:>=2025-10-01
-  in:title,body authentication
-"
-
-# Sort results
-gh issue list --search "is:open sort:created-asc"
-gh issue list --search "is:open sort:updated-desc"
-gh issue list --search "is:open sort:comments-desc"
-```
-
-#### Complete Search Syntax Reference
-
-| Qualifier            | Example                      | Description                |
-| -------------------- | ---------------------------- | -------------------------- |
-| `in:title`           | `bug in:title`               | Search in title            |
-| `in:body`            | `error in:body`              | Search in body             |
-| `in:title,body`      | `API in:title,body`          | Search both                |
-| `is:open`            | `is:open`                    | Open issues                |
-| `is:closed`          | `is:closed`                  | Closed issues              |
-| `label:NAME`         | `label:bug`                  | Has label                  |
-| `no:label`           | `no:label`                   | No labels                  |
-| `assignee:USER`      | `assignee:alice`             | Assigned to user           |
-| `assignee:@me`       | `assignee:@me`               | Assigned to you            |
-| `no:assignee`        | `no:assignee`                | Unassigned                 |
-| `author:USER`        | `author:bob`                 | Created by user            |
-| `created:DATE`       | `created:2025-10-23`         | Created on date            |
-| `created:>=DATE`     | `created:>=2025-10-01`       | Created after              |
-| `created:<DATE`      | `created:<2025-11-01`        | Created before             |
-| `updated:DATE`       | `updated:2025-10-23`         | Updated on date            |
-| `updated:>=DATE`     | `updated:>=2025-10-20`       | Updated after              |
-| `closed:DATE`        | `closed:2025-10-23`          | Closed on date             |
-| `milestone:NAME`     | `milestone:v1.0`             | In milestone               |
-| `sort:created-asc`   | `is:open sort:created-asc`   | Sort by created ascending  |
-| `sort:updated-desc`  | `is:open sort:updated-desc`  | Sort by updated descending |
-| `sort:comments-desc` | `is:open sort:comments-desc` | Sort by comment count      |
+**Complete Search Syntax Documentation:** See [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md) for:
+- Complete search syntax reference (30+ qualifiers)
+- State, label, assignee, date, and milestone qualifiers
+- Complex query examples
+- Sort options
+- Quick start guide
 
 **Test Results:**
-
-- ✅ All search qualifiers tested
+- ✅ All search qualifiers tested (100% coverage)
 - ✅ Complex queries work
 - ✅ Date filtering accurate
 - ✅ Sort options functional

@@ -2,7 +2,7 @@
 
 **Date:** 2025-10-23
 **Status:** Empirically tested and verified
-**Version:** 2.0.0
+**Version:** 4.0.0
 
 > **🔌 Extension Operations Guide**
 >
@@ -631,6 +631,6 @@ Use community-maintained extensions (gh-grep for regex file search, gh-models fo
 
 ---
 
-**Version:** 2.0.0
+**Version:** 4.0.0
 **Last Updated:** 2025-10-23
 **Test Status:** ✅ All recommended extensions empirically tested and verified

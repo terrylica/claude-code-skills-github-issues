@@ -51,55 +51,13 @@
 
 This guide provides empirically-tested workflows for **5 categories** of operations:
 
-#### 1. AI-Powered Operations (gh-models)
+1. **AI-Powered Operations** (gh-models) - Issue summarization, auto-labeling, Q&A, documentation generation
+2. **File Search Operations** (gh-grep) - Regex-based file search, multi-repository search, pattern detection
+3. **Issue Search & Discovery** (native gh CLI) - Content search, complex filtering (30+ qualifiers), metadata queries
+4. **Issue Lifecycle Operations** (native gh CLI) - CRUD operations, state management, comments, bulk processing
+5. **Label & Milestone Management** (native gh CLI) - Label/milestone CRUD, cloning, batch operations
 
-- Issue summarization (94% effectiveness)
-- Auto-labeling suggestions (96% accuracy)
-- Knowledge base Q&A (88% relevance)
-- Documentation generation (91% quality)
-- Batch processing (80% effectiveness)
-- Model inference (29+ models available)
-- Prompt template testing
-- Evaluation generation
-
-#### 2. File Search Operations (gh-grep)
-
-- Regex-based file search (Go regex support)
-- Documentation file search
-- Code example location
-- Configuration file discovery
-- Pattern occurrence counting
-- Error pattern detection
-- Multi-repository search
-
-#### 3. Issue Search & Discovery (native gh)
-
-- Issue content search (title/body/comments)
-- Complex filtering (30+ qualifiers)
-- Metadata filtering (labels, dates, users, state, milestones)
-- Sorting by engagement metrics
-- JSON output for automation
-- Date range queries
-- Boolean search operators
-
-#### 4. Issue Lifecycle Operations (native gh)
-
-- Create issues (with templates)
-- Read issues (view, list, status)
-- Update issues (edit title, body, metadata)
-- Delete issues (with confirmation)
-- State management (open, close, reopen, transfer)
-- Comment operations (add, edit, delete)
-- Assignment operations (assign, unassign)
-- Bulk operations (via xargs/loops)
-
-#### 5. Label & Milestone Management (native gh)
-
-- Label CRUD (create, read, update, delete)
-- Label cloning across repositories
-- Batch label application
-- Milestone creation and management (via gh api)
-- Label-based automation workflows
+**Full Details:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
 
 ### Tool Ecosystem
 
@@ -128,6 +86,19 @@ This guide provides empirically-tested workflows for **5 categories** of operati
 
 Each topic has **EXACTLY ONE** authoritative document. All other references link to it.
 
+**Canonical Source Map:**
+
+| Topic | Canonical Location | What It Contains |
+|-------|-------------------|------------------|
+| **Operation Categories** | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` | Full details of 5 operation categories |
+| **Tool Selection** | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` | Decision trees, when to use what |
+| **Extension Details** | `/docs/research/GITHUB_CLI_EXTENSIONS.md` | gh-grep & gh-models complete docs |
+| **Installation Instructions** | `/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation` | How to install extensions |
+| **Search Syntax** | `/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md` | Complete qualifier reference (30+) |
+| **Effectiveness Metrics** | `/docs/testing/GH-MODELS-POC-RESULTS.md` | Empirical test results (88% avg) |
+| **API Reference** | `/docs/references/github-cli-issues-comprehensive-guide.md` | Complete gh CLI testing (200+ cases) |
+| **Workflows & Best Practices** | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` | Common workflows, error handling |
+
 **Core Documents:**
 
 1. `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` - Complete operational guide (primary reference)
@@ -142,6 +113,9 @@ Each topic has **EXACTLY ONE** authoritative document. All other references link
 
 ❌ **Bad:** Copy search syntax to multiple files
 ✅ **Good:** Link to `GITHUB_NATIVE_SEARCH_CAPABILITIES.md`
+
+❌ **Bad:** Duplicate installation instructions in 4 files
+✅ **Good:** Link to `GITHUB_CLI_EXTENSIONS.md#quick-installation`
 
 ---
 
@@ -263,9 +237,4 @@ Before creating new document:
 - Labels → `gh label` (native)
 - Milestones → `gh api`
 
-**Effectiveness Metrics:**
-
-- Overall AI assistance: 88/100
-- Issue summarization: 94%
-- Auto-labeling: 96%
-- Knowledge Q&A: 88%
+**Effectiveness Metrics:** See [GH-MODELS-POC-RESULTS.md](/docs/testing/GH-MODELS-POC-RESULTS.md) for complete empirical test results and effectiveness metrics.

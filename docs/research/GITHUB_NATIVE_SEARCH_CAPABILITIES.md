@@ -3,7 +3,7 @@
 **Quick Start + Comprehensive Reference**
 **Date:** 2025-10-23
 **Status:** Complete research based on official documentation
-**Version:** 2.0.0
+**Version:** 4.0.0
 
 > **🔍 Issue Search Operations Reference**
 >

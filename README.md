@@ -41,67 +41,21 @@
 
 This guide documents **5 categories of operations** for AI agents managing knowledge in GitHub Issues:
 
-#### 1. AI-Powered Operations (via gh-models - 88% avg effectiveness)
+1. **AI-Powered Operations** (gh-models) - Issue summarization, auto-labeling, Q&A, documentation generation
+2. **File Search Operations** (gh-grep) - Regex-based file search, multi-repository search
+3. **Issue Search & Discovery** (native gh CLI) - Content search, complex filtering, metadata queries
+4. **Issue Lifecycle Operations** (native gh CLI) - CRUD operations, state management, comments, assignments
+5. **Label & Milestone Management** (native gh CLI) - Label/milestone CRUD, cloning, batch operations
 
-- **Issue summarization** (94% effectiveness, 3-5 sec)
-- **Auto-labeling suggestions** (96% accuracy, 3 sec)
-- **Knowledge base Q&A** (88% relevance, 4 sec)
-- **Documentation generation** (91% quality, 5 sec)
-- **Batch processing** (80% effectiveness, 3 sec/issue)
-- **Model inference** (29+ models: OpenAI GPT-4, Meta Llama, Microsoft Phi, Mistral, DeepSeek, Cohere, AI21)
-- **Prompt template testing**
-- **Evaluation generation**
-
-#### 2. File Search Operations (via gh-grep - regex-enabled)
-
-- **Regex-based file search** (full Go regex support, unlike native gh search)
-- **Documentation file search** across repositories
-- **Code example location** with pattern matching
-- **Configuration file discovery**
-- **Pattern occurrence counting**
-- **Error pattern detection** in logs and code
-- **Multi-repository search** (search across multiple repos simultaneously)
-
-#### 3. Issue Search & Discovery (native gh CLI)
-
-- **Issue content search** (title, body, comments)
-- **Complex filtering** (30+ qualifiers: labels, dates, users, state, milestones)
-- **Metadata filtering** and sorting by engagement metrics
-- **JSON output** for automation (21 fields per issue)
-- **Date range queries** with flexible operators
-- **Boolean search operators** (AND, OR, NOT)
-- **Sort by:** comments, reactions, created, updated
-
-#### 4. Issue Lifecycle Operations (native gh CLI)
-
-- **Create issues** (with templates, labels, assignees, milestones)
-- **Read issues** (view, list, status, JSON output)
-- **Update issues** (edit title, body, metadata)
-- **Delete issues** (with confirmation workflows)
-- **State management** (open, close, reopen, transfer)
-- **Comment operations** (add, edit, delete)
-- **Assignment operations** (assign, unassign multiple users)
-- **Bulk operations** (via xargs/loops for batch processing)
-
-#### 5. Label & Milestone Management (native gh CLI)
-
-- **Label CRUD** (create, read, update, delete)
-- **Label cloning** across repositories
-- **Batch label application** to multiple issues
-- **Milestone creation and management** (via gh api)
-- **Label-based automation** workflows
+**Complete Details:** See [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md) for full operation reference, tool selection decision trees, and empirically-tested workflows.
 
 ---
 
 ## Getting Started
 
-### Install GitHub CLI Extensions
+### Prerequisites
 
-```bash
-# Install recommended extensions
-gh extension install k1LoW/gh-grep      # File search with regex
-gh extension install github/gh-models   # AI assistance
-```
+**Install GitHub CLI extensions** - See [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation) for installation instructions.
 
 ### Search Your Knowledge Base
 
@@ -209,7 +163,7 @@ See: [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_
 - **Outdated extensions identified** (gh-label: 2022, gh-milestone: 2023)
 - **Recommended alternatives** to custom scripts
 
-See: [GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md](/docs/research/GITHUB_CLI_EXTENSIONS_ECOSYSTEM.md)
+See: [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md)
 
 ### GitHub CLI Capabilities
 
