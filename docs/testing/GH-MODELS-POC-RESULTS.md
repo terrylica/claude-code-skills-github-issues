@@ -1,8 +1,15 @@
 # gh-models Proof of Concept - Test Results
 
-**Date:** 2025-10-23  
-**Tested By:** AI Agent (Claude)  
+**Date:** 2025-10-23
+**Tested By:** AI Agent (Claude)
 **Test Directory:** `/tmp/gh-models-poc/`
+
+> **🧪 AI Operations Proof of Concept**
+>
+> Empirical testing results for gh-models AI assistance (88% avg effectiveness).
+> Validates AI-powered operations documented in operational guide.
+>
+> **Complete Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
 
 ---
 

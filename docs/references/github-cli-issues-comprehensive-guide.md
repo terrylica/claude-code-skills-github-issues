@@ -5,6 +5,13 @@
 **Repository:** https://github.com/terrylica/knowledgebase
 **Test Coverage:** 200+ test cases, 100% pass rate
 
+> **📚 Complete API Reference (200+ Test Cases)**
+>
+> Empirically-tested reference for all GitHub CLI issue operations. Each operation
+> verified with actual test cases. Part of AI agent operational guide.
+>
+> **Complete Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
+
 ---
 
 ## Table of Contents

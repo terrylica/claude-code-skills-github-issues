@@ -1,6 +1,15 @@
-# Knowledge Base
+# AI Agent Operational Guide: GitHub Issues Knowledge Base
 
-Engineering knowledge base for team collaboration, documentation, and workflow automation.
+**Purpose:** Comprehensive operational guide for AI coding agents (Claude, Copilot, etc.) to manage engineering knowledge stored in GitHub Issues.
+
+**What This Repository IS:**
+- Complete operational guide for AI agents performing GitHub Issues operations
+- Empirically-tested workflows and decision trees (200+ test cases, 88% avg AI effectiveness)
+- Tool selection guidance (native gh CLI, extensions, AI models)
+
+**What This Repository IS NOT:**
+- The knowledge base itself (that's in GitHub Issues - the actual issues you create)
+- Generic GitHub CLI documentation (see official docs for that)
 
 **Repository:** https://github.com/terrylica/knowledgebase
 
@@ -15,33 +24,80 @@ Engineering knowledge base for team collaboration, documentation, and workflow a
 
 ---
 
+> **🤖 For AI Agents:**
+>
+> This repository documents operations for managing knowledge in GitHub Issues.
+> The actual knowledge base lives in Issues. This is your operational manual.
+>
+> **Quick Start:** See [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md) for complete tool selection decision trees and workflows.
+
+---
+
 ## What This Repository Contains
 
-### 1. Knowledge Base Platform Research
+### AI Agent Operations Documented
 
-Comprehensive analysis of using GitHub Issues as a knowledge base:
+This guide documents **6 categories of operations** for AI agents managing knowledge in GitHub Issues:
 
-- Native GitHub CLI search capabilities
-- GitHub CLI extensions ecosystem
-- Complete search syntax and filtering
-- Comprehensive testing (200+ test cases)
+#### 1. AI-Powered Operations (via gh-models - 88% avg effectiveness)
 
-### 2. GitHub CLI Extensions
+- **Issue summarization** (94% effectiveness, 3-5 sec)
+- **Auto-labeling suggestions** (96% accuracy, 3 sec)
+- **Knowledge base Q&A** (88% relevance, 4 sec)
+- **Documentation generation** (91% quality, 5 sec)
+- **Batch processing** (80% effectiveness, 3 sec/issue)
+- **Model inference** (29+ models: OpenAI GPT-4, Meta Llama, Microsoft Phi, Mistral, DeepSeek, Cohere, AI21)
+- **Prompt template testing**
+- **Evaluation generation**
 
-Tested and recommended extensions for issue management:
+#### 2. File Search Operations (via gh-grep - regex-enabled)
 
-- **gh-dash** - Interactive TUI dashboard (9k stars, actively maintained)
-- **gh-grep** - File search with regex support (211 stars, actively maintained)
-- **gh-models** - AI-powered assistance (official GitHub extension)
+- **Regex-based file search** (full Go regex support, unlike native gh search)
+- **Documentation file search** across repositories
+- **Code example location** with pattern matching
+- **Configuration file discovery**
+- **Pattern occurrence counting**
+- **Error pattern detection** in logs and code
+- **Multi-repository search** (search across multiple repos simultaneously)
 
-### 3. Operational Guides
+#### 3. Issue Search & Discovery (native gh CLI)
 
-Documentation for both humans and AI agents:
+- **Issue content search** (title, body, comments)
+- **Complex filtering** (30+ qualifiers: labels, dates, users, state, milestones)
+- **Metadata filtering** and sorting by engagement metrics
+- **JSON output** for automation (21 fields per issue)
+- **Date range queries** with flexible operators
+- **Boolean search operators** (AND, OR, NOT)
+- **Sort by:** comments, reactions, created, updated
 
-- Native GitHub CLI commands
-- Extension usage patterns
-- Common workflows
-- Best practices and error handling
+#### 4. Interactive Management (gh-dash TUI - for humans, NOT automation)
+
+- **Terminal UI dashboard** for visual issue browsing
+- **Multi-action support** (view, comment, merge, diff, checkout, review)
+- **Multi-repository management** with customizable views
+- **YAML-based configuration** (~/.config/gh-dash/config.yml)
+- **Keyboard-driven navigation** (no mouse needed)
+- **Quick triage and assignment** workflows
+- **⚠️ Note:** Requires TTY - use native gh commands for automation
+
+#### 5. Issue Lifecycle Operations (native gh CLI)
+
+- **Create issues** (with templates, labels, assignees, milestones)
+- **Read issues** (view, list, status, JSON output)
+- **Update issues** (edit title, body, metadata)
+- **Delete issues** (with confirmation workflows)
+- **State management** (open, close, reopen, transfer)
+- **Comment operations** (add, edit, delete)
+- **Assignment operations** (assign, unassign multiple users)
+- **Bulk operations** (via xargs/loops for batch processing)
+
+#### 6. Label & Milestone Management (native gh CLI)
+
+- **Label CRUD** (create, read, update, delete)
+- **Label cloning** across repositories
+- **Batch label application** to multiple issues
+- **Milestone creation and management** (via gh api)
+- **Label-based automation** workflows
 
 ---
 
@@ -241,6 +297,54 @@ Quick tool selection:
 - AI assistance → `gh models`
 - Label operations → `gh label` (native)
 - Milestone operations → `gh api repos/.../milestones`
+
+---
+
+## Demonstration: Claude Code Tips Knowledge Base
+
+This repository **demonstrates the documented system** by storing our team's Claude Code tips and tricks as GitHub Issues.
+
+**Dual Purpose:**
+1. **Working example** of all documented AI agent workflows
+2. **Actual knowledge base** for our team's Claude Code expertise
+
+**Why This Approach:**
+- Shows real-world usage of gh-models auto-labeling
+- Demonstrates native search capabilities with actual content
+- Provides templates for knowledge base setup
+- Serves as proof-of-concept for the entire system
+
+**Knowledge Base Labels:**
+
+| Label | Color | Description |
+|-------|-------|-------------|
+| `claude-code` | `0366d6` | Claude Code tips and tricks |
+| `github-cli` | `2ea44f` | GitHub CLI workflows |
+| `workflow` | `fbca04` | Development workflows |
+| `tips` | `c5def5` | Tips and best practices |
+| `troubleshooting` | `d93f0b` | Common issues and solutions |
+| `how-to` | `bfdadc` | How-to guides |
+| `reference` | `d4c5f9` | Reference documentation |
+| `example` | `c2e0c6` | Code examples |
+| `git` | `5319e7` | Git workflows |
+| `terminal` | `0e8a16` | Terminal setup and usage |
+| `mcp` | `f9d0c4` | MCP server integration |
+
+**Example Operations:**
+
+```bash
+# Search Claude Code tips
+gh search issues "plan mode" --repo=terrylica/knowledgebase --label=claude-code
+
+# Create new tip with auto-suggested labels (using gh-models)
+gh issue create --title "Claude Code: Using Plan Mode" \
+  --body-file tip.md \
+  --repo=terrylica/knowledgebase
+
+# Get AI-suggested labels for the new issue
+BODY=$(gh issue view 1 --json body --jq .body)
+gh models run "openai/gpt-4.1" "Suggest 2-3 labels from this list: claude-code, github-cli, workflow, tips, troubleshooting, how-to, reference, example, git, terminal, mcp. Issue body: $BODY"
+```
 
 ---
 

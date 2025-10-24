@@ -5,6 +5,14 @@
 **Audience:** AI assistants (Claude, Copilot, etc.) and automated workflows
 **Version:** 1.0.0
 
+> **🤖 Primary Reference for AI Agents**
+>
+> This is the complete operational guide for AI coding agents managing knowledge in GitHub Issues.
+> Contains tool selection decision trees, empirically-tested workflows, and comprehensive operation references.
+>
+> **What this guide documents:** How to perform operations on GitHub Issues (the knowledge base backend)
+> **What this guide is NOT:** The knowledge base itself - that lives in the actual Issues you create
+
 ---
 
 ## Table of Contents

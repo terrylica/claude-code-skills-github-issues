@@ -5,6 +5,13 @@
 **Status:** Complete research based on official documentation
 **Version:** 2.0.0
 
+> **🔍 Issue Search Operations Reference**
+>
+> Complete reference for native GitHub CLI issue search operations (30+ qualifiers,
+> filtering, sorting). Part of AI agent operational guide for knowledge base management.
+>
+> **Complete Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
+
 ---
 
 ## Table of Contents

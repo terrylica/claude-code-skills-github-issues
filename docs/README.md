@@ -13,6 +13,16 @@ Complete documentation for the knowledge base project.
 
 ---
 
+> **📖 Documentation Purpose:**
+>
+> These guides document AI agent operations for managing knowledge in GitHub Issues.
+> Each guide provides empirically-tested workflows, tool selection decision trees,
+> and comprehensive operation references.
+>
+> **For AI Agents:** Start with [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
+
+---
+
 ## Guides
 
 Practical how-to guides for immediate use:

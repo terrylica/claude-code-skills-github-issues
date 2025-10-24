@@ -4,6 +4,14 @@
 **Status:** Empirically tested and verified
 **Version:** 2.0.0
 
+> **🔌 Extension Operations Guide**
+>
+> Documents 3 recommended GitHub CLI extensions for AI agent operations: gh-dash (interactive TUI),
+> gh-grep (regex file search), gh-models (AI assistance). Part of complete operational guide for
+> managing knowledge in GitHub Issues.
+>
+> **Complete Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
+
 ---
 
 ## Executive Summary
