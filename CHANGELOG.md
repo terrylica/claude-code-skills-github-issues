@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Rationale
 
 Based on comprehensive research (20+ sources, 6 major OSS projects analyzed):
+
 - **Industry consensus:** No major project embeds versions in README.md or individual docs
 - **Automation-friendly:** Shields.io badges auto-update from releases
 - **Single source of truth:** Prevents maintenance burden and synchronization issues
@@ -35,6 +36,7 @@ Based on comprehensive research (20+ sources, 6 major OSS projects analyzed):
 ### Technical Details
 
 **Files modified:**
+
 - `.claude/CLAUDE.md` (global user memory) - Added Version Management policy
 - `README.md` - Added badges, removed version footer
 - `INSTALLATION.md` - Removed versions, added CLAUDE.md reference
