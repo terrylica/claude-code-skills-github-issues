@@ -225,7 +225,7 @@ gh label clone SOURCE_REPO       # Clone labels from another repo
 #### Empirical Test Results
 
 ```bash
-$ gh label list --repo terrylica/knowledgebase --limit 10
+$ gh label list --repo terrylica/claude-code-skills-github-issues --limit 10
 
 # Result: ✅ SUCCESS
 bug                  Something isn't working          #d73a4a

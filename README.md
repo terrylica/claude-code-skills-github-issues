@@ -13,7 +13,7 @@
 - The knowledge base itself (that's in GitHub Issues - the actual issues you create)
 - Generic GitHub CLI documentation (see official docs for that)
 
-**Repository:** https://github.com/terrylica/knowledgebase
+**Repository:** https://github.com/terrylica/claude-code-skills-github-issues
 
 ---
 
@@ -23,6 +23,34 @@
 - 🔍 **[Search Guide](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Native GitHub CLI search (quick start + complete reference)
 - 🤖 **[AI Agent Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Operational guide for AI coding agents
 - 🔌 **[Extensions](/docs/research/GITHUB_CLI_EXTENSIONS.md)** - GitHub CLI extensions tested and recommended
+
+---
+
+## Installation
+
+### Global Installation (Claude Code Skills)
+
+Install this operational guide as Claude Code Skills for automatic context loading:
+
+```bash
+/plugin marketplace add terrylica/claude-code-skills-github-issues
+```
+
+This makes all 5 GitHub Issues operation skills available across your Claude Code sessions with progressive disclosure (saves 73-95% context).
+
+### Project-Local Installation
+
+Clone into your project for team-wide access:
+
+```bash
+git clone https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
+```
+
+Or add as git submodule:
+
+```bash
+git submodule add https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
+```
 
 ---
 
@@ -61,7 +89,7 @@ This guide documents **5 categories of operations** for AI agents managing knowl
 
 ```bash
 # Search issues with native GitHub CLI
-gh search issues "authentication" --repo=terrylica/knowledgebase
+gh search issues "authentication" --repo=terrylica/claude-code-skills-github-issues
 
 # Search current repository
 gh issue list --search "authentication"
@@ -266,12 +294,12 @@ This repository **demonstrates the documented system** by storing our team's Cla
 
 ```bash
 # Search Claude Code tips
-gh search issues "plan mode" --repo=terrylica/knowledgebase --label=claude-code
+gh search issues "plan mode" --repo=terrylica/claude-code-skills-github-issues --label=claude-code
 
 # Create new tip with auto-suggested labels (using gh-models)
 gh issue create --title "Claude Code: Using Plan Mode" \
   --body-file tip.md \
-  --repo=terrylica/knowledgebase
+  --repo=terrylica/claude-code-skills-github-issues
 
 # Get AI-suggested labels for the new issue
 BODY=$(gh issue view 1 --json body --jq .body)
@@ -296,7 +324,7 @@ This repository serves as a knowledge base and toolkit for team collaboration.
 
 ## Links
 
-- **Repository:** https://github.com/terrylica/knowledgebase
+- **Repository:** https://github.com/terrylica/claude-code-skills-github-issues
 - **GitHub CLI:** https://cli.github.com/
 - **GitHub Search Syntax:** https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests
 - **gh-grep:** https://github.com/k1LoW/gh-grep

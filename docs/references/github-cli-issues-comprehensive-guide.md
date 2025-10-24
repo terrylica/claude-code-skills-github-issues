@@ -2,7 +2,7 @@
 
 **Version:** 4.0.0
 **Last Updated:** 2025-10-23
-**Repository:** https://github.com/terrylica/knowledgebase
+**Repository:** https://github.com/terrylica/claude-code-skills-github-issues
 **Test Coverage:** 200+ test cases, 100% pass rate
 
 > **📚 Complete API Reference (200+ Test Cases)**
@@ -70,7 +70,7 @@ This document provides complete documentation of GitHub CLI (`gh`) issue manipul
 
 ### Repository Information
 
-- **URL:** https://github.com/terrylica/knowledgebase
+- **URL:** https://github.com/terrylica/claude-code-skills-github-issues
 - **Type:** Public repository
 - **Purpose:** Knowledge base for team collaboration
 - **Test Issues Created:** 60+
@@ -146,7 +146,7 @@ gh issue create \
   --milestone "v1.0"
 ```
 
-**Result:** ✅ Issue created at https://github.com/terrylica/knowledgebase/issues/19
+**Result:** ✅ Issue created at https://github.com/terrylica/claude-code-skills-github-issues/issues/19
 
 #### Body from File
 
@@ -995,7 +995,7 @@ echo "Comment content" | gh issue comment 19 --body-file -
 
 **Result:** Comment added successfully
 
-- Example: https://github.com/terrylica/knowledgebase/issues/3#issuecomment-3438446780
+- Example: https://github.com/terrylica/claude-code-skills-github-issues/issues/3#issuecomment-3438446780
 
 ### Comment Management - 100% Coverage
 
@@ -1188,7 +1188,7 @@ Hidden content here
 🚀 ✨ 🎉
 ```
 
-**Example Comment:** https://github.com/terrylica/knowledgebase/issues/6#issuecomment-3438450628
+**Example Comment:** https://github.com/terrylica/claude-code-skills-github-issues/issues/6#issuecomment-3438450628
 
 **Test Results:**
 
@@ -1213,7 +1213,7 @@ Hidden content here
 Related to #19
 Fixes #30
 Closes #32
-See also terrylica/knowledgebase#13
+See also terrylica/claude-code-skills-github-issues#13
 ```
 
 **Behavior:**
@@ -1239,7 +1239,7 @@ cc @alice @bob
 #### Commit References
 
 ```markdown
-See commit terrylica/knowledgebase@abc123
+See commit terrylica/claude-code-skills-github-issues@abc123
 Fixed in abc123
 ```
 
@@ -1248,7 +1248,7 @@ Fixed in abc123
 - Links to commit
 - Hover shows commit preview
 
-**Example:** https://github.com/terrylica/knowledgebase/issues/9#issuecomment-3438451204
+**Example:** https://github.com/terrylica/claude-code-skills-github-issues/issues/9#issuecomment-3438451204
 
 **Test Results:**
 
@@ -1614,14 +1614,14 @@ All scripts available at `/tmp/gh-automation-scripts/`
 
 ```bash
 # Good: Explicit repo
-gh issue list --repo terrylica/knowledgebase
+gh issue list --repo terrylica/claude-code-skills-github-issues
 
 # Better: Set default
-export GH_REPO="terrylica/knowledgebase"
+export GH_REPO="terrylica/claude-code-skills-github-issues"
 gh issue list
 
 # Best: Use in scripts
-REPO="terrylica/knowledgebase"
+REPO="terrylica/claude-code-skills-github-issues"
 gh issue list --repo "$REPO"
 ```
 
@@ -1855,7 +1855,7 @@ gh api graphql --paginate -f query='
 #### Create Issue
 
 ```bash
-gh api repos/terrylica/knowledgebase/issues \
+gh api repos/terrylica/claude-code-skills-github-issues/issues \
   --method POST \
   -f title="API Created Issue" \
   -f body="Created via REST API" \
@@ -1866,7 +1866,7 @@ gh api repos/terrylica/knowledgebase/issues \
 #### Update Issue
 
 ```bash
-gh api repos/terrylica/knowledgebase/issues/19 \
+gh api repos/terrylica/claude-code-skills-github-issues/issues/19 \
   --method PATCH \
   -f title="Updated Title" \
   -f body="Updated body"
@@ -1875,7 +1875,7 @@ gh api repos/terrylica/knowledgebase/issues/19 \
 #### Lock Issue
 
 ```bash
-gh api repos/terrylica/knowledgebase/issues/19/lock \
+gh api repos/terrylica/claude-code-skills-github-issues/issues/19/lock \
   --method PUT \
   -f lock_reason="spam"
 ```
@@ -1883,7 +1883,7 @@ gh api repos/terrylica/knowledgebase/issues/19/lock \
 #### Add Reaction
 
 ```bash
-gh api repos/terrylica/knowledgebase/issues/19/reactions \
+gh api repos/terrylica/claude-code-skills-github-issues/issues/19/reactions \
   --method POST \
   -f content="rocket"
 ```
@@ -1891,7 +1891,7 @@ gh api repos/terrylica/knowledgebase/issues/19/reactions \
 #### Timeline Events
 
 ```bash
-gh api repos/terrylica/knowledgebase/issues/19/timeline
+gh api repos/terrylica/claude-code-skills-github-issues/issues/19/timeline
 ```
 
 **Complete API Documentation:** 15+ API functions in `/tmp/gh-automation-scripts/api-integration-examples.sh`
@@ -1994,7 +1994,7 @@ This comprehensive guide documents the complete GitHub CLI issue manipulation ca
 
 **Status: PRODUCTION READY ✅**
 
-**Test Repository:** https://github.com/terrylica/knowledgebase
+**Test Repository:** https://github.com/terrylica/claude-code-skills-github-issues
 
 **For Questions or Issues:**
 

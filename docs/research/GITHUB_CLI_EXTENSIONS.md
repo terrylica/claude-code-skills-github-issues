@@ -119,14 +119,14 @@ gh extension install k1LoW/gh-grep
 ```bash
 # Test 1: Search for "authentication" in files
 $ gh grep "authentication" --owner terrylica --repo knowledgebase --line-number
-terrylica/knowledgebase:README.md:44:gh search issues "authentication"
-terrylica/knowledgebase:docs/guides/NATIVE_SEARCH_QUICK_START.md:33:gh issue list --search "authentication"
+terrylica/claude-code-skills-github-issues:README.md:44:gh search issues "authentication"
+terrylica/claude-code-skills-github-issues:docs/guides/NATIVE_SEARCH_QUICK_START.md:33:gh issue list --search "authentication"
 [... 25+ matches found ...]
 
 # Test 2: Regex search
 $ gh grep "search.*capabilities" --owner terrylica --repo knowledgebase --name-only
-terrylica/knowledgebase:README.md
-terrylica/knowledgebase:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
+terrylica/claude-code-skills-github-issues:README.md
+terrylica/claude-code-skills-github-issues:docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md
 ```
 
 **✅ All tests PASSED!**
@@ -280,7 +280,7 @@ Native `gh` has full label support - **no extension needed!**
 
 ```bash
 # List labels
-gh label list --repo terrylica/knowledgebase
+gh label list --repo terrylica/claude-code-skills-github-issues
 
 # Create label
 gh label create "priority:critical" --color "ff0000" --description "Critical priority"
@@ -298,7 +298,7 @@ gh label clone source-repo/name
 **Test Result:**
 
 ```bash
-$ gh label list --repo terrylica/knowledgebase --limit 10
+$ gh label list --repo terrylica/claude-code-skills-github-issues --limit 10
 bug                Something isn't working          #d73a4a
 documentation      Improvements or additions        #0075ca
 enhancement        New feature or request           #a2eeef
@@ -318,23 +318,23 @@ Native `gh` doesn't have milestone commands, use `gh api`:
 
 ```bash
 # List milestones
-gh api repos/terrylica/knowledgebase/milestones
+gh api repos/terrylica/claude-code-skills-github-issues/milestones
 
 # Create milestone
-gh api repos/terrylica/knowledgebase/milestones \
+gh api repos/terrylica/claude-code-skills-github-issues/milestones \
   -f title="v2.0" \
   -f description="Version 2.0 release" \
   -f due_on="2025-12-31T23:59:59Z"
 
 # Get milestone
-gh api repos/terrylica/knowledgebase/milestones/NUMBER
+gh api repos/terrylica/claude-code-skills-github-issues/milestones/NUMBER
 
 # Update milestone
-gh api -X PATCH repos/terrylica/knowledgebase/milestones/NUMBER \
+gh api -X PATCH repos/terrylica/claude-code-skills-github-issues/milestones/NUMBER \
   -f state="closed"
 
 # Delete milestone
-gh api -X DELETE repos/terrylica/knowledgebase/milestones/NUMBER
+gh api -X DELETE repos/terrylica/claude-code-skills-github-issues/milestones/NUMBER
 ```
 
 **Verdict:** Use `gh api` for milestones (gh-milestone extension is outdated)

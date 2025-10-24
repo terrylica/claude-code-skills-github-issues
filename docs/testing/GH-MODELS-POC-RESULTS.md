@@ -168,7 +168,7 @@ Fetch README.md content and ask specific questions.
 ### Command
 
 ```bash
-README_CONTENT=$(gh api repos/terrylica/knowledgebase/contents/README.md --jq '.content' | base64 -d | head -100)
+README_CONTENT=$(gh api repos/terrylica/claude-code-skills-github-issues/contents/README.md --jq '.content' | base64 -d | head -100)
 
 PROMPT="Based on this content from our knowledge base README:
 $README_CONTENT
@@ -227,7 +227,7 @@ Generate documentation automatically from issues and content.
 **Command:**
 
 ```bash
-ISSUES=$(gh issue list --repo terrylica/knowledgebase --limit 5 --state all --json number,title,state,labels)
+ISSUES=$(gh issue list --repo terrylica/claude-code-skills-github-issues --limit 5 --state all --json number,title,state,labels)
 
 PROMPT="Based on these GitHub issues: $ISSUES
 Generate a brief status report in markdown format with:
@@ -294,7 +294,7 @@ Analyze 5 open issues and suggest priority levels.
 ### Command
 
 ```bash
-gh issue list --repo terrylica/knowledgebase --state open --limit 5 --json number,title,body,labels | \
+gh issue list --repo terrylica/claude-code-skills-github-issues --state open --limit 5 --json number,title,body,labels | \
 jq -c '.[]' | while read -r issue; do
     PROMPT="Analyze this issue and suggest if it should be priority:high, priority:medium, or priority:low.
     Respond with ONLY the priority level, nothing else.
@@ -409,7 +409,7 @@ done
 
 ```bash
 # Get today's issues and summarize
-gh search issues "repo:terrylica/knowledgebase created:$(date +%Y-%m-%d)" --json number,title,body | \
+gh search issues "repo:terrylica/claude-code-skills-github-issues created:$(date +%Y-%m-%d)" --json number,title,body | \
 jq -c '.[]' | while read -r issue; do
     echo "=== Issue #$(echo "$issue" | jq -r '.number') ==="
     gh models run "openai/gpt-4.1" "Summarize in 1 sentence: $(echo "$issue" | jq -r '.title + " - " + .body')"
@@ -435,7 +435,7 @@ done
 
 ```bash
 # Generate weekly report
-ISSUES=$(gh search issues "repo:terrylica/knowledgebase updated:>=$(date -d '7 days ago' +%Y-%m-%d)" --json number,title,state,labels)
+ISSUES=$(gh search issues "repo:terrylica/claude-code-skills-github-issues updated:>=$(date -d '7 days ago' +%Y-%m-%d)" --json number,title,state,labels)
 gh models run "openai/gpt-4.1" "Generate a weekly status report from: $ISSUES"
 ```
 
@@ -446,7 +446,7 @@ gh models run "openai/gpt-4.1" "Generate a weekly status report from: $ISSUES"
 ```bash
 # Interactive Q&A
 ask_kb() {
-    CONTENT=$(gh api repos/terrylica/knowledgebase/contents/README.md --jq '.content' | base64 -d)
+    CONTENT=$(gh api repos/terrylica/claude-code-skills-github-issues/contents/README.md --jq '.content' | base64 -d)
     gh models run "openai/gpt-4.1" "Based on this knowledge base: $CONTENT Answer: $1"
 }
 

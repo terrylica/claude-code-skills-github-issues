@@ -29,7 +29,7 @@
 │                   DUAL NATURE EXPLAINED                      │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  THIS REPOSITORY (terrylica/knowledgebase)                   │
+│  THIS REPOSITORY (terrylica/claude-code-skills-github-issues)                   │
 │  ├─ README.md, docs/                                         │
 │  ├─ Purpose: Operational guide for AI agents                 │
 │  └─ Content: How to perform operations                       │
@@ -134,13 +134,13 @@ Each topic has **EXACTLY ONE** authoritative document. All other references link
 **Search for knowledge:**
 
 ```bash
-gh search issues "claude code plan mode" --repo=terrylica/knowledgebase
+gh search issues "claude code plan mode" --repo=terrylica/claude-code-skills-github-issues
 ```
 
 **Add knowledge:**
 
 ```bash
-gh issue create --repo=terrylica/knowledgebase \
+gh issue create --repo=terrylica/claude-code-skills-github-issues \
   --title "Claude Code: How to use Plan Mode" \
   --label "claude-code,tips,how-to" \
   --body-file tip.md

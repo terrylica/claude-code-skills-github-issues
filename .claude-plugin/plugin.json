@@ -1,0 +1,20 @@
+{
+  "name": "github-issues-operations",
+  "description": "GitHub Issues management skills: search, lifecycle, AI ops, file search, labels",
+  "version": "4.0.0",
+  "author": {
+    "name": "Terry Li",
+    "email": "terry@eonlabs.com"
+  },
+  "homepage": "https://github.com/terrylica/claude-code-skills-github-issues",
+  "repository": "https://github.com/terrylica/claude-code-skills-github-issues.git",
+  "license": "MIT",
+  "keywords": ["github", "issues", "cli", "automation", "skills"],
+  "skills": [
+    "./skills/github-issues/searching-issues",
+    "./skills/github-issues/managing-lifecycle",
+    "./skills/github-issues/ai-assisted-operations",
+    "./skills/github-issues/file-searching",
+    "./skills/github-issues/label-management"
+  ]
+}
