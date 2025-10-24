@@ -267,15 +267,15 @@ gh api repos/{owner}/{repo}/issues/123 --method PATCH --field milestone=1
 
 ## Color Palette (Standard GitHub)
 
-| Color    | Hex       | Use Case                 |
-| -------- | --------- | ------------------------ |
-| Red      | `#d73a4a` | Bugs, critical           |
-| Orange   | `#d93f0b` | Warnings, high priority  |
-| Yellow   | `#fbca04` | Medium priority, needs   |
-| Green    | `#0e8a16` | Improvements, low        |
-| Blue     | `#0366d6` | Enhancements, features   |
-| Purple   | `#5319e7` | Questions, research      |
-| Gray     | `#ededed` | Meta, wontfix            |
+| Color  | Hex       | Use Case                |
+| ------ | --------- | ----------------------- |
+| Red    | `#d73a4a` | Bugs, critical          |
+| Orange | `#d93f0b` | Warnings, high priority |
+| Yellow | `#fbca04` | Medium priority, needs  |
+| Green  | `#0e8a16` | Improvements, low       |
+| Blue   | `#0366d6` | Enhancements, features  |
+| Purple | `#5319e7` | Questions, research     |
+| Gray   | `#ededed` | Meta, wontfix           |
 
 ---
 

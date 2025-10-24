@@ -52,6 +52,31 @@ Or add as git submodule:
 git submodule add https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
 ```
 
+### Plugin Lifecycle Management
+
+**Complete Guide:** See [INSTALLATION.md](/INSTALLATION.md) for detailed instructions.
+
+**Install:**
+```bash
+/plugin marketplace add terrylica/claude-code-skills-github-issues
+/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+**Update to Latest Version:**
+```bash
+/plugin marketplace update terrylica/claude-code-skills-github-issues
+/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
+/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+**Uninstall:**
+```bash
+/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
+/plugin marketplace remove terrylica/claude-code-skills-github-issues
+```
+
+**Version History:** See [CHANGELOG.md](/CHANGELOG.md)
+
 ---
 
 > **🤖 For AI Agents:**

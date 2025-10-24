@@ -24,7 +24,7 @@
       "repository": "https://github.com/terrylica/claude-code-skills-github-issues.git",
       "license": "MIT",
       "source": "./",
-      "strict": false,
+      "strict": true,
       "keywords": ["github-issues", "gh-cli", "automation", "ai-assistance"]
     }
   ]

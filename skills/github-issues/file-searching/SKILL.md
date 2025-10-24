@@ -183,7 +183,7 @@ gh grep "SELECT.*FROM" --owner myorg --repo myrepo
 
 ### 4. Documentation Search
 
-```bash
+````bash
 # Find markdown links
 gh grep "\[.*\]\(.*\)" --owner myorg --repo myrepo --include "*.md"
 
@@ -192,7 +192,7 @@ gh grep "^```" --owner myorg --repo myrepo --include "*.md"
 
 # Find heading references
 gh grep "^#{1,3} " --owner myorg --repo myrepo --include "*.md"
-```
+````
 
 ---
 
@@ -240,15 +240,15 @@ done
 
 ## Comparison: gh grep vs gh search issues
 
-| Feature         | gh grep                | gh search issues       |
-| --------------- | ---------------------- | ---------------------- |
-| **Searches**    | Repository files       | Issues/PRs             |
-| **Regex**       | ✅ Full regex support  | ❌ No regex            |
-| **Wildcards**   | ✅ Yes                 | ❌ No                  |
-| **Context**     | ✅ Line-based          | ❌ No context          |
-| **File types**  | ✅ Filter by extension | N/A                    |
-| **Installation**| Extension required     | Native                 |
-| **Use case**    | Code/docs search       | Issue/PR search        |
+| Feature          | gh grep                | gh search issues |
+| ---------------- | ---------------------- | ---------------- |
+| **Searches**     | Repository files       | Issues/PRs       |
+| **Regex**        | ✅ Full regex support  | ❌ No regex      |
+| **Wildcards**    | ✅ Yes                 | ❌ No            |
+| **Context**      | ✅ Line-based          | ❌ No context    |
+| **File types**   | ✅ Filter by extension | N/A              |
+| **Installation** | Extension required     | Native           |
+| **Use case**     | Code/docs search       | Issue/PR search  |
 
 ---
 

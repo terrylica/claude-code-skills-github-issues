@@ -20,9 +20,12 @@ Install via Claude Code plugin marketplace:
 
 ```bash
 /plugin marketplace add terrylica/claude-code-skills-github-issues
+/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
 ```
 
 This makes the skills available across all your Claude Code sessions.
+
+**Complete Installation Guide:** See [INSTALLATION.md](/INSTALLATION.md) for detailed instructions, troubleshooting, and lifecycle management.
 
 ### Project-Local Installation (Recommended for Teams)
 
@@ -41,6 +44,47 @@ git submodule add https://github.com/terrylica/claude-code-skills-github-issues.
 ### Verification
 
 After installation, Claude Code will automatically discover and activate these skills when working with GitHub Issues.
+
+## Plugin Lifecycle Management
+
+### Update to New Version
+
+When a new version is released (check [CHANGELOG.md](/CHANGELOG.md)):
+
+```bash
+# Refresh marketplace
+/plugin marketplace update terrylica/claude-code-skills-github-issues
+
+# Reinstall to get latest version
+/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
+/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+### Uninstall
+
+Complete removal:
+
+```bash
+# Remove plugin
+/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
+
+# Remove marketplace (optional)
+/plugin marketplace remove terrylica/claude-code-skills-github-issues
+```
+
+Temporary disable (keeps installation):
+
+```bash
+/plugin disable github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+Re-enable later:
+
+```bash
+/plugin enable github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+**Complete Guide:** [INSTALLATION.md](/INSTALLATION.md) has troubleshooting and advanced configuration.
 
 ## Prerequisites
 
