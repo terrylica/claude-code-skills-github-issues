@@ -88,24 +88,24 @@ Each topic has **EXACTLY ONE** authoritative document. All other references link
 
 **Canonical Source Map:**
 
-| Topic                          | Canonical Location                                           | What It Contains                       |
-| ------------------------------ | ------------------------------------------------------------ | -------------------------------------- |
-| **Operation Categories**       | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md`                 | Full details of 5 operation categories |
-| **Tool Selection**             | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md`                 | Decision trees, when to use what       |
-| **Extension Details**          | `/docs/research/GITHUB_CLI_EXTENSIONS.md`                    | gh-grep & gh-models complete docs      |
-| **Installation Instructions**  | `/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation` | How to install extensions              |
-| **Search Syntax**              | `/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md`        | Complete qualifier reference (30+)     |
-| **Effectiveness Metrics**      | `/docs/testing/GH-MODELS-POC-RESULTS.md`                     | Empirical test results (88% avg)       |
-| **API Reference**              | `/docs/references/github-cli-issues-comprehensive-guide.md`  | Complete gh CLI testing (200+ cases)   |
-| **Workflows & Best Practices** | `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md`                 | Common workflows, error handling       |
+| Topic                          | Canonical Location                                                                                             | What It Contains                       |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| **Operation Categories**       | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Full details of 5 operation categories |
+| **Tool Selection**             | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Decision trees, when to use what       |
+| **Extension Details**          | [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md)                                           | gh-grep & gh-models complete docs      |
+| **Installation Instructions**  | [GITHUB_CLI_EXTENSIONS.md#quick-installation](/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation)     | How to install extensions              |
+| **Search Syntax**              | [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)                   | Complete qualifier reference (30+)     |
+| **Effectiveness Metrics**      | [GH-MODELS-POC-RESULTS.md](/docs/testing/GH-MODELS-POC-RESULTS.md)                                            | Empirical test results (88% avg)       |
+| **API Reference**              | [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md)         | Complete gh CLI testing (200+ cases)   |
+| **Workflows & Best Practices** | [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)                                   | Common workflows, error handling       |
 
 **Core Documents:**
 
-1. `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` - Complete operational guide (primary reference)
-2. `/docs/research/GITHUB_CLI_EXTENSIONS.md` - Extension ecosystem (consolidated)
-3. `/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md` - Search capabilities (quick start + reference)
-4. `/docs/references/github-cli-issues-comprehensive-guide.md` - Complete API reference (200+ tests)
-5. `/docs/testing/GH-MODELS-POC-RESULTS.md` - AI assistance POC results
+1. [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md) - Complete operational guide (primary reference)
+2. [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md) - Extension ecosystem (consolidated)
+3. [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md) - Search capabilities (quick start + reference)
+4. [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md) - Complete API reference (200+ tests)
+5. [GH-MODELS-POC-RESULTS.md](/docs/testing/GH-MODELS-POC-RESULTS.md) - AI assistance POC results
 
 ### DRY Principle
 
@@ -232,7 +232,7 @@ Before creating new document:
 
 ## Quick Reference
 
-**Primary Guide:** `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md`
+**Primary Guide:** [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)
 
 **Tool Selection:**
 
