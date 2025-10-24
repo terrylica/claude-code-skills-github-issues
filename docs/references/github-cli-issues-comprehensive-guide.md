@@ -824,6 +824,7 @@ gh issue list --limit 100
 ### Advanced Search
 
 **Complete Search Syntax Documentation:** See [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md) for:
+
 - Complete search syntax reference (30+ qualifiers)
 - State, label, assignee, date, and milestone qualifiers
 - Complex query examples
@@ -831,6 +832,7 @@ gh issue list --limit 100
 - Quick start guide
 
 **Test Results:**
+
 - ✅ All search qualifiers tested (100% coverage)
 - ✅ Complex queries work
 - ✅ Date filtering accurate

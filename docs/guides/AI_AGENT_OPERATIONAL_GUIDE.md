@@ -98,11 +98,13 @@ gh extension list | grep -E 'gh-grep|gh-models'
 2. **gh-models** - Official GitHub AI assistance (29+ models for summarization, generation, analysis)
 
 **Key Distinction:**
+
 - `gh search issues` → Searches ISSUES/PRs (title, body, comments)
 - `gh grep` → Searches FILES (code, docs, configs)
 - `gh models` → AI-powered operations
 
 **Complete Documentation:** See [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md) for:
+
 - Installation instructions
 - Complete command syntax and flags
 - Empirical test results
