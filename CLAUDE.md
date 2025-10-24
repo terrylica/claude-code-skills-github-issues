@@ -1,6 +1,6 @@
 # Claude Code Project Memory: GitHub Issues Knowledge Base Operations
 
-**Last Updated:** 2025-10-23
+**Last Updated:** 2025-10-24
 **Version:** 4.0.0
 
 ---
@@ -30,7 +30,7 @@
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
 │  THIS REPOSITORY (terrylica/knowledgebase)                   │
-│  ├─ README.md, docs/, guides/                                │
+│  ├─ README.md, docs/                                         │
 │  ├─ Purpose: Operational guide for AI agents                 │
 │  └─ Content: How to perform operations                       │
 │                                                              │
@@ -157,8 +157,8 @@ gh models run "openai/gpt-4.1" "Suggest 2-3 labels for this: $BODY"
 
 **Refer to:**
 
-- `AI_AGENT_OPERATIONAL_GUIDE.md` - Tool selection decision tree
-- `GITHUB_CLI_EXTENSIONS.md` - When to use extensions vs native commands
+- `/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md` - Tool selection decision tree
+- `/docs/research/GITHUB_CLI_EXTENSIONS.md` - When to use extensions vs native commands
 
 ---
 
@@ -185,7 +185,12 @@ This repository **demonstrates the documented system** by maintaining our team's
 
 **Version History:**
 
-- 4.0.0 (2025-10-23): DRY consolidation, 16 files → 6 files
+- 4.0.0 (2025-10-24): DRY consolidation - Net reduction 892 lines (-968/+76)
+  - Eliminated all duplicate content across 7 files
+  - Operation categories: full details only in operational guide
+  - Extension docs: removed ~732 lines from operational guide
+  - Installation, metrics, search syntax: single source of truth
+  - Added canonical source map with 8 major topics
 - 3.x: POC testing and empirical validation
 - 2.x: Extension ecosystem research
 - 1.x: Initial comprehensive testing
