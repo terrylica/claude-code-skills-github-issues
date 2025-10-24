@@ -1431,13 +1431,13 @@ fi
 
 **Decision Matrix:**
 
-| Need                    | Use                 | Not                     |
-| ----------------------- | ------------------- | ----------------------- |
-| Search issue content    | `gh search issues`  | gh-grep                 |
-| Search files with regex | `gh grep`           | `gh search issues`      |
-| AI assistance           | `gh models`         | -                       |
-| Label operations        | `gh label`          | gh-label extension      |
-| Milestones              | `gh api`            | gh-milestone extension  |
+| Need                    | Use                | Not                    |
+| ----------------------- | ------------------ | ---------------------- |
+| Search issue content    | `gh search issues` | gh-grep                |
+| Search files with regex | `gh grep`          | `gh search issues`     |
+| AI assistance           | `gh models`        | -                      |
+| Label operations        | `gh label`         | gh-label extension     |
+| Milestones              | `gh api`           | gh-milestone extension |
 
 ### 2. Always Specify Repository
 
