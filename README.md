@@ -30,13 +30,21 @@
 
 ### Global Installation (Claude Code Skills)
 
-Install this operational guide as Claude Code Skills for automatic context loading:
+Install this operational guide as Claude Code Skills for automatic context loading.
+
+**Step 1:** Add the marketplace
 
 ```bash
 /plugin marketplace add terrylica/claude-code-skills-github-issues
 ```
 
-This makes all 5 GitHub Issues operation skills available across your Claude Code sessions with progressive disclosure (saves 73-95% context).
+**Step 2:** Install the plugin
+
+```bash
+/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
+```
+
+**Done!** All 5 GitHub Issues operation skills are now available across your Claude Code sessions with progressive disclosure (saves 73-95% context).
 
 ### Project-Local Installation
 
@@ -71,11 +79,24 @@ git submodule add https://github.com/terrylica/claude-code-skills-github-issues.
 /plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
 ```
 
-**Uninstall:**
+**Uninstall (Complete Removal):**
 
 ```bash
+# Step 1: Remove the plugin
 /plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
+
+# Step 2: Remove the marketplace (optional)
 /plugin marketplace remove terrylica/claude-code-skills-github-issues
+```
+
+**Temporary Disable:**
+
+```bash
+# Disable without removing (can re-enable later)
+/plugin disable github-issues-operations@terrylica/claude-code-skills-github-issues
+
+# Re-enable when needed
+/plugin enable github-issues-operations@terrylica/claude-code-skills-github-issues
 ```
 
 **Version History:** See [CHANGELOG.md](/CHANGELOG.md)
