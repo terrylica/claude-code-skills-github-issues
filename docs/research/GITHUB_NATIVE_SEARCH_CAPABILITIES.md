@@ -20,8 +20,8 @@
 2. [Executive Summary](#executive-summary) - Key findings
 3. [Native GitHub CLI Search Commands](#native-github-cli-search-commands) - Complete reference
 4. [Native Search Syntax and Qualifiers](#native-search-syntax-and-qualifiers) - All filters
-5. [Advanced Use Cases](#advanced-use-cases) - Real-world examples
-6. [Limitations](#limitations) - What's NOT possible
+5. [Practical Usage Patterns](#practical-usage-patterns) - Real-world examples
+6. [Limitations of Native GitHub Search](#limitations-of-native-github-search) - What's NOT possible
 
 ---
 
