@@ -57,12 +57,14 @@ git submodule add https://github.com/terrylica/claude-code-skills-github-issues.
 **Complete Guide:** See [INSTALLATION.md](/INSTALLATION.md) for detailed instructions.
 
 **Install:**
+
 ```bash
 /plugin marketplace add terrylica/claude-code-skills-github-issues
 /plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
 ```
 
 **Update to Latest Version:**
+
 ```bash
 /plugin marketplace update terrylica/claude-code-skills-github-issues
 /plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
@@ -70,12 +72,59 @@ git submodule add https://github.com/terrylica/claude-code-skills-github-issues.
 ```
 
 **Uninstall:**
+
 ```bash
 /plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
 /plugin marketplace remove terrylica/claude-code-skills-github-issues
 ```
 
 **Version History:** See [CHANGELOG.md](/CHANGELOG.md)
+
+### Verification & Testing
+
+After installation, verify the plugin is working:
+
+**1. Check Plugin Status:**
+```bash
+/plugin
+```
+
+Look for `github-issues-operations` in the installed plugins list.
+
+**2. Verify Skills Loaded:**
+```bash
+/help
+```
+
+The 5 GitHub Issues skills should be available.
+
+**3. Test Skill Activation:**
+
+Try these commands to verify skills auto-activate:
+
+```bash
+# Triggers searching-issues skill
+gh search issues "authentication" --repo=your-org/your-repo
+
+# Triggers managing-lifecycle skill
+gh issue list
+
+# Triggers label-management skill
+gh label list
+```
+
+When you run these commands in Claude Code, the relevant skill should load automatically with contextual guidance.
+
+**4. Verify Progressive Disclosure:**
+
+Skills load only what you need:
+- Using `gh search issues` → Only searching-issues skill activates
+- Using `gh issue create` → Only managing-lifecycle skill activates
+- Using `gh models` → Only ai-assisted-operations skill activates
+
+This saves 73-95% context compared to loading all documentation.
+
+**Troubleshooting:** See [INSTALLATION.md](/INSTALLATION.md) for common issues and solutions.
 
 ---
 
