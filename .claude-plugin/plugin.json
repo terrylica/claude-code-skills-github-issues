@@ -1,7 +1,7 @@
 {
   "name": "github-issues-operations",
   "description": "GitHub Issues management skills: search, lifecycle, AI ops, file search, labels",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "author": {
     "name": "Terry Li",
     "email": "terry@eonlabs.com"

@@ -1,7 +1,7 @@
 # Claude Code Project Memory: GitHub Issues Knowledge Base Operations
 
-**Last Updated:** 2025-10-24
-**Version:** 4.1.1
+**Last Updated:** 2025-10-25
+**Version:** 4.1.2
 
 ---
 
@@ -181,10 +181,17 @@ This repository **demonstrates the documented system** by maintaining our team's
 
 ## Version Management
 
-**Current Version:** 4.1.1 (PATCH: Design correction for creating-knowledge-entries skill UX)
+**Current Version:** 4.1.2 (PATCH: Documentation DRY refactoring and structural improvements)
 
 **Version History:**
 
+- 4.1.2 (2025-10-25): PATCH - Documentation DRY refactoring and structural improvements
+  - Eliminated ~120 lines of duplication between README.md and INSTALLATION.md
+  - Added missing project-local installation documentation (Method 2)
+  - Added installation methods comparison table for clarity
+  - README.md: Reduced from 122 to 32 lines (-74%) in installation section
+  - INSTALLATION.md: Enhanced with complete 4-method coverage (+30%)
+  - Established single source of truth for all installation methods
 - 4.1.1 (2025-10-24): PATCH - Design correction for creating-knowledge-entries skill
   - Fixed user interaction model: zero cognitive load, fully autonomous AI operation
   - Added label taxonomy analysis step for consistency

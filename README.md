@@ -31,127 +31,37 @@
 
 ## Installation
 
-### Global Installation (Claude Code Skills)
+Two installation methods available based on your needs:
 
-Install this operational guide as Claude Code Skills for automatic context loading.
+### 1. Global User-Level (Recommended for Individual Use)
 
-**Step 1:** Add the marketplace
+Available across **ALL** your Claude Code sessions.
 
 ```bash
 /plugin marketplace add terrylica/claude-code-skills-github-issues
-```
-
-**Step 2:** Install the plugin
-
-```bash
 /plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
 ```
 
-**Done!** All 5 GitHub Issues operation skills are now available across your Claude Code sessions with progressive disclosure (saves 73-95% context).
+**Verification:** Run `/plugin` to confirm `github-issues-operations` is installed.
 
-### Project-Local Installation
+### 2. Project-Local (Recommended for Teams)
 
-Clone into your project for team-wide access:
-
-```bash
-git clone https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
-```
-
-Or add as git submodule:
+Available only in **THIS project**. Committed to git for team access.
 
 ```bash
 git submodule add https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
 ```
 
-### Plugin Lifecycle Management
+---
 
-**Complete Guide:** See [INSTALLATION.md](/INSTALLATION.md) for detailed instructions.
+**📖 Complete Installation Guide:** See [INSTALLATION.md](/INSTALLATION.md) for:
 
-**Install:**
-
-```bash
-/plugin marketplace add terrylica/claude-code-skills-github-issues
-/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
-```
-
-**Update to Latest Version:**
-
-```bash
-/plugin marketplace update terrylica/claude-code-skills-github-issues
-/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
-/plugin install github-issues-operations@terrylica/claude-code-skills-github-issues
-```
-
-**Uninstall (Complete Removal):**
-
-```bash
-# Step 1: Remove the plugin
-/plugin uninstall github-issues-operations@terrylica/claude-code-skills-github-issues
-
-# Step 2: Remove the marketplace (optional)
-/plugin marketplace remove terrylica/claude-code-skills-github-issues
-```
-
-**Temporary Disable:**
-
-```bash
-# Disable without removing (can re-enable later)
-/plugin disable github-issues-operations@terrylica/claude-code-skills-github-issues
-
-# Re-enable when needed
-/plugin enable github-issues-operations@terrylica/claude-code-skills-github-issues
-```
-
-**Version History:** See [CHANGELOG.md](/CHANGELOG.md)
-
-### Verification & Testing
-
-After installation, verify the plugin is working:
-
-**1. Check Plugin Status:**
-
-```bash
-/plugin
-```
-
-Look for `github-issues-operations` in the installed plugins list.
-
-**2. Verify Skills Loaded:**
-
-```bash
-/help
-```
-
-The 5 GitHub Issues skills should be available.
-
-**3. Test Skill Activation:**
-
-Try these commands to verify skills auto-activate:
-
-```bash
-# Triggers searching-issues skill
-gh search issues "authentication" --repo=your-org/your-repo
-
-# Triggers managing-lifecycle skill
-gh issue list
-
-# Triggers label-management skill
-gh label list
-```
-
-When you run these commands in Claude Code, the relevant skill should load automatically with contextual guidance.
-
-**4. Verify Progressive Disclosure:**
-
-Skills load only what you need:
-
-- Using `gh search issues` → Only searching-issues skill activates
-- Using `gh issue create` → Only managing-lifecycle skill activates
-- Using `gh models` → Only ai-assisted-operations skill activates
-
-This saves 73-95% context compared to loading all documentation.
-
-**Troubleshooting:** See [INSTALLATION.md](/INSTALLATION.md) for common issues and solutions.
+- Prerequisites and version requirements
+- Detailed installation steps (4 methods with comparison table)
+- Verification and testing procedures
+- Updates, uninstallation, and lifecycle management
+- Troubleshooting common issues
+- Team distribution and version pinning
 
 ---
 

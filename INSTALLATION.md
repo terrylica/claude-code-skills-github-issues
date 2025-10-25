@@ -14,9 +14,30 @@ Complete guide for installing, using, updating, and uninstalling the GitHub Issu
 
 ---
 
+## Installation Methods
+
+Choose the method that fits your use case:
+
+| Method                | Scope                   | Use Case                | Storage Location        | Version Control  |
+| --------------------- | ----------------------- | ----------------------- | ----------------------- | ---------------- |
+| **Global User-Level** | All projects            | Individual productivity | `~/.claude/`            | Not in git       |
+| **Project-Local**     | This project only       | Team collaboration      | `.claude/plugins/`      | Committed to git |
+| **Team Auto-Install** | Project with auto-setup | Enterprise teams        | `.claude/settings.json` | Committed to git |
+| **Local Development** | Testing only            | Plugin developers       | Custom path             | Not applicable   |
+
+---
+
 ## Installation
 
-### Method 1: GitHub Marketplace (Recommended)
+### Method 1: Global User-Level (Marketplace)
+
+**Scope:** Available across **ALL** your Claude Code sessions (every project)
+
+**When to Use:**
+
+- Personal productivity tool
+- Want it available in every project
+- Don't need to version control the plugin
 
 **Step 1:** Add the marketplace to Claude Code
 
@@ -54,7 +75,68 @@ Check that the 5 GitHub Issues skills are loaded and available.
 
 ---
 
-### Method 2: Local Development (Testing Only)
+### Method 2: Project-Local (Git)
+
+**Scope:** Available only in **THIS project** (team access via git)
+
+**When to Use:**
+
+- Team collaboration
+- Version control the plugin with project
+- Ensure all team members have same tools
+- Project-specific plugin configuration
+
+**Method 2a: Git Submodule (Recommended for Teams)**
+
+Add the plugin as a git submodule for proper version tracking:
+
+```bash
+git submodule add https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
+git commit -m "Add GitHub Issues skills plugin as submodule"
+git push
+```
+
+**Team members** clone and update submodules:
+
+```bash
+# Initial clone
+git clone <your-repo-url>
+git submodule update --init --recursive
+
+# Later updates
+git pull
+git submodule update --recursive
+```
+
+**Method 2b: Git Clone (Simple)**
+
+Clone directly into your project (not tracked by git):
+
+```bash
+git clone https://github.com/terrylica/claude-code-skills-github-issues.git .claude/plugins/github-issues
+```
+
+**Note:** With this method, each team member must clone separately. Changes to the plugin won't be version controlled.
+
+**Verification:** Same as Method 1 (run `/plugin` and `/help` to verify)
+
+---
+
+### Method 3: Team Auto-Install (Advanced)
+
+**Scope:** Automatic installation when team opens project
+
+**When to Use:**
+
+- Enterprise teams
+- Want automatic setup for all team members
+- Need consistent tooling across organization
+
+See [Advanced: Team Distribution](#advanced-team-distribution) section below for complete setup instructions.
+
+---
+
+### Method 4: Local Development (Testing Only)
 
 For local testing before pushing to GitHub:
 
@@ -81,20 +163,55 @@ Once installed, the 5 skills auto-activate when working with GitHub Issues:
 
 ### Verification
 
-Test that skills are working:
+After installation (any method), verify the plugin is working:
+
+**1. Check Plugin Status**
 
 ```bash
-# Should trigger searching-issues skill
+/plugin
+```
+
+Look for `github-issues-operations` in the installed plugins list.
+
+**2. Verify Skills Loaded**
+
+```bash
+/help
+```
+
+The 5 GitHub Issues skills should be listed and available.
+
+**3. Test Skill Activation**
+
+Try these commands to verify skills auto-activate:
+
+```bash
+# Triggers searching-issues skill
 gh search issues "authentication" --repo=your-org/your-repo
 
-# Should trigger managing-lifecycle skill
-gh issue create --title "Test issue"
+# Triggers managing-lifecycle skill
+gh issue list
 
-# Should trigger ai-assisted-operations skill
+# Triggers label-management skill
+gh label list
+
+# Triggers ai-assisted-operations skill (if gh-models installed)
 gh models list
 ```
 
-The skills load **progressively** - only the relevant skill activates based on your task, saving 73-95% context compared to loading full documentation.
+When you run these commands in Claude Code, the relevant skill should load automatically with contextual guidance.
+
+**4. Verify Progressive Disclosure**
+
+Skills load only what you need:
+
+- Using `gh search issues` → Only **searching-issues** skill activates
+- Using `gh issue create` → Only **managing-lifecycle** skill activates
+- Using `gh models` → Only **ai-assisted-operations** skill activates
+- Using `gh label` → Only **label-management** skill activates
+- Using `gh grep` → Only **file-searching** skill activates
+
+This saves 73-95% context compared to loading all documentation.
 
 ---
 

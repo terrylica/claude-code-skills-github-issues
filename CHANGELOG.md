@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.1.2] - 2025-10-25
+
+### Fixed
+
+#### Documentation: DRY Principle Violations and Structural Improvements
+
+**Problem:**
+
+- README.md and INSTALLATION.md had ~120 lines of duplicated content
+- Installation commands duplicated in both files (40+ lines)
+- Update/uninstall/disable commands duplicated (60+ lines)
+- Verification steps duplicated (20+ lines)
+- Project-local installation missing from INSTALLATION.md
+- No clear two-level installation distinction (Global vs Project-Local)
+- README.md had too much installation detail (122 lines) - violated single responsibility
+
+**Solution:**
+
+- **README.md:** Reduced installation section from 122 to 32 lines (-90 lines, -74%)
+  - Quick start only with two-level distinction
+  - Links to INSTALLATION.md for complete guide
+  - Removed all duplicated lifecycle commands
+- **INSTALLATION.md:** Enhanced from 378 to 491 lines (+113 lines, +30%)
+  - Added installation methods comparison table
+  - Added Method 2: Project-Local installation (git submodule + git clone)
+  - Consolidated verification steps from both files
+  - Single source of truth for all installation methods
+- **Net result:** Eliminated ~120 lines of duplication while adding ~50 lines of critical new content
+
+**Changes:**
+
+- README.md: Refactored installation section (lines 32-64)
+- INSTALLATION.md: Added comparison table (lines 17-27), Method 2 (lines 77-120), enhanced verification (lines 161-211)
+
+**Impact:**
+
+- DRY compliance: Zero duplication across documents
+- Coverage: All 4 installation methods now documented (was missing project-local)
+- Structure: Clear separation of concerns (quick start vs comprehensive guide)
+- User experience: Easier navigation with comparison table
+
+---
+
 ## [4.1.1] - 2025-10-24
 
 ### Fixed
