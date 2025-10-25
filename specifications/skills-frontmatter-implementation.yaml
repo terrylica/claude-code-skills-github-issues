@@ -1,20 +1,23 @@
 openapi: 3.1.0
 info:
   title: Skills YAML Frontmatter Implementation
-  version: 1.0.0
+  version: 1.2.0
   description: |
     SSoT specification for adding required YAML frontmatter to existing skills
     and creating new knowledge entry capture skill for GitHub Issues operations.
 
     Based on official Anthropic Claude Code Skills documentation requirements.
 
+    v1.2.0 includes CRITICAL design correction: User interaction model changed
+    to fully autonomous operation (user pastes freely, AI decides everything).
+
 x-metadata:
-  status: completed
+  status: corrected
   created: 2025-10-24
   last-updated: 2025-10-24
   repository: terrylica/claude-code-skills-github-issues
-  target-version: 4.1.0
-  actual-version: 4.1.0
+  target-version: 4.1.1
+  actual-version: 4.1.1
 
 x-slos:
   availability:
@@ -198,7 +201,7 @@ x-implementation-plan:
             expected-skill: managing-lifecycle
 
 x-implementation-findings:
-  version: 1.1.0
+  version: 1.2.0
   findings:
     - id: finding-001
       date: 2025-10-24
@@ -264,6 +267,43 @@ x-implementation-findings:
       impact: Implementation plan was accurate
       action: Plan can be used as template for future skill additions
 
+    - id: finding-007
+      date: 2025-10-24
+      phase: post-implementation-design-correction
+      observation: |
+        CRITICAL DESIGN FLAW identified by user: Initial implementation asked
+        users to understand types/categories, violating "simplistic as possible"
+        and "one-shot" requirements.
+
+        Problem: Prompting "Just paste your content (rough notes are fine - I'll
+        format, extract title, suggest labels)" still implies user should think
+        about structure.
+
+        User feedback: "It is wrong to ask the users to come up with topics and
+        categories. The SKILLS should able to do all that based on existing pooling
+        of the data of current labeling method."
+
+        Correction applied:
+        - Changed prompt to: "Just paste what you want to share (any format is fine):"
+        - Added Step 1: Label Taxonomy Analysis (query existing repo labels)
+        - Updated Step 6: Label Suggestion to use existing taxonomy
+        - Changed confirmation from "What I did" to "What I decided"
+        - Explicitly document: User shares freely, AI decides everything
+      impact: |
+        MAJOR - Fundamentally changes user interaction model
+        - User cognitive load reduced to zero (just paste)
+        - AI autonomously analyzes existing repo patterns
+        - Maintains label consistency via taxonomy pooling
+        - Handles empty repos (AI creates taxonomy from scratch)
+      action: |
+        - Updated SKILL.md: Minimal prompt, added warning not to ask user choices
+        - Updated REFERENCE.md: Added Step 1 (Label Taxonomy Analysis), updated Step 6
+        - Renumbered all subsequent steps (2-8)
+        - Version bump to 4.1.1 (PATCH for design fix)
+      severity: HIGH
+      user-visible: YES
+      breaking-change: NO (improves UX, backward compatible)
+
   validation-results:
     slos-met:
       availability: PASS (all 6 skills have valid YAML frontmatter)
@@ -314,6 +354,17 @@ x-pruning:
   # Track deprecated content to remove
 
 x-version-history:
+  "1.2.0":
+    date: 2025-10-24
+    changes:
+      - CRITICAL design correction: User interaction model
+      - Added finding-007 (design flaw and correction)
+      - User now only pastes freely, AI decides everything
+      - Added Step 1 (Label Taxonomy Analysis) to automation pipeline
+      - Updated Step 6 (Label Suggestion with taxonomy awareness)
+      - Renumbered steps 2-8 in REFERENCE.md
+      - Version bump to 4.1.1
+
   "1.1.0":
     date: 2025-10-24
     changes:

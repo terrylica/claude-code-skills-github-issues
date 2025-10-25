@@ -1,7 +1,7 @@
 # Claude Code Project Memory: GitHub Issues Knowledge Base Operations
 
 **Last Updated:** 2025-10-24
-**Version:** 4.1.0
+**Version:** 4.1.1
 
 ---
 
@@ -181,11 +181,16 @@ This repository **demonstrates the documented system** by maintaining our team's
 
 ## Version Management
 
-**Current Version:** 4.0.0 (DRY consolidation - 62.5% file reduction)
+**Current Version:** 4.1.1 (PATCH: Design correction for creating-knowledge-entries skill UX)
 
 **Version History:**
 
-- 4.0.0 (2025-10-24): DRY consolidation - Net reduction 892 lines (-968/+76)
+- 4.1.1 (2025-10-24): PATCH - Design correction for creating-knowledge-entries skill
+  - Fixed user interaction model: zero cognitive load, fully autonomous AI operation
+  - Added label taxonomy analysis step for consistency
+  - Changed from asking users for categories to autonomous decision-making
+- 4.1.0 (2025-10-24): MINOR - Added YAML frontmatter to all skills + new creating-knowledge-entries skill
+- 4.0.0 (2025-10-24): MAJOR - DRY consolidation - Net reduction 892 lines (-968/+76)
   - Eliminated all duplicate content across 7 files
   - Operation categories: full details only in operational guide
   - Extension docs: removed ~732 lines from operational guide

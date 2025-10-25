@@ -4,41 +4,90 @@ Detailed automation pipeline, templates, and examples for one-shot knowledge cap
 
 ## Automatic Processing Pipeline
 
-### 1. Type Detection
+### 1. Label Taxonomy Analysis
+
+**First step: Understand existing label taxonomy before making decisions.**
+
+Query existing labels in the repository:
+
+```bash
+# Get all labels with descriptions
+EXISTING_LABELS=$(gh label list \
+  --repo=terrylica/claude-code-skills-github-issues \
+  --json name,description)
+
+# Parse into usable format
+echo "$EXISTING_LABELS" | jq -r '.[] | "\(.name): \(.description // "no description")"' > /tmp/label-taxonomy.txt
+```
+
+**Use this taxonomy to:**
+- Maintain labeling consistency
+- Understand existing categories
+- Suggest appropriate labels
+- Create new labels only when necessary
+
+**If repository has no labels (empty):**
+- AI creates initial taxonomy from scratch
+- Based on content analysis patterns
+- Establishes baseline categories
+
+**Example existing taxonomy:**
+```
+claude-code: Claude Code specific tips and issues
+github-cli: GitHub CLI operations and commands
+git: Git version control operations
+workflow: Process and workflow guidance
+tips: Quick tips and tricks
+troubleshooting: Problem solving and fixes
+how-to: Step-by-step guides
+reference: Reference documentation
+example: Code examples
+terminal: Terminal and shell operations
+mcp: Model Context Protocol
+question: Unanswered questions
+```
+
+### 2. Type Detection
 
 Analyze content for keywords to determine entry type:
 
 **Tip:**
+
 - Keywords: "useful", "tip", "trick", "quick", "FYI", "note"
 - Indicators: Short (< 500 chars), actionable advice
 - Default choice if ambiguous
 
 **How-To:**
+
 - Keywords: "how to", "steps", "first", "then", numbered list
 - Indicators: Sequential instructions, procedural
 - Structure: Problem → Solution steps
 
 **Troubleshooting:**
+
 - Keywords: "error", "fix", "solved", "problem", "issue", "failed"
 - Indicators: Error messages, solutions
 - Structure: Problem → Solution → Root Cause
 
 **Reference:**
+
 - Keywords: "documentation", "complete", "reference", "guide"
 - Indicators: Long content (> 1000 chars), comprehensive
 - Structure: Multiple sections, detailed
 
 **Example:**
+
 - Keywords: "example", "here's how", code blocks
 - Indicators: Contains code, demonstrates concept
 - Structure: Example → Explanation
 
 **Question:**
+
 - Keywords: "?", "how do I", "why does", "anyone know"
 - Indicators: Interrogative, seeking answer
 - Structure: Clear question format
 
-### 2. Title Extraction (AI-Powered)
+### 3. Title Extraction (AI-Powered)
 
 Use gh-models for intelligent title generation:
 
@@ -57,12 +106,13 @@ TITLE=$(gh models run "openai/gpt-4.1" \
 ```
 
 Fallback rules if gh-models unavailable:
+
 - Use first sentence if clear and < 80 chars
 - Extract from markdown `# Header` if present
 - Generate from main topic + action verb
 - Prefix with detected context (Git, Claude Code, Terminal, etc.)
 
-### 3. Content Formatting
+### 4. Content Formatting
 
 Apply structure based on detected type:
 
@@ -72,12 +122,15 @@ Apply structure based on detected type:
 # {Title}
 
 ## What It Does
+
 {Extracted main concept - 1-2 sentences}
 
 ## When to Use It
+
 {Extracted use case - 1-2 sentences}
 
 ## How to Use
+
 {Extracted steps or commands}
 
 {Code blocks if detected}
@@ -91,9 +144,11 @@ Apply structure based on detected type:
 # {Title}
 
 ## Problem
+
 {What this solves}
 
 ## Prerequisites
+
 {Requirements if mentioned}
 
 ## Steps
@@ -103,9 +158,11 @@ Apply structure based on detected type:
 3. {Step 3}
 
 ## Expected Outcome
+
 {What success looks like}
 
 ## Common Issues
+
 {Troubleshooting if mentioned}
 ```
 
@@ -115,10 +172,11 @@ Apply structure based on detected type:
 # {Title}
 
 ## Problem
+```
 
-```
 {Error message or symptom}
-```
+
+````
 
 ## When This Occurs
 {Context when error happens}
@@ -127,14 +185,17 @@ Apply structure based on detected type:
 
 ```bash
 {Commands or steps to fix}
-```
+````
 
 ## Root Cause
+
 {Why this happened}
 
 ## Prevention
+
 {How to avoid in future}
-```
+
+````
 
 #### Reference Template
 
@@ -152,14 +213,15 @@ Apply structure based on detected type:
 
 ## Related
 {Links if mentioned}
-```
+````
 
 #### Example Template
 
-```markdown
+````markdown
 # {Title}
 
 ## What It Demonstrates
+
 {Purpose of example}
 
 ## Example
@@ -167,13 +229,17 @@ Apply structure based on detected type:
 ```{language}
 {Code block}
 ```
+````
 
 ## How It Works
+
 {Line-by-line explanation if provided}
 
 ## Use Cases
+
 {When to use this pattern}
-```
+
+````
 
 #### Question Template
 
@@ -187,62 +253,70 @@ Apply structure based on detected type:
 
 ## What I've Tried
 {Attempts if mentioned}
-```
+````
 
-### 4. Code Block Detection
+### 5. Code Block Detection
 
 Transformations:
+
 - Detect inline code → wrap in backticks
 - Detect command lines → format as ```bash
 - Detect code blocks → add appropriate language tag
 - Detect file paths → format as `code`
 
 Language detection heuristics:
+
 - `$`, `#` prefix → bash
 - `def`, `import` → python
 - `function`, `const`, `let` → javascript
 - `gh ` commands → bash
 - URLs, paths → text
 
-### 5. Label Suggestion (AI-Powered)
+### 6. Label Suggestion (AI-Powered with Taxonomy Awareness)
 
-Use gh-models for intelligent labeling:
+**Use existing label taxonomy from Step 1 to maintain consistency.**
 
 ```bash
+# Load taxonomy from Step 1
+TAXONOMY=$(cat /tmp/label-taxonomy.txt)
+
 CONTENT="[formatted content]"
 
+# AI suggests labels based on existing taxonomy
 LABELS=$(gh models run "openai/gpt-4.1" \
-  "Suggest 2-4 labels from this list:
+  "Suggest 2-4 labels from the existing repository taxonomy below.
+   Maintain consistency with existing labels. Only create new labels
+   if content truly doesn't fit existing categories.
 
-   Available labels:
-   - claude-code (Claude Code specific)
-   - github-cli (GitHub CLI related)
-   - git (Git operations)
-   - workflow (Workflow/process)
-   - tips (Quick tips)
-   - troubleshooting (Problem solving)
-   - how-to (Step-by-step guides)
-   - reference (Reference docs)
-   - example (Code examples)
-   - terminal (Terminal/shell)
-   - mcp (Model Context Protocol)
-   - question (Unanswered questions)
+   Existing taxonomy:
+   $TAXONOMY
+
+   Content to label: $CONTENT
+
+   Return ONLY label names, comma-separated.")
+```
+
+**If repository has no labels (taxonomy empty):**
+
+AI creates initial labels from scratch:
+```bash
+LABELS=$(gh models run "openai/gpt-4.1" \
+  "Create 2-4 appropriate labels for this content. Use descriptive,
+   lowercase names with hyphens.
 
    Content: $CONTENT
 
    Return ONLY label names, comma-separated.")
 ```
 
-Fallback keyword-based labeling if AI unavailable:
-- "Claude Code", "/plan", "plan mode" → claude-code
-- "gh ", "github cli", "gh issue" → github-cli
-- "git ", "commit", "branch" → git
-- Contains error/fix → troubleshooting
-- Numbered steps → how-to
-- Contains "?" → question
-- Use detected type as label (tips, how-to, etc.)
+**Fallback keyword-based labeling if AI unavailable:**
 
-### 6. Related Knowledge Linking
+Use taxonomy-aware keyword matching:
+- Match keywords to existing label descriptions
+- Prioritize existing labels over creating new ones
+- Default to content type (tip, how-to, troubleshooting, etc.)
+
+### 7. Related Knowledge Linking
 
 Search for related issues:
 
@@ -263,7 +337,7 @@ if [ -n "$RELATED" ]; then
 fi
 ```
 
-### 7. Issue Creation
+### 8. Issue Creation
 
 Create with full metadata:
 
@@ -290,59 +364,72 @@ ISSUE_URL=$(gh issue view $ISSUE_NUMBER --json url --jq '.url')
 ### Example 1: Rough Notes → Structured Tip
 
 **User Input:**
+
 ```
 tmux is great, you can use ctrl-b d to detach and tmux attach to reattach
 useful when ssh connections drop
 ```
 
 **Processing:**
+
 - **Type detected:** Tip (keywords: "great", "useful")
 - **Title generated:** "Terminal: Using tmux for Persistent SSH Sessions"
 - **Labels suggested:** terminal, tips, workflow
 - **Related found:** #15 (SSH best practices), #23 (Terminal multiplexers)
 
 **Output:**
-```markdown
+
+````markdown
 # Terminal: Using tmux for Persistent SSH Sessions
 
 ## What It Does
+
 tmux allows you to maintain persistent terminal sessions that survive
 SSH disconnections.
 
 ## When to Use It
+
 Essential for long-running operations over SSH where connection stability
 is a concern.
 
 ## Key Commands
 
 Detach from session:
+
 ```bash
 Ctrl-b d
 ```
+````
 
 Reattach to session:
+
 ```bash
 tmux attach
 ```
 
 ## Benefits
+
 - Sessions survive SSH disconnections
 - Resume work exactly where you left off
 - Run long processes safely
 
 ## Related Knowledge
+
 - [#15](https://github.com/.../issues/15): SSH Best Practices for Remote Work
 - [#23](https://github.com/.../issues/23): Comparison of Terminal Multiplexers
+
 ```
 
 ### Example 2: Error Message → Troubleshooting
 
 **User Input:**
 ```
+
 Got "fatal: refusing to merge unrelated histories" when pulling
 Fixed with git pull --allow-unrelated-histories
 Happened because I initialized locally and on GitHub separately
-```
+
+````
 
 **Processing:**
 - **Type detected:** Troubleshooting (keywords: "error", "fixed")
@@ -356,9 +443,11 @@ Happened because I initialized locally and on GitHub separately
 
 ## Problem
 
-```
+````
+
 fatal: refusing to merge unrelated histories
-```
+
+````
 
 ## When This Occurs
 When you've initialized a repository both locally and on GitHub separately,
@@ -368,26 +457,32 @@ Git sees them as unrelated.
 
 ```bash
 git pull --allow-unrelated-histories
-```
+````
 
 ## Root Cause
+
 Separate initialization creates two independent Git histories with no
 common ancestor.
 
 ## Prevention
+
 Initialize in one location only, then clone or push to the other.
 
 ## Related Knowledge
+
 - [#8](https://github.com/.../issues/8): Common Git Errors and Solutions
+
 ```
 
 ### Example 3: Code Snippet → Example
 
 **User Input:**
 ```
+
 Here's how to use jq to extract issue titles:
 gh search issues bug --json title | jq -r '.[].title'
-```
+
+````
 
 **Processing:**
 - **Type detected:** Example (contains code, "here's how")
@@ -406,20 +501,24 @@ Extracts just the titles from GitHub issue search results using jq.
 
 ```bash
 gh search issues bug --json title | jq -r '.[].title'
-```
+````
 
 ## How It Works
+
 - `--json title` - Output only title field as JSON
 - `jq -r '.[].title'` - Extract title from each array element, raw output
 
 ## Use Cases
+
 - Quick scan of issue titles
 - Pipe to grep for further filtering
 - Generate reports or summaries
 
 ## Related Knowledge
+
 - [#12](https://github.com/.../issues/12): jq Recipes for GitHub CLI
-```
+
+````
 
 ## Quality Enhancements
 
@@ -444,32 +543,40 @@ Before creating issue:
 ## Error Scenarios
 
 **Scenario 1: Content Too Short**
-```
+````
+
 Input: "tmux"
 
 Response:
 I need more content to create a useful knowledge entry.
 Could you provide at least a sentence or two about what you want to share?
+
 ```
 
 **Scenario 2: gh-models Unavailable**
 ```
+
 Falls back to keyword-based processing:
+
 - Title: Use first sentence or generate from keywords
 - Labels: Use keyword detection instead of AI
 - Proceed with creation using fallback values
+
 ```
 
 **Scenario 3: Issue Creation Fails**
 ```
-⚠️  Couldn't create issue automatically. Here's the formatted content:
+
+⚠️ Couldn't create issue automatically. Here's the formatted content:
 
 [Shows formatted markdown]
 
 You can create manually:
+
 1. Save content to file: content.md
 2. Run: gh issue create --title "..." --label "..." --body-file content.md
-```
+
+````
 
 ## Dependencies
 
@@ -491,7 +598,7 @@ gh extension install github/gh-models
 
 # jq
 brew install jq
-```
+````
 
 ## Performance
 

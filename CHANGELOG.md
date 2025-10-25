@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.1.1] - 2025-10-24
+
+### Fixed
+
+#### creating-knowledge-entries Skill: User Interaction Model
+
+**CRITICAL design correction** based on user feedback:
+
+**Problem:**
+- Initial implementation asked users about types/categories
+- Violated "simplistic as possible" and "one-shot" principles
+- Implied users should understand structure
+
+**Solution:**
+- **Minimal prompt:** "Just paste what you want to share (any format is fine):"
+- **Zero user decisions:** AI analyzes and decides everything autonomously
+- **Label taxonomy analysis:** AI queries existing repo labels first
+- **Maintains consistency:** Uses existing taxonomy, creates new labels only when needed
+- **Handles empty repos:** AI creates initial taxonomy from scratch
+
+**Changes:**
+- SKILL.md: Changed prompt, added warning not to ask user for choices
+- REFERENCE.md: Added Step 1 (Label Taxonomy Analysis), updated Step 6 (taxonomy-aware labeling)
+- Renumbered automation pipeline steps (now 8 steps total)
+- Confirmation message: "What I decided" (not "What I did")
+
+**Impact:**
+- User cognitive load: Zero (just paste content)
+- Label consistency: Maintained via existing taxonomy
+- AI autonomy: Complete decision-making
+- UX improvement: Truly one-shot knowledge capture
+
+**Technical:**
+- Query labels: `gh label list --repo=... --json name,description`
+- AI prompt includes existing taxonomy for consistency
+- Fallback to keyword matching if AI unavailable
+
+**SSoT Plan Updated:**
+- specifications/skills-frontmatter-implementation.yaml updated to v1.2.0
+- Added finding-007 (design flaw and correction)
+
+---
+
 ## [4.1.0] - 2025-10-24
 
 ### Added
@@ -18,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enables proper skill discovery and autonomous activation by Claude
 
 **Skills updated:**
+
 - `searching-issues` - Search GitHub Issues/PRs with 30+ qualifiers
 - `managing-lifecycle` - CRUD operations and state management
 - `ai-assisted-operations` - AI-powered summarization and labeling
@@ -35,11 +79,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Structured templates** for 6 content types
 
 **Workflow:**
+
 1. User pastes rough content
 2. Skill processes automatically (type detection, formatting, labeling)
 3. Creates GitHub Issue with structured markdown
 
 **Files:**
+
 - `skills/github-issues/creating-knowledge-entries/SKILL.md` (94 lines)
 - `skills/github-issues/creating-knowledge-entries/REFERENCE.md` (431 lines)
 
@@ -54,17 +100,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical Details
 
 **Compliance:**
+
 - Meets official Anthropic requirements for Claude Code Skills
 - YAML frontmatter parseable (validated with yq)
 - Description fields include WHAT and WHEN per best practices
 - Progressive disclosure pattern reduces context usage
 
 **Dependencies:**
+
 - `gh` CLI (issue creation)
 - `gh-models` extension (AI labeling, optional)
 - `jq` (JSON processing, optional)
 
 **SLOs:**
+
 - Availability: 100% (all skills load without errors)
 - Correctness: 100% (valid YAML frontmatter per spec)
 - Observability: Complete (skill discovery lists all 6 skills)
