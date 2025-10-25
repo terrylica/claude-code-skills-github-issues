@@ -1,3 +1,8 @@
+---
+name: managing-lifecycle
+description: Create, update, close, and bulk process GitHub Issues with state management and metadata updates. Use for CRUD operations, changing issue states, or batch processing.
+---
+
 # Issue Lifecycle Operations
 
 **Capability:** Complete CRUD operations for GitHub Issues and PRs

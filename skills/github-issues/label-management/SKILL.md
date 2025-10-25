@@ -1,3 +1,8 @@
+---
+name: label-management
+description: Create, edit, delete, and organize GitHub Issue labels and milestones. Use for label operations, milestone management, or organizing issue taxonomy.
+---
+
 # Label & Milestone Management
 
 **Capability:** Complete label and milestone CRUD operations with native GitHub CLI

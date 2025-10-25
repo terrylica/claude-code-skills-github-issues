@@ -1,3 +1,8 @@
+---
+name: ai-assisted-operations
+description: AI-powered issue summarization, auto-labeling, and Q&A using gh-models with 88% effectiveness. Use when analyzing issue content, suggesting labels, or extracting insights.
+---
+
 # AI-Powered Issue Operations
 
 **Capability:** AI-assisted issue summarization, auto-labeling, Q&A, and documentation generation using gh-models

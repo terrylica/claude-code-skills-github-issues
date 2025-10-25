@@ -1,7 +1,7 @@
 # Claude Code Project Memory: GitHub Issues Knowledge Base Operations
 
 **Last Updated:** 2025-10-24
-**Version:** 4.0.2
+**Version:** 4.1.0
 
 ---
 

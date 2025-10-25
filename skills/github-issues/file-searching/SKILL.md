@@ -1,3 +1,8 @@
+---
+name: file-searching
+description: Regex-based file search across repository contents using gh-grep extension. Use when searching code files for patterns, not issue content.
+---
+
 # File Search with Regex
 
 **Capability:** Regex-based file content search across GitHub repositories using gh-grep

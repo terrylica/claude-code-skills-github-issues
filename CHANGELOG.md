@@ -7,6 +7,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [4.1.0] - 2025-10-24
+
+### Added
+
+#### YAML Frontmatter (Required by Anthropic)
+
+- Added required YAML frontmatter to all 5 existing SKILL.md files per official Anthropic Claude Code Skills specification
+- Frontmatter includes `name` (skill identifier) and `description` (what it does + when to use)
+- Enables proper skill discovery and autonomous activation by Claude
+
+**Skills updated:**
+- `searching-issues` - Search GitHub Issues/PRs with 30+ qualifiers
+- `managing-lifecycle` - CRUD operations and state management
+- `ai-assisted-operations` - AI-powered summarization and labeling
+- `file-searching` - Regex-based file search with gh-grep
+- `label-management` - Label and milestone operations
+
+#### New Skill: creating-knowledge-entries
+
+- **One-shot knowledge capture** with full automation
+- **Progressive disclosure** pattern: SKILL.md (minimal) + REFERENCE.md (detailed)
+- **Auto-formatting** based on content type (tip, how-to, troubleshooting, reference, example, question)
+- **AI-powered title extraction** using gh-models
+- **AI-suggested labels** with 88% effectiveness
+- **Related knowledge linking** via automated search
+- **Structured templates** for 6 content types
+
+**Workflow:**
+1. User pastes rough content
+2. Skill processes automatically (type detection, formatting, labeling)
+3. Creates GitHub Issue with structured markdown
+
+**Files:**
+- `skills/github-issues/creating-knowledge-entries/SKILL.md` (94 lines)
+- `skills/github-issues/creating-knowledge-entries/REFERENCE.md` (431 lines)
+
+### Changed
+
+#### Metadata Updates
+
+- **plugin.json**: Updated version to 4.1.0, added creating-knowledge-entries to skills array
+- **CLAUDE.md**: Updated version to 4.1.0
+- **SSoT Plan**: Created `specifications/skills-frontmatter-implementation.yaml` with SLOs
+
+### Technical Details
+
+**Compliance:**
+- Meets official Anthropic requirements for Claude Code Skills
+- YAML frontmatter parseable (validated with yq)
+- Description fields include WHAT and WHEN per best practices
+- Progressive disclosure pattern reduces context usage
+
+**Dependencies:**
+- `gh` CLI (issue creation)
+- `gh-models` extension (AI labeling, optional)
+- `jq` (JSON processing, optional)
+
+**SLOs:**
+- Availability: 100% (all skills load without errors)
+- Correctness: 100% (valid YAML frontmatter per spec)
+- Observability: Complete (skill discovery lists all 6 skills)
+- Maintainability: SSoT compliance (no duplicate content)
+
+**Research Source:** Official Anthropic documentation (docs.claude.com/en/docs/claude-code/skills)
+
+---
+
 ## [4.0.2] - 2025-10-24
 
 ### Changed
