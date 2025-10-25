@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "AI Agent Skills for GitHub Issues management - 5 comprehensive skills for searching, lifecycle management, AI-powered operations, file search, and label management",
-    "version": "4.0.0",
+    "version": "4.1.1",
     "keywords": ["github", "issues", "cli", "automation", "skills", "gh-cli", "gh-models", "gh-grep"],
     "license": "MIT",
     "homepage": "https://github.com/terrylica/claude-code-skills-github-issues"
@@ -15,7 +15,7 @@
     {
       "name": "github-issues-operations",
       "description": "GitHub Issues management skills: search, lifecycle, AI ops, file search, labels",
-      "version": "4.0.0",
+      "version": "4.1.1",
       "author": {
         "name": "Terry Li",
         "email": "terry@eonlabs.com"

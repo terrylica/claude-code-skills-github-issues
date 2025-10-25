@@ -16,11 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **CRITICAL design correction** based on user feedback:
 
 **Problem:**
+
 - Initial implementation asked users about types/categories
 - Violated "simplistic as possible" and "one-shot" principles
 - Implied users should understand structure
 
 **Solution:**
+
 - **Minimal prompt:** "Just paste what you want to share (any format is fine):"
 - **Zero user decisions:** AI analyzes and decides everything autonomously
 - **Label taxonomy analysis:** AI queries existing repo labels first
@@ -28,23 +30,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Handles empty repos:** AI creates initial taxonomy from scratch
 
 **Changes:**
+
 - SKILL.md: Changed prompt, added warning not to ask user for choices
 - REFERENCE.md: Added Step 1 (Label Taxonomy Analysis), updated Step 6 (taxonomy-aware labeling)
 - Renumbered automation pipeline steps (now 8 steps total)
 - Confirmation message: "What I decided" (not "What I did")
 
 **Impact:**
+
 - User cognitive load: Zero (just paste content)
 - Label consistency: Maintained via existing taxonomy
 - AI autonomy: Complete decision-making
 - UX improvement: Truly one-shot knowledge capture
 
 **Technical:**
+
 - Query labels: `gh label list --repo=... --json name,description`
 - AI prompt includes existing taxonomy for consistency
 - Fallback to keyword matching if AI unavailable
 
 **SSoT Plan Updated:**
+
 - specifications/skills-frontmatter-implementation.yaml updated to v1.2.0
 - Added finding-007 (design flaw and correction)
 

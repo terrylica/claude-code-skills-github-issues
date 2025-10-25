@@ -21,17 +21,20 @@ echo "$EXISTING_LABELS" | jq -r '.[] | "\(.name): \(.description // "no descript
 ```
 
 **Use this taxonomy to:**
+
 - Maintain labeling consistency
 - Understand existing categories
 - Suggest appropriate labels
 - Create new labels only when necessary
 
 **If repository has no labels (empty):**
+
 - AI creates initial taxonomy from scratch
 - Based on content analysis patterns
 - Establishes baseline categories
 
 **Example existing taxonomy:**
+
 ```
 claude-code: Claude Code specific tips and issues
 github-cli: GitHub CLI operations and commands
@@ -299,6 +302,7 @@ LABELS=$(gh models run "openai/gpt-4.1" \
 **If repository has no labels (taxonomy empty):**
 
 AI creates initial labels from scratch:
+
 ```bash
 LABELS=$(gh models run "openai/gpt-4.1" \
   "Create 2-4 appropriate labels for this content. Use descriptive,
@@ -312,6 +316,7 @@ LABELS=$(gh models run "openai/gpt-4.1" \
 **Fallback keyword-based labeling if AI unavailable:**
 
 Use taxonomy-aware keyword matching:
+
 - Match keywords to existing label descriptions
 - Prioritize existing labels over creating new ones
 - Default to content type (tip, how-to, troubleshooting, etc.)
