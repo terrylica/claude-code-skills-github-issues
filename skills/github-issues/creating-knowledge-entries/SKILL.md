@@ -1,6 +1,6 @@
 ---
 name: creating-knowledge-entries
-description: Create structured GitHub Issue knowledge entries with one-shot input. Handles auto-formatting, AI labeling, title extraction, and publishing. Use when user wants to share tips, document solutions, create how-tos, or add any knowledge to the base.
+description: Create GitHub Issue knowledge entries. TRIGGERS - share knowledge, document solution, create how-to, add to knowledge base.
 ---
 
 # Creating Knowledge Entries
@@ -113,4 +113,4 @@ For detailed automation pipeline, templates, and examples, see [REFERENCE.md](RE
 
 ---
 
-**Repository:** https://github.com/terrylica/claude-code-skills-github-issues
+**Repository:** <https://github.com/terrylica/claude-code-skills-github-issues>

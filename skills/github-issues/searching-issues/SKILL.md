@@ -1,6 +1,6 @@
 ---
 name: searching-issues
-description: Search GitHub Issues and PRs with 30+ qualifiers including labels, dates, users, state, milestones, and content. Use when searching for issues by keywords, metadata, or complex filters.
+description: Search GitHub Issues and PRs with qualifiers. TRIGGERS - search issues, find issue, issue filter, gh issue list.
 ---
 
 # Issue Search & Discovery

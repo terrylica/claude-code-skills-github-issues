@@ -1,6 +1,6 @@
 ---
 name: file-searching
-description: Regex-based file search across repository contents using gh-grep extension. Use when searching code files for patterns, not issue content.
+description: Regex file search via gh-grep extension. TRIGGERS - search code files, grep repository, file content search.
 ---
 
 # File Search with Regex
