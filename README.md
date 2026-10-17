@@ -23,9 +23,10 @@
 ## Quick Links
 
 - 📖 **[Documentation](/docs/)** - Guides, research, and references
-- 🔍 **[Search Guide](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)** - Native GitHub CLI search (quick start + complete reference)
+- 🔍 **[Search Guide](/docs/research/github-cli/SEARCH_CAPABILITIES.md)** - Native GitHub CLI search (quick start + complete reference)
 - 🤖 **[AI Agent Guide](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md)** - Operational guide for AI coding agents
-- 🔌 **[Extensions](/docs/research/GITHUB_CLI_EXTENSIONS.md)** - GitHub CLI extensions tested and recommended
+- 🔌 **[GitHub CLI](/docs/research/github-cli/)** - Extensions, search capabilities, and AI assistance POC
+- 🔌 **[Plugin System](/docs/research/claude-code-plugins/)** - Claude Code plugin/marketplace documentation
 
 ---
 
@@ -94,7 +95,7 @@ This guide documents **5 categories of operations** for AI agents managing knowl
 
 ### Prerequisites
 
-**Install GitHub CLI extensions** - See [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md#quick-installation) for installation instructions.
+**Install GitHub CLI extensions** - See [EXTENSIONS.md](/docs/research/github-cli/EXTENSIONS.md#quick-installation) for installation instructions.
 
 ### Search Your Knowledge Base
 
@@ -128,15 +129,22 @@ gh models run "openai/gpt-4.1" "Summarize this: $(gh issue view 123 --json body 
 
 ```
 docs/
-├── guides/           Operational guides for AI agents and humans
-│   └── AI_AGENT_OPERATIONAL_GUIDE.md       # Complete operational guide
-├── research/         Platform analysis and capabilities
-│   ├── GITHUB_CLI_EXTENSIONS.md            # Extension ecosystem (consolidated)
-│   └── GITHUB_NATIVE_SEARCH_CAPABILITIES.md # Search guide (quick start + reference)
-├── references/       Complete technical references
-│   └── github-cli-issues-comprehensive-guide.md  # 200+ test cases
-└── testing/          Test reports and POC results
-    └── GH-MODELS-POC-RESULTS.md            # AI assistance POC (88% effectiveness)
+├── guides/                  Operational guides for AI agents and humans
+│   └── AI_AGENT_OPERATIONAL_GUIDE.md           # Complete operational guide
+├── research/                Platform analysis and capabilities
+│   ├── claude-code-plugins/                    # Claude Code plugin system
+│   │   ├── README.md                           # Navigation hub
+│   │   ├── COMPLETE_REFERENCE.md               # Full technical reference
+│   │   ├── CONCEPTS.md                         # Plugin vs Marketplace vs Skills
+│   │   ├── ARCHITECTURE.md                     # System architecture diagrams
+│   │   └── QUICK_REFERENCE.md                  # Command cheat sheet
+│   └── github-cli/                             # GitHub CLI research
+│       ├── README.md                           # Navigation hub
+│       ├── EXTENSIONS.md                       # Extension ecosystem (consolidated)
+│       ├── SEARCH_CAPABILITIES.md              # Search guide (quick start + reference)
+│       └── GH_MODELS_POC_RESULTS.md            # AI assistance POC (88% effectiveness)
+└── references/              Complete technical references
+    └── github-cli-issues-comprehensive-guide.md # 200+ test cases
 ```
 
 ---
@@ -193,7 +201,7 @@ Complete guide for AI coding agents:
 - **Structured queries:** Excellent for team collaboration and knowledge base
 - **Limitations:** No regex, no wildcards, no context lines
 
-See: [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_CAPABILITIES.md)
+See: [SEARCH_CAPABILITIES.md](/docs/research/github-cli/SEARCH_CAPABILITIES.md)
 
 ### GitHub CLI Extensions Ecosystem
 
@@ -202,7 +210,7 @@ See: [GITHUB_NATIVE_SEARCH_CAPABILITIES.md](/docs/research/GITHUB_NATIVE_SEARCH_
 - **Outdated extensions identified** (gh-label: 2022, gh-milestone: 2023)
 - **Recommended alternatives** to custom scripts
 
-See: [GITHUB_CLI_EXTENSIONS.md](/docs/research/GITHUB_CLI_EXTENSIONS.md)
+See: [EXTENSIONS.md](/docs/research/github-cli/EXTENSIONS.md)
 
 ### GitHub CLI Capabilities
 

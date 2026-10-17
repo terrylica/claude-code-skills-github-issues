@@ -80,12 +80,15 @@ Research documentation for GitHub CLI operations, extensions, and AI-powered wor
 ## 🔗 Related Documentation
 
 **Operational Guide:**
+
 - [AI_AGENT_OPERATIONAL_GUIDE.md](/docs/guides/AI_AGENT_OPERATIONAL_GUIDE.md) - Complete operational guide for AI agents
 
 **Complete API Reference:**
+
 - [github-cli-issues-comprehensive-guide.md](/docs/references/github-cli-issues-comprehensive-guide.md) - 200+ test cases
 
 **Plugin System:**
+
 - [claude-code-plugins/](/docs/research/claude-code-plugins/) - How to distribute these workflows as Claude Code plugins
 
 ---
@@ -93,6 +96,7 @@ Research documentation for GitHub CLI operations, extensions, and AI-powered wor
 ## 📊 Research Methodology
 
 All research in this category is:
+
 - ✅ **Empirically tested** (200+ test cases)
 - ✅ **Version tracked** (tested 2025-10-23)
 - ✅ **Actively maintained** (verified maintenance status)
@@ -103,11 +107,13 @@ All research in this category is:
 ## 📖 Reading Order
 
 **For New Users:**
+
 1. Start with SEARCH_CAPABILITIES.md (Quick Start section)
 2. Browse EXTENSIONS.md (Quick Installation section)
 3. Review GH_MODELS_POC_RESULTS.md (Executive Summary)
 
 **For Advanced Users:**
+
 1. SEARCH_CAPABILITIES.md (Complete Reference)
 2. EXTENSIONS.md (Feature Comparison tables)
 3. GH_MODELS_POC_RESULTS.md (Detailed test cases)
